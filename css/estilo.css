@@ -1,186 +1,214 @@
-/* RESET SUAVE */
+/* =========================
+   RESET E BASE
+========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* VARIÁVEIS VISUAIS */
-:root {
-    --bg: #0e0e0e;
-    --text: #eaeaea;
-    --muted: #888;
-    --accent: #cfcfcf;
-    --border: #1f1f1f;
-}
-
-/* BASE */
 body {
-    background: var(--bg);
-    color: var(--text);
+    background: #0f0f0f;
+    color: #eaeaea;
     font-family: Georgia, "Times New Roman", serif;
     line-height: 1.7;
-    letter-spacing: 0.2px;
 }
 
-/* CONTAINER CENTRAL */
+/* =========================
+   CONTAINER
+========================= */
+
 .container {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 60px 20px;
 }
 
-/* TÍTULO PRINCIPAL */
+/* =========================
+   MENU GLOBAL
+========================= */
+
 header {
     text-align: center;
     margin-bottom: 60px;
 }
 
-header h1 {
+.logo {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.menu a:hover {
+    color: #fff;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+h1 {
     font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
     font-weight: normal;
 }
 
-header p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-top: 10px;
+.meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 20px;
 }
 
-/* ============================= */
-/* GRID RESPONSIVO (INDEX) */
-/* ============================= */
+/* =========================
+   GRID DE SÉRIES (HOME)
+========================= */
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
 }
 
-/* CARD */
+@media (min-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 .card {
-    border: 1px solid var(--border);
-    padding: 25px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.card a {
     text-decoration: none;
     color: inherit;
-    transition: all 0.25s ease;
-    display: block;
-    height: 100%;
 }
 
 .card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
+    opacity: 0.8;
 }
 
-/* TIPO DO DOCUMENTO */
-.tipo {
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
+/* =========================
+   LISTAS DE TEXTOS
+========================= */
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-/* TÍTULO */
-.card h2 {
-    font-size: 1.2rem;
-    font-weight: normal;
-    margin-bottom: 10px;
+.item {
+    border-left: 2px solid #333;
+    padding-left: 15px;
 }
 
-/* METADADOS */
-.meta {
-    font-size: 0.8rem;
-    color: var(--muted);
+.item a {
+    text-decoration: none;
+    color: #eaeaea;
 }
 
-/* ============================= */
-/* PÁGINA DE TEXTO */
-/* ============================= */
-
-.texto-container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 60px 20px;
+.item a:hover {
+    color: #fff;
 }
 
-/* CABEÇALHO DO TEXTO */
-.texto-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.texto-header h1 {
-    font-size: 1.8rem;
-    font-weight: normal;
-    margin-bottom: 10px;
-}
-
-.texto-header .meta {
-    margin-bottom: 5px;
-}
-
-/* CORPO DO TEXTO */
-article {
+.item-title {
     font-size: 1.1rem;
+}
+
+.item-meta {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* =========================
+   TEXTO (ARTIGO / POEMA)
+========================= */
+
+article {
+    margin-top: 40px;
 }
 
 article p {
     margin-bottom: 20px;
+    font-size: 1.1rem;
 }
 
-/* POESIA */
-.poema {
-    text-align: center;
+.poem {
     white-space: pre-line;
     font-style: italic;
 }
 
-/* ============================= */
-/* NAVEGAÇÃO */
-/* ============================= */
-
-.nav-links {
-    margin-top: 60px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-}
-
-.nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-}
-
-.nav-links a:hover {
-    color: var(--text);
-}
-
-/* ============================= */
-/* AUDIO */
-/* ============================= */
+/* =========================
+   PLAYER DE ÁUDIO
+========================= */
 
 audio {
     width: 100%;
-    margin-top: 40px;
-    opacity: 0.8;
+    margin: 20px 0;
 }
 
-/* ============================= */
-/* RESPONSIVIDADE */
-/* ============================= */
+/* =========================
+   NAVEGAÇÃO ENTRE TEXTOS
+========================= */
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.5rem;
-    }
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
 
-    .texto-header h1 {
-        font-size: 1.4rem;
-    }
+.nav-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
 
-    article {
-        font-size: 1rem;
-    }
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* =========================
+   DETALHES ARTÍSTICOS
+========================= */
+
+::selection {
+    background: #444;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 40px 0;
 }
