@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinicius Augusto de Souza</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0a0a0a;
+    --text:#e8e8e8;
+    --muted:#888;
+    --accent:#ffffff;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    transition:0.6s ease;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:80px 30px;
+}
+
+h1,h2{
+    font-family:'Playfair Display',serif;
+    font-weight:400;
+}
+
+h1{
+    font-size:2.6em;
+}
+
+.subtitle{
+    color:var(--muted);
+    font-size:0.9em;
+}
+
+.section{
+    margin-top:70px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.8s ease;
+}
+
+.section.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.section h2{
+    font-size:1.5em;
+    margin-bottom:20px;
+}
+
+.list{
+    border-left:1px solid #333;
+    padding-left:20px;
+}
+
+.item{
+    margin-bottom:20px;
+}
+
+.item a{
+    text-decoration:none;
+    color:#ccc;
+    font-size:1.05em;
+}
+
+.item a:hover{
+    color:var(--accent);
+}
+
+.meta{
+    font-size:0.8em;
+    color:#666;
+}
+
+.search{
+    margin-top:40px;
+}
+
+.search input{
+    width:100%;
+    padding:10px;
+    background:#111;
+    border:1px solid #333;
+    color:#fff;
+}
+
+.reader-mode{
+    margin-top:60px;
+    line-height:1.8;
+    max-width:650px;
+}
+
+.reader-mode p{
+    margin-bottom:20px;
+}
+
+.nav{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav a{
+    color:#888;
+    text-decoration:none;
+}
+
+.nav a:hover{
+    color:#fff;
+}
+
+.audio{
+    margin-top:20px;
+}
+
+.footer{
+    margin-top:100px;
+    font-size:0.8em;
+    color:#555;
+}
+
+.texture{
+    position:fixed;
+    inset:0;
+    background-image:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    opacity:0.1;
+    pointer-events:none;
+}
+
+</style>
+</head>
+
+<body>
+<div class="texture"></div>
+
+<div class="container">
+
+<h1>Vinicius Augusto de Souza</h1>
+<div class="subtitle">Arquivo pessoal de produção literária e documental</div>
+
+<div class="search">
+<input type="text" id="search" placeholder="Buscar textos...">
+</div>
+
+<div class="section" data-title="poema memória linguagem">
+<h2>Poemas</h2>
+<div class="list">
+
+<div class="item">
+<a href="#" onclick="openText('poema1')">No fim do dia tudo se esvai</a>
+<div class="meta">2020 • poesia • DOI: em breve</div>
+</div>
+
+</div>
+</div>
+
+<div class="section" data-title="artigo memória documento">
+<h2>Artigos</h2>
+<div class="list">
+
+<div class="item">
+<a href="#" onclick="openText('artigo1')">Memória e documento</a>
+<div class="meta">2026 • artigo • DOI: em breve</div>
+</div>
+
+</div>
+</div>
+
+<div class="section" data-title="arquivo técnica amostragem">
+<h2>Trabalhos técnicos</h2>
+<div class="list">
+
+<div class="item">
+<a href="#" onclick="openText('tecnico1')">Amostragem arquivística</a>
+<div class="meta">2026 • relatório técnico • DOI: em breve</div>
+</div>
+
+</div>
+</div>
+
+<div id="reader" class="reader-mode"></div>
+
+<div class="footer">
+© 2026 • Arquivo Vivo
+</div>
+
+</div>
+
+<script>
+// animação ao rolar
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+    sections.forEach(sec=>{
+        const top=sec.getBoundingClientRect().top;
+        if(top<window.innerHeight-50){
+            sec.classList.add('visible');
+        }
+    })
+});
+
+// busca simples
+const search=document.getElementById('search');
+search.addEventListener('input',()=>{
+    const term=search.value.toLowerCase();
+    document.querySelectorAll('.section').forEach(sec=>{
+        const text=sec.dataset.title;
+        sec.style.display=text.includes(term)?'block':'none';
+    });
+});
+
+// textos simulados
+function openText(id){
+    const reader=document.getElementById('reader');
+
+    if(id==='poema1'){
+        reader.innerHTML=`
+        <h2>No fim do dia tudo se esvai</h2>
+        <p class='meta'>2020 • poesia</p>
+        <p>O dia se curva sobre si mesmo<br>
+        e tudo o que foi dito se dissolve<br>
+        na memória incerta do tempo.</p>
+
+        <div class='nav'>
+        <a href='#'>← anterior</a>
+        <a href='#'>próximo →</a>
+        </div>
+        `;
+    }
+
+    if(id==='artigo1'){
+        reader.innerHTML=`
+        <h2>Memória e documento</h2>
+        <p class='meta'>2026 • artigo</p>
+        <p>A memória pode ser compreendida como um sistema de registros,
+        onde o documento atua como testemunho material da experiência.</p>
+
+        <div class='nav'>
+        <a href='#'>← anterior</a>
+        <a href='#'>próximo →</a>
+        </div>
+        `;
+    }
+
+    if(id==='tecnico1'){
+        reader.innerHTML=`
+        <h2>Amostragem arquivística</h2>
+        <p class='meta'>2026 • técnico</p>
+        <p>A amostragem arquivística permite reduzir o volume documental
+        mantendo representatividade estatística.</p>
+
+        <div class='audio'>
+        <audio controls>
+        <source src='audio/exemplo.mp3' type='audio/mpeg'>
+        </audio>
+        </div>
+
+        <div class='nav'>
+        <a href='#'>← anterior</a>
+        <a href='#'>próximo →</a>
+        </div>
+        `;
+    }
+
+    window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
