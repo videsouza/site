@@ -2,279 +2,41 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arquivo Vivo — Vinicius Augusto de Souza</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
-:root{
-    --bg:#0a0a0a;
-    --text:#e8e8e8;
-    --muted:#8a8a8a;
-    --line:#2a2a2a;
-}
-
-body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:80px 30px;
-}
-
-h1,h2,h3{
-    font-family:'Playfair Display',serif;
-    font-weight:400;
-}
-
-h1{
-    font-size:2.6em;
-}
-
-.subtitle{
-    color:var(--muted);
-    font-size:0.9em;
-}
-
-.archive-code{
-    font-size:0.7em;
-    color:#555;
-    letter-spacing:2px;
-    margin-top:10px;
-}
-
-.section{
-    margin-top:70px;
-    border-left:1px solid var(--line);
-    padding-left:20px;
-}
-
-.item{
-    margin-bottom:25px;
-}
-
-.item a{
-    text-decoration:none;
-    color:#ccc;
-    font-size:1.05em;
-}
-
-.item a:hover{
-    color:#fff;
-}
-
-.meta{
-    font-size:0.75em;
-    color:#666;
-    margin-top:4px;
-}
-
-.search{
-    margin-top:40px;
-}
-
-.search input{
-    width:100%;
-    padding:10px;
-    background:#111;
-    border:1px solid #333;
-    color:#fff;
-}
-
-.reader{
-    margin-top:80px;
-    max-width:650px;
-    line-height:1.8;
-}
-
-.reader h2{
-    margin-bottom:10px;
-}
-
-.reader .meta{
-    margin-bottom:30px;
-}
-
-.nav{
-    display:flex;
-    justify-content:space-between;
-    margin-top:40px;
-}
-
-.nav a{
-    color:#777;
-    text-decoration:none;
-}
-
-.nav a:hover{
-    color:#fff;
-}
-
-.tags span{
-    border:1px solid #333;
-    padding:3px 6px;
-    margin-right:5px;
-    font-size:0.7em;
-    color:#777;
-}
-
-.audio{
-    margin-top:30px;
-}
-
-.footer{
-    margin-top:120px;
-    font-size:0.75em;
-    color:#555;
-}
-
-.texture{
-    position:fixed;
-    inset:0;
-    background:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-    opacity:0.08;
-    pointer-events:none;
-}
-
+body{background:#0a0a0a;color:#e8e8e8;font-family:Georgia,serif;margin:60px}
+h1{font-size:2.5em}
+a{color:#bbb;text-decoration:none}
+a:hover{color:#fff}
+.section{margin-top:50px}
+.meta{font-size:0.8em;color:#777}
 </style>
 </head>
-
 <body>
-<div class="texture"></div>
-
-<div class="container">
 
 <h1>Arquivo Vivo</h1>
-<div class="subtitle">Produção literária, técnica e experimental de Vinicius Augusto de Souza</div>
-<div class="archive-code">Fundo pessoal — Série: Escrita e Documentação</div>
+<p>Produção literária, técnica e acadêmica.</p>
 
-<div class="search">
-<input type="text" id="search" placeholder="Buscar por tema, tipo ou palavra-chave...">
-</div>
-
-<!-- POESIA -->
-<div class="section" data-tags="poesia memoria subjetividade">
+<div class="section">
 <h2>Poesia</h2>
+<p><a href="poemas/poema1.html">No fim do dia tudo se esvai</a><br>
+<span class="meta">Ref: BR-VAS/PL-001 • 2020</span></p>
 
-<div class="item">
-<a href="#" onclick="openDoc('p1')">No fim do dia tudo se esvai</a>
-<div class="meta">Ref: BR-VAS/PL-001 • 2020 • poema • DOI: em breve</div>
+<p><a href="poemas/poema2.html">A dobra do silêncio</a><br>
+<span class="meta">Ref: BR-VAS/PL-002 • 2021</span></p>
 </div>
 
-</div>
-
-<!-- ARTIGOS -->
-<div class="section" data-tags="artigo arquivologia memoria">
+<div class="section">
 <h2>Artigos</h2>
-
-<div class="item">
-<a href="#" onclick="openDoc('a1')">Memória e documento</a>
-<div class="meta">Ref: BR-VAS/AR-001 • 2026 • artigo • DOI: em breve</div>
+<p><a href="artigos/artigo1.html">Memória e documento</a><br>
+<span class="meta">Ref: BR-VAS/AR-001 • 2026</span></p>
 </div>
 
-</div>
-
-<!-- TÉCNICO -->
-<div class="section" data-tags="tecnico arquivologia estatistica">
+<div class="section">
 <h2>Trabalhos técnicos</h2>
-
-<div class="item">
-<a href="#" onclick="openDoc('t1')">Amostragem arquivística</a>
-<div class="meta">Ref: BR-VAS/TE-001 • 2026 • relatório • DOI: em breve</div>
+<p><a href="tecnicos/tecnico1.html">Amostragem arquivística</a><br>
+<span class="meta">Ref: BR-VAS/TE-001 • 2026</span></p>
 </div>
-
-</div>
-
-<div id="reader" class="reader"></div>
-
-<div class="footer">
-Arquivo digital autoral • preservação e acesso • 2026
-</div>
-
-</div>
-
-<script>
-
-// BUSCA
-const search = document.getElementById('search');
-search.addEventListener('input', () => {
-    const term = search.value.toLowerCase();
-    document.querySelectorAll('.section').forEach(sec => {
-        sec.style.display = sec.dataset.tags.includes(term) ? 'block' : 'none';
-    });
-});
-
-// DOCUMENTOS
-const docs = {
-
-p1: {
-    title: "No fim do dia tudo se esvai",
-    meta: "Ref: BR-VAS/PL-001 • 2020 • poesia",
-    tags: ["memória","subjetividade"],
-    content: `
-    <p>O dia se curva sobre si mesmo<br>
-    e tudo o que foi dito se dissolve<br>
-    na memória incerta do tempo.</p>
-    `
-},
-
-a1: {
-    title: "Memória e documento",
-    meta: "Ref: BR-VAS/AR-001 • 2026 • artigo",
-    tags: ["arquivologia","memória"],
-    content: `
-    <p>A memória pode ser compreendida como um sistema de registros.
-    O documento atua como testemunho material da experiência humana.</p>
-    `
-},
-
-t1: {
-    title: "Amostragem arquivística",
-    meta: "Ref: BR-VAS/TE-001 • 2026 • técnico",
-    tags: ["estatística","arquivo"],
-    content: `
-    <p>A amostragem arquivística permite reduzir o volume documental mantendo
-    a representatividade estatística e informacional.</p>
-
-    <div class='audio'>
-    <audio controls>
-    <source src='audio/exemplo.mp3' type='audio/mpeg'>
-    </audio>
-    </div>
-    `
-}
-
-};
-
-// ABRIR DOCUMENTO
-function openDoc(id){
-    const d = docs[id];
-    const reader = document.getElementById('reader');
-
-    let tagsHTML = '';
-    d.tags.forEach(t => tagsHTML += `<span>${t}</span>`);
-
-    reader.innerHTML = `
-        <h2>${d.title}</h2>
-        <div class='meta'>${d.meta}</div>
-        <div class='tags'>${tagsHTML}</div>
-        ${d.content}
-        <div class='nav'>
-            <a href='#'>← anterior</a>
-            <a href='#'>próximo →</a>
-        </div>
-    `;
-
-    window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
-}
-
-</script>
 
 </body>
 </html>
