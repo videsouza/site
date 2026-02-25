@@ -1,0 +1,186 @@
+/* RESET SUAVE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIÁVEIS VISUAIS */
+:root {
+    --bg: #0e0e0e;
+    --text: #eaeaea;
+    --muted: #888;
+    --accent: #cfcfcf;
+    --border: #1f1f1f;
+}
+
+/* BASE */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+}
+
+/* CONTAINER CENTRAL */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* TÍTULO PRINCIPAL */
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+header p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* ============================= */
+/* GRID RESPONSIVO (INDEX) */
+/* ============================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* CARD */
+.card {
+    border: 1px solid var(--border);
+    padding: 25px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    display: block;
+    height: 100%;
+}
+
+.card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* TIPO DO DOCUMENTO */
+.tipo {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+/* TÍTULO */
+.card h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+/* METADADOS */
+.meta {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+/* ============================= */
+/* PÁGINA DE TEXTO */
+/* ============================= */
+
+.texto-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* CABEÇALHO DO TEXTO */
+.texto-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.texto-header h1 {
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.texto-header .meta {
+    margin-bottom: 5px;
+}
+
+/* CORPO DO TEXTO */
+article {
+    font-size: 1.1rem;
+}
+
+article p {
+    margin-bottom: 20px;
+}
+
+/* POESIA */
+.poema {
+    text-align: center;
+    white-space: pre-line;
+    font-style: italic;
+}
+
+/* ============================= */
+/* NAVEGAÇÃO */
+/* ============================= */
+
+.nav-links {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+/* ============================= */
+/* AUDIO */
+/* ============================= */
+
+audio {
+    width: 100%;
+    margin-top: 40px;
+    opacity: 0.8;
+}
+
+/* ============================= */
+/* RESPONSIVIDADE */
+/* ============================= */
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .texto-header h1 {
+        font-size: 1.4rem;
+    }
+
+    article {
+        font-size: 1rem;
+    }
+}
