@@ -1,177 +1,123 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Arquivo Digital Autoral</title>
-
-<link rel="stylesheet" href="css/estilo.css">
-
-<style>
-
-/* CONTAINER CENTRAL */
-
-.index-container {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
-
-/* CABEÇALHO */
-
-.index-header {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-.index-header h1 {
-    font-size: 2rem;
-    font-weight: normal;
-    letter-spacing: 1px;
-}
-
-.index-header p {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #888;
-}
-
-/* MANIFESTO */
-
-.manifesto {
-    text-align: center;
-    font-size: 1rem;
-    color: #aaa;
-    margin-bottom: 80px;
-    line-height: 1.8;
-}
-
-/* SEÇÕES */
-
-.section {
-    margin-bottom: 80px;
-}
-
-.section h2 {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-/* LINKS DE SÉRIES */
-
-.series a {
-    display: block;
-    text-decoration: none;
-    color: #ddd;
-    padding: 12px 0;
-    border-bottom: 1px solid #1f1f1f;
-    transition: 0.2s;
-}
-
-.series a:hover {
-    color: #fff;
-    padding-left: 5px;
-}
-
-/* ITENS RECENTES */
-
-.item {
-    margin-bottom: 20px;
-}
-
-.item a {
-    text-decoration: none;
-    color: #eaeaea;
-}
-
-.item a:hover {
-    text-decoration: underline;
-}
-
-.meta {
-    font-size: 0.8rem;
-    color: #777;
-    margin-top: 5px;
-}
-
-/* RODAPÉ */
-
-.footer {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #555;
-    margin-top: 100px;
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <title>Vinicius Augusto de Souza</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- MENU GLOBAL -->
-<nav class="menu">
-    <a href="index.html" class="logo">VAS</a>
+<div class="container">
 
-    <div class="menu-links">
-        <a href="poesia.html">Poesia</a>
-        <a href="artigos.html">Artigos</a>
-        <a href="tecnicos.html">Técnicos</a>
-        <a href="podcasts.html">Podcast</a>
-    </div>
-</nav>
+    <!-- HEADER / IDENTIDADE -->
+    <header>
+        <div class="logo">VINICIUS A. SOUZA</div>
 
-<!-- CONTEÚDO -->
-<div class="index-container">
+        <nav class="menu">
+            <a href="#">Início</a>
+            <a href="poesia.html">Poesia</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="tecnicos.html">Técnico</a>
+            <a href="podcast.html">Podcast</a>
+        </nav>
+    </header>
 
-<header class="index-header">
-    <h1>Arquivo Digital Autoral</h1>
-    <p>Vinicius Augusto de Souza</p>
-</header>
+    <!-- ABERTURA (AUTORAL) -->
+    <section>
+        <h1>No fim do dia tudo se esvai</h1>
 
-<section class="manifesto">
-    Entre a memória e o esquecimento, organizo vestígios.<br>
-    Entre o arquivo e a linguagem, procuro sentido.
-</section>
+        <p class="meta">
+            Escrita, arquivo e pensamento em processo.
+        </p>
 
-<!-- SÉRIES -->
-<section class="section series">
-    <h2>Séries</h2>
+        <p>
+            Este espaço reúne fragmentos de um percurso:
+            textos, experimentos, registros e tentativas de compreensão.
+        </p>
 
-    <a href="poesia.html">Poesia</a>
-    <a href="artigos.html">Artigos</a>
-    <a href="tecnicos.html">Técnicos</a>
-    <a href="podcasts.html">Podcast</a>
-</section>
+        <p>
+            Entre a linguagem poética, a organização do conhecimento
+            e a análise técnica, este arquivo permanece aberto —
+            em constante construção.
+        </p>
+    </section>
 
-<!-- RECENTES -->
-<section class="section recentes">
-    <h2>Recentes</h2>
+    <hr>
 
-    <div class="item">
-        <a href="poesia001.html">No fim do dia tudo se esvai</a>
-        <div class="meta">BR-VAS/PL-001 • 2020</div>
-    </div>
+    <!-- SÉRIES -->
+    <section class="grid">
 
-    <div class="item">
-        <a href="artigo001.html">Arquivo e Memória</a>
-        <div class="meta">BR-VAS/AT-001 • 2025</div>
-    </div>
+        <div class="card">
+            <a href="poesia.html">
+                <h2>Poesia</h2>
+                <p class="meta">Verso, imagem e experiência.</p>
+            </a>
+        </div>
 
-    <div class="item">
-        <a href="podcast001.html">Memória e Esquecimento</a>
-        <div class="meta">BR-VAS/PD-001 • 2024</div>
-    </div>
+        <div class="card">
+            <a href="artigos.html">
+                <h2>Artigos</h2>
+                <p class="meta">Ensaios e reflexões.</p>
+            </a>
+        </div>
 
-</section>
+        <div class="card">
+            <a href="tecnicos.html">
+                <h2>Técnico</h2>
+                <p class="meta">Arquivologia, dados e métodos.</p>
+            </a>
+        </div>
 
-<footer class="footer">
-    Arquivo pessoal • acesso aberto
-</footer>
+        <div class="card">
+            <a href="podcast.html">
+                <h2>Podcast</h2>
+                <p class="meta">Séries em áudio.</p>
+            </a>
+        </div>
+
+    </section>
+
+    <hr>
+
+    <!-- DESTAQUES -->
+    <section>
+
+        <h2>Em destaque</h2>
+
+        <div class="list">
+
+            <div class="item">
+                <a href="poesia-exemplo.html">
+                    <div class="item-title">O que há de mais belo</div>
+                    <div class="item-meta">Poesia • 2020</div>
+                </a>
+            </div>
+
+            <div class="item">
+                <a href="artigo-exemplo.html">
+                    <div class="item-title">A lógica do arquivo e o tempo</div>
+                    <div class="item-meta">Ensaio • 2025</div>
+                </a>
+            </div>
+
+            <div class="item">
+                <a href="podcast-ep1.html">
+                    <div class="item-title">Ep. 01 — Ordem e caos nos arquivos</div>
+                    <div class="item-meta">Podcast • 12min</div>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        © 2026 • Vinicius Augusto de Souza  
+        <br>
+        Arquivo pessoal em construção contínua
+    </footer>
 
 </div>
 
