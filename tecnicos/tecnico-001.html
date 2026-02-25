@@ -1,64 +1,119 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Incompletude</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+<meta charset="UTF-8">
+<title>Teoria da Computabilidade</title>
+<link rel="stylesheet" href="../css/estilo.css">
 </head>
 
 <body>
 
 <div class="container">
 
+<!-- CABEÇALHO -->
 <header>
-    <div class="logo">VINICIUS A. SOUZA</div>
+    <div class="logo">Arquivo Vinicius Augusto de Souza</div>
+
     <nav class="menu">
-        <a href="index.html">Início</a>
-        <a href="poesia.html">Poesia</a>
-        <a href="artigos.html">Artigos</a>
-        <a href="tecnicos.html">Técnico</a>
-        <a href="podcast.html">Podcast</a>
+        <a href="../index.html">Início</a>
+        <a href="../artigos.html">Artigos</a>
+        <a href="../poesia.html">Poesia</a>
+        <a href="../podcast.html">Podcast</a>
+        <a href="../sobre.html">Sobre</a>
     </nav>
 </header>
 
-<section>
-    <h1>Incompletude e Indecidibilidade em Sistemas Formais</h1>
-    <p class="meta">BR-VAS/TC-001 • 2026</p>
-</section>
-
+<!-- ARTIGO -->
 <article>
 
-<p><strong>Resumo:</strong></p>
-<p>
-m Os Limites da Computação, Vinícius de Souza conduz o leitor por uma das questões mais profundas da matemática e da ciência da computação: o reconhecimento de que nem todo problema é resolúvel, nem toda verdade é demonstrável, nem todo sistema formal pode ser completo.
+<h1>Teoria da Computabilidade</h1>
 
-Partindo do modelo das Máquinas de Turing e do Problema da Parada, o autor revela, com rigor e clareza, como surgem os conjuntos indecidíveis e de que modo eles conduzem inevitavelmente à incompletude de certos sistemas formais. 
-
-O texto, indispensável para estudantes e leitores interessados nos fundamentos da lógica, da matemática e da computação, articula precisão técnica, elegância conceitual e reflexão filosófica, mostrando que os limites da computação não são falhas, mas características estruturais de sua própria natureza mecânica.
-</p>
-
-<div class="meta">
-    BR-VAS/AT-001 • 2026<br>
-    DOI: <a href="https://doi.org/10.5281/zenodo.1234567" target="_blank">
-    https://doi.org/10.5281/zenodo.1234567
-    </a><br>
-    ORCID: <a href="https://orcid.org/0000-0000-0000-0000" target="_blank">
-    https://orcid.org/0000-0000-0000-0000
+<div class="author">
+    Vinicius Augusto de Souza<br>
+    <a href="https://orcid.org/0000-0000-0000-0000" target="_blank">
+        ORCID: 0000-0000-0000-0000
     </a>
+</div>
+
+<!-- METADADOS -->
+<div class="meta-box">
+    <div class="meta-id">
+        BR-VAS/AT-001 • 2026
+    </div>
+
+    <div class="meta-links">
+        <span>DOI</span>
+        <a href="https://doi.org/10.5281/zenodo.1234567" target="_blank">
+            10.5281/zenodo.1234567
+        </a>
+    </div>
+</div>
+
+<!-- AÇÕES -->
+<div class="actions">
+    <a href="teoria-computabilidade.pdf" target="_blank">📄 PDF</a>
+    <a href="https://doi.org/10.5281/zenodo.1234567" target="_blank">🔗 DOI</a>
+    <a href="#" onclick="copiarCitacao()">📑 Citar</a>
+</div>
+
+<hr>
+
+<!-- RESUMO -->
+<section>
+    <h2>Resumo</h2>
+    <p>
+    Este artigo apresenta uma introdução à teoria da computabilidade...
+    </p>
+</section>
+
+<!-- TEXTO -->
+<section>
+    <h2>Introdução</h2>
+    <p>Texto do artigo...</p>
+
+    <h2>Fundamentação Teórica</h2>
+    <p>Texto...</p>
+
+    <h2>Conclusão</h2>
+    <p>Texto...</p>
+</section>
+
+<!-- REFERÊNCIAS -->
+<section>
+    <h2>Referências</h2>
+    <p>TURING, Alan. On Computable Numbers...</p>
+</section>
+
+<hr>
+
+<!-- CITAÇÃO -->
+<div class="citation" id="citacao">
+SOUZA, Vinicius Augusto de. Teoria da Computabilidade. 2026.
+Disponível em: https://doi.org/10.5281/zenodo.1234567
 </div>
 
 </article>
 
-<div class="nav-links">
-    <a href="tecnicos.html">← Voltar</a>
-    <a href="tecnico-002.html">Próximo →</a>
-</div>
+<!-- NAVEGAÇÃO -->
+<nav class="nav-links">
+    <a href="#">← Artigo anterior</a>
+    <a href="#">Próximo artigo →</a>
+</nav>
 
+<!-- RODAPÉ -->
 <footer>
-    Série TC — Produção Técnica
+Arquivo pessoal — Produção intelectual independente
 </footer>
 
 </div>
+
+<script>
+function copiarCitacao() {
+    const texto = document.getElementById("citacao").innerText;
+    navigator.clipboard.writeText(texto);
+    alert("Citação copiada!");
+}
+</script>
 
 </body>
 </html>
