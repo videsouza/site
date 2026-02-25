@@ -3,24 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Arquivo Digital Autoral</title>
+
 <link rel="stylesheet" href="css/estilo.css">
 
 <style>
 
-/* INDEX MINIMALISTA */
+/* CONTAINER CENTRAL */
 
 .index-container {
     max-width: 680px;
     margin: 0 auto;
-    padding: 80px 20px;
+    padding: 60px 20px;
 }
 
 /* CABEÇALHO */
 
 .index-header {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 .index-header h1 {
@@ -30,12 +32,12 @@
 }
 
 .index-header p {
-    margin-top: 15px;
-    color: #888;
+    margin-top: 10px;
     font-size: 0.9rem;
+    color: #888;
 }
 
-/* FRASE CONCEITUAL */
+/* MANIFESTO */
 
 .manifesto {
     text-align: center;
@@ -45,19 +47,21 @@
     line-height: 1.8;
 }
 
-/* SÉRIES */
+/* SEÇÕES */
 
-.series {
-    margin-bottom: 100px;
+.section {
+    margin-bottom: 80px;
 }
 
-.series h2 {
+.section h2 {
     font-size: 0.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #666;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
+
+/* LINKS DE SÉRIES */
 
 .series a {
     display: block;
@@ -65,7 +69,7 @@
     color: #ddd;
     padding: 12px 0;
     border-bottom: 1px solid #1f1f1f;
-    transition: all 0.2s ease;
+    transition: 0.2s;
 }
 
 .series a:hover {
@@ -73,22 +77,10 @@
     padding-left: 5px;
 }
 
-/* RECENTES */
-
-.recentes {
-    margin-bottom: 100px;
-}
-
-.recentes h2 {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #666;
-    margin-bottom: 25px;
-}
+/* ITENS RECENTES */
 
 .item {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .item a {
@@ -112,6 +104,7 @@
     text-align: center;
     font-size: 0.8rem;
     color: #555;
+    margin-top: 100px;
 }
 
 </style>
@@ -120,43 +113,53 @@
 
 <body>
 
+<!-- MENU GLOBAL -->
+<nav class="menu">
+    <a href="index.html" class="logo">VAS</a>
+
+    <div class="menu-links">
+        <a href="poesia.html">Poesia</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="tecnicos.html">Técnicos</a>
+        <a href="podcasts.html">Podcast</a>
+    </div>
+</nav>
+
+<!-- CONTEÚDO -->
 <div class="index-container">
 
-<!-- CABEÇALHO -->
 <header class="index-header">
     <h1>Arquivo Digital Autoral</h1>
     <p>Vinicius Augusto de Souza</p>
 </header>
 
-<!-- FRASE / IDENTIDADE -->
 <section class="manifesto">
     Entre a memória e o esquecimento, organizo vestígios.<br>
     Entre o arquivo e a linguagem, procuro sentido.
 </section>
 
-<!-- SÉRIES DOCUMENTAIS -->
-<section class="series">
+<!-- SÉRIES -->
+<section class="section series">
     <h2>Séries</h2>
 
     <a href="poesia.html">Poesia</a>
     <a href="artigos.html">Artigos</a>
     <a href="tecnicos.html">Técnicos</a>
     <a href="podcasts.html">Podcast</a>
-
 </section>
 
-<!-- PRODUÇÃO RECENTE -->
-<section class="recentes">
+<!-- RECENTES -->
+<section class="section recentes">
     <h2>Recentes</h2>
 
     <div class="item">
-        <a href="poesia_exemplo.html">No fim do dia tudo se esvai</a>
+        <a href="poesia001.html">No fim do dia tudo se esvai</a>
         <div class="meta">BR-VAS/PL-001 • 2020</div>
     </div>
 
     <div class="item">
-        <a href="artigo_exemplo.html">Arquivo e Memória</a>
-        <div class="meta">BR-VAS/AT-002 • 2025</div>
+        <a href="artigo001.html">Arquivo e Memória</a>
+        <div class="meta">BR-VAS/AT-001 • 2025</div>
     </div>
 
     <div class="item">
@@ -166,7 +169,6 @@
 
 </section>
 
-<!-- RODAPÉ -->
 <footer class="footer">
     Arquivo pessoal • acesso aberto
 </footer>
