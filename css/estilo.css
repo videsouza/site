@@ -269,3 +269,14 @@ hr {
     border-left: 2px solid #333;
     padding-left: 15px;
 }
+
+.meta-links a {
+    color: #777;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.meta-links a:hover {
+    color: #fff;
+}
