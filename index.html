@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinicius Augusto de Souza</title>
+<title>Arquivo Vivo — Vinicius Augusto de Souza</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
@@ -11,8 +11,8 @@
 :root{
     --bg:#0a0a0a;
     --text:#e8e8e8;
-    --muted:#888;
-    --accent:#ffffff;
+    --muted:#8a8a8a;
+    --line:#2a2a2a;
 }
 
 body{
@@ -20,7 +20,6 @@ body{
     background:var(--bg);
     color:var(--text);
     font-family:'Inter',sans-serif;
-    transition:0.6s ease;
 }
 
 .container{
@@ -29,7 +28,7 @@ body{
     padding:80px 30px;
 }
 
-h1,h2{
+h1,h2,h3{
     font-family:'Playfair Display',serif;
     font-weight:400;
 }
@@ -43,30 +42,21 @@ h1{
     font-size:0.9em;
 }
 
+.archive-code{
+    font-size:0.7em;
+    color:#555;
+    letter-spacing:2px;
+    margin-top:10px;
+}
+
 .section{
     margin-top:70px;
-    opacity:0;
-    transform:translateY(20px);
-    transition:all 0.8s ease;
-}
-
-.section.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.section h2{
-    font-size:1.5em;
-    margin-bottom:20px;
-}
-
-.list{
-    border-left:1px solid #333;
+    border-left:1px solid var(--line);
     padding-left:20px;
 }
 
 .item{
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .item a{
@@ -76,12 +66,13 @@ h1{
 }
 
 .item a:hover{
-    color:var(--accent);
+    color:#fff;
 }
 
 .meta{
-    font-size:0.8em;
+    font-size:0.75em;
     color:#666;
+    margin-top:4px;
 }
 
 .search{
@@ -96,24 +87,28 @@ h1{
     color:#fff;
 }
 
-.reader-mode{
-    margin-top:60px;
-    line-height:1.8;
+.reader{
+    margin-top:80px;
     max-width:650px;
+    line-height:1.8;
 }
 
-.reader-mode p{
-    margin-bottom:20px;
+.reader h2{
+    margin-bottom:10px;
+}
+
+.reader .meta{
+    margin-bottom:30px;
 }
 
 .nav{
-    margin-top:40px;
     display:flex;
     justify-content:space-between;
+    margin-top:40px;
 }
 
 .nav a{
-    color:#888;
+    color:#777;
     text-decoration:none;
 }
 
@@ -121,21 +116,29 @@ h1{
     color:#fff;
 }
 
+.tags span{
+    border:1px solid #333;
+    padding:3px 6px;
+    margin-right:5px;
+    font-size:0.7em;
+    color:#777;
+}
+
 .audio{
-    margin-top:20px;
+    margin-top:30px;
 }
 
 .footer{
-    margin-top:100px;
-    font-size:0.8em;
+    margin-top:120px;
+    font-size:0.75em;
     color:#555;
 }
 
 .texture{
     position:fixed;
     inset:0;
-    background-image:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-    opacity:0.1;
+    background:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    opacity:0.08;
     pointer-events:none;
 }
 
@@ -147,134 +150,130 @@ h1{
 
 <div class="container">
 
-<h1>Vinicius Augusto de Souza</h1>
-<div class="subtitle">Arquivo pessoal de produção literária e documental</div>
+<h1>Arquivo Vivo</h1>
+<div class="subtitle">Produção literária, técnica e experimental de Vinicius Augusto de Souza</div>
+<div class="archive-code">Fundo pessoal — Série: Escrita e Documentação</div>
 
 <div class="search">
-<input type="text" id="search" placeholder="Buscar textos...">
+<input type="text" id="search" placeholder="Buscar por tema, tipo ou palavra-chave...">
 </div>
 
-<div class="section" data-title="poema memória linguagem">
-<h2>Poemas</h2>
-<div class="list">
+<!-- POESIA -->
+<div class="section" data-tags="poesia memoria subjetividade">
+<h2>Poesia</h2>
 
 <div class="item">
-<a href="#" onclick="openText('poema1')">No fim do dia tudo se esvai</a>
-<div class="meta">2020 • poesia • DOI: em breve</div>
+<a href="#" onclick="openDoc('p1')">No fim do dia tudo se esvai</a>
+<div class="meta">Ref: BR-VAS/PL-001 • 2020 • poema • DOI: em breve</div>
 </div>
 
 </div>
-</div>
 
-<div class="section" data-title="artigo memória documento">
+<!-- ARTIGOS -->
+<div class="section" data-tags="artigo arquivologia memoria">
 <h2>Artigos</h2>
-<div class="list">
 
 <div class="item">
-<a href="#" onclick="openText('artigo1')">Memória e documento</a>
-<div class="meta">2026 • artigo • DOI: em breve</div>
+<a href="#" onclick="openDoc('a1')">Memória e documento</a>
+<div class="meta">Ref: BR-VAS/AR-001 • 2026 • artigo • DOI: em breve</div>
 </div>
 
 </div>
-</div>
 
-<div class="section" data-title="arquivo técnica amostragem">
+<!-- TÉCNICO -->
+<div class="section" data-tags="tecnico arquivologia estatistica">
 <h2>Trabalhos técnicos</h2>
-<div class="list">
 
 <div class="item">
-<a href="#" onclick="openText('tecnico1')">Amostragem arquivística</a>
-<div class="meta">2026 • relatório técnico • DOI: em breve</div>
+<a href="#" onclick="openDoc('t1')">Amostragem arquivística</a>
+<div class="meta">Ref: BR-VAS/TE-001 • 2026 • relatório • DOI: em breve</div>
 </div>
 
 </div>
-</div>
 
-<div id="reader" class="reader-mode"></div>
+<div id="reader" class="reader"></div>
 
 <div class="footer">
-© 2026 • Arquivo Vivo
+Arquivo digital autoral • preservação e acesso • 2026
 </div>
 
 </div>
 
 <script>
-// animação ao rolar
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-    sections.forEach(sec=>{
-        const top=sec.getBoundingClientRect().top;
-        if(top<window.innerHeight-50){
-            sec.classList.add('visible');
-        }
-    })
-});
 
-// busca simples
-const search=document.getElementById('search');
-search.addEventListener('input',()=>{
-    const term=search.value.toLowerCase();
-    document.querySelectorAll('.section').forEach(sec=>{
-        const text=sec.dataset.title;
-        sec.style.display=text.includes(term)?'block':'none';
+// BUSCA
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+    const term = search.value.toLowerCase();
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.style.display = sec.dataset.tags.includes(term) ? 'block' : 'none';
     });
 });
 
-// textos simulados
-function openText(id){
-    const reader=document.getElementById('reader');
+// DOCUMENTOS
+const docs = {
 
-    if(id==='poema1'){
-        reader.innerHTML=`
-        <h2>No fim do dia tudo se esvai</h2>
-        <p class='meta'>2020 • poesia</p>
-        <p>O dia se curva sobre si mesmo<br>
-        e tudo o que foi dito se dissolve<br>
-        na memória incerta do tempo.</p>
+p1: {
+    title: "No fim do dia tudo se esvai",
+    meta: "Ref: BR-VAS/PL-001 • 2020 • poesia",
+    tags: ["memória","subjetividade"],
+    content: `
+    <p>O dia se curva sobre si mesmo<br>
+    e tudo o que foi dito se dissolve<br>
+    na memória incerta do tempo.</p>
+    `
+},
 
-        <div class='nav'>
-        <a href='#'>← anterior</a>
-        <a href='#'>próximo →</a>
-        </div>
-        `;
-    }
+a1: {
+    title: "Memória e documento",
+    meta: "Ref: BR-VAS/AR-001 • 2026 • artigo",
+    tags: ["arquivologia","memória"],
+    content: `
+    <p>A memória pode ser compreendida como um sistema de registros.
+    O documento atua como testemunho material da experiência humana.</p>
+    `
+},
 
-    if(id==='artigo1'){
-        reader.innerHTML=`
-        <h2>Memória e documento</h2>
-        <p class='meta'>2026 • artigo</p>
-        <p>A memória pode ser compreendida como um sistema de registros,
-        onde o documento atua como testemunho material da experiência.</p>
+t1: {
+    title: "Amostragem arquivística",
+    meta: "Ref: BR-VAS/TE-001 • 2026 • técnico",
+    tags: ["estatística","arquivo"],
+    content: `
+    <p>A amostragem arquivística permite reduzir o volume documental mantendo
+    a representatividade estatística e informacional.</p>
 
-        <div class='nav'>
-        <a href='#'>← anterior</a>
-        <a href='#'>próximo →</a>
-        </div>
-        `;
-    }
-
-    if(id==='tecnico1'){
-        reader.innerHTML=`
-        <h2>Amostragem arquivística</h2>
-        <p class='meta'>2026 • técnico</p>
-        <p>A amostragem arquivística permite reduzir o volume documental
-        mantendo representatividade estatística.</p>
-
-        <div class='audio'>
-        <audio controls>
-        <source src='audio/exemplo.mp3' type='audio/mpeg'>
-        </audio>
-        </div>
-
-        <div class='nav'>
-        <a href='#'>← anterior</a>
-        <a href='#'>próximo →</a>
-        </div>
-        `;
-    }
-
-    window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+    <div class='audio'>
+    <audio controls>
+    <source src='audio/exemplo.mp3' type='audio/mpeg'>
+    </audio>
+    </div>
+    `
 }
+
+};
+
+// ABRIR DOCUMENTO
+function openDoc(id){
+    const d = docs[id];
+    const reader = document.getElementById('reader');
+
+    let tagsHTML = '';
+    d.tags.forEach(t => tagsHTML += `<span>${t}</span>`);
+
+    reader.innerHTML = `
+        <h2>${d.title}</h2>
+        <div class='meta'>${d.meta}</div>
+        <div class='tags'>${tagsHTML}</div>
+        ${d.content}
+        <div class='nav'>
+            <a href='#'>← anterior</a>
+            <a href='#'>próximo →</a>
+        </div>
+    `;
+
+    window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
+}
+
 </script>
 
 </body>
