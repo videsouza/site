@@ -214,3 +214,58 @@ hr {
     border-top: 1px solid #333;
     margin: 40px 0;
 }
+
+/* =========================
+   AUTOR
+========================= */
+
+.author {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.author a {
+    color: #888;
+    text-decoration: none;
+}
+
+.author a:hover {
+    color: #fff;
+}
+
+/* =========================
+   AÇÕES (PDF / DOI / CITAÇÃO)
+========================= */
+
+.actions {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.actions a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #aaa;
+    border: 1px solid #333;
+    padding: 6px 10px;
+}
+
+.actions a:hover {
+    color: #fff;
+    border-color: #555;
+}
+
+/* =========================
+   CITAÇÃO
+========================= */
+
+.citation {
+    margin-top: 30px;
+    font-size: 0.85rem;
+    color: #777;
+    border-left: 2px solid #333;
+    padding-left: 15px;
+}
