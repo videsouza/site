@@ -1,40 +1,868 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Cadernos de Estudo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0b09;
+      --bg2: #131009;
+      --bg3: #1a1509;
+      --gold: #c9a84c;
+      --gold-light: #e8cc7a;
+      --gold-dim: #7a6330;
+      --cream: #f0e8d4;
+      --cream-dim: #a89c80;
+      --text: #e8e0cc;
+      --text-dim: #8c8070;
+      --red: #8b3a2a;
+      --border: rgba(201,168,76,0.18);
+      --radius: 2px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: .4;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(13,11,9,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--gold); text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--cream-dim); text-decoration: none;
+      transition: color .25s;
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+      background: var(--gold); transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 0 4rem; position: relative; overflow: hidden;
+    }
+
+    .hero-deco {
+      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+      width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-deco2 {
+      position: absolute; left: 30%; top: 10%;
+      width: 1px; height: 60vh; background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+      opacity: .3;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp .8s .2s forwards;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 900; line-height: 1; color: var(--cream); max-width: 10ch;
+      opacity: 0; animation: fadeUp .8s .4s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1.2rem; color: var(--cream-dim); max-width: 40ch;
+      margin-top: 1.5rem; font-style: italic;
+      opacity: 0; animation: fadeUp .8s .6s forwards;
+    }
+    .hero-cta {
+      margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .8s .8s forwards;
+    }
+    .btn {
+      display: inline-block; padding: .8rem 2rem;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; border-radius: var(--radius);
+      transition: all .25s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--gold); color: var(--bg); }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline { border: 1px solid var(--gold-dim); color: var(--gold); background: transparent; }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.07); }
+
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 4rem;
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-dim);
+      display: flex; align-items: center; gap: .8rem;
+      opacity: 0; animation: fadeUp .8s 1.2s forwards;
+    }
+    .scroll-hint::before {
+      content: ''; width: 30px; height: 1px; background: var(--text-dim);
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 7rem 4rem; position: relative; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700; color: var(--cream); margin-bottom: .6rem;
+    }
+    .section-lead {
+      font-size: 1.05rem; color: var(--cream-dim); font-style: italic;
+      max-width: 50ch; margin-bottom: 3.5rem;
+    }
+
+    /* ── LIVROS ── */
+    #livros { background: var(--bg2); }
+
+    .books-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .book-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
+    }
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px var(--gold-dim);
+    }
+
+    .book-cover {
+      aspect-ratio: 2/3; background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .book-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .book-cover-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: .5rem; padding: 1.5rem; text-align: center;
+    }
+    .book-cover-placeholder .bc-icon { font-size: 2.5rem; opacity: .3; }
+    .book-cover-placeholder .bc-title {
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      color: var(--cream); line-height: 1.3; font-style: italic;
+    }
+    .book-cover-placeholder .bc-author {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: .1em;
+      color: var(--gold); text-transform: uppercase;
+    }
+
+    /* cover bg colors */
+    .bc-bg-1 { background: linear-gradient(135deg, #1a1200, #3d2a00); }
+    .bc-bg-2 { background: linear-gradient(135deg, #0a1520, #1c3050); }
+    .bc-bg-3 { background: linear-gradient(135deg, #1a0a10, #3d1020); }
+    .bc-bg-4 { background: linear-gradient(135deg, #0d1a0d, #1c3a1c); }
+
+    .book-info { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .book-genre {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .5rem;
+    }
+    .book-title {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--cream); margin-bottom: .4rem; line-height: 1.3;
+    }
+    .book-desc { font-size: .9rem; color: var(--text-dim); flex: 1; margin-bottom: 1rem; }
+    .book-footer { display: flex; align-items: center; justify-content: space-between; }
+    .book-price {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold);
+    }
+    .book-btn {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--bg); background: var(--gold);
+      border: none; padding: .5rem 1rem; border-radius: var(--radius);
+      cursor: pointer; text-decoration: none; transition: background .2s;
+    }
+    .book-btn:hover { background: var(--gold-light); }
+
+    /* ── POEMAS ── */
+    #poemas { background: var(--bg); }
+
+    .poems-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+    .poem-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 2rem; position: relative; overflow: hidden;
+      cursor: pointer; transition: border-color .3s;
+      background: linear-gradient(135deg, rgba(201,168,76,0.02), transparent);
+    }
+    .poem-card::before {
+      content: '"'; position: absolute; top: -10px; left: 1rem;
+      font-family: 'Playfair Display', serif; font-size: 8rem; line-height: 1;
+      color: var(--gold-dim); opacity: .2; pointer-events: none;
+    }
+    .poem-card:hover { border-color: var(--gold-dim); }
+
+    .poem-title {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic;
+      color: var(--cream); margin-bottom: .3rem;
+    }
+    .poem-date {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: .15em;
+      color: var(--text-dim); text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .poem-excerpt {
+      font-size: .95rem; color: var(--cream-dim); font-style: italic;
+      line-height: 1.9; white-space: pre-line;
+    }
+    .poem-expand {
+      margin-top: 1rem; font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
+      border: none; background: none; cursor: pointer; padding: 0;
+      transition: opacity .2s;
+    }
+    .poem-expand:hover { opacity: .7; }
+
+    /* poem modal */
+    .poem-full { display: none; margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+    .poem-full p {
+      font-size: .95rem; color: var(--cream-dim); font-style: italic;
+      line-height: 2; white-space: pre-line;
+    }
+    .poem-card.open .poem-full { display: block; }
+    .poem-card.open .poem-expand { color: var(--text-dim); }
+
+    /* ── ARTIGOS ── */
+    #artigos { background: var(--bg2); }
+
+    .articles-list { display: flex; flex-direction: column; gap: 0; }
+    .article-row {
+      display: grid; grid-template-columns: 80px 1fr auto;
+      gap: 2rem; align-items: center; padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none; transition: background .2s;
+    }
+    .article-row:first-child { border-top: 1px solid var(--border); }
+    .article-row:hover { background: rgba(201,168,76,0.04); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; }
+
+    .article-num {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: .1em;
+      color: var(--text-dim); text-align: right;
+    }
+    .article-body {}
+    .article-cat {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .2rem;
+    }
+    .article-title {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem;
+      color: var(--cream); margin-bottom: .3rem;
+    }
+    .article-desc { font-size: .88rem; color: var(--text-dim); }
+    .article-arrow { font-size: 1.2rem; color: var(--gold-dim); transition: transform .2s, color .2s; }
+    .article-row:hover .article-arrow { transform: translateX(4px); color: var(--gold); }
+
+    /* ── APPS ── */
+    #apps { background: var(--bg); }
+
+    .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+
+    .app-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.8rem;
+      transition: transform .3s, box-shadow .3s;
+      position: relative; overflow: hidden;
+    }
+    .app-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.4), 0 0 0 1px var(--gold-dim);
+    }
+
+    .app-icon {
+      font-size: 2rem; margin-bottom: 1rem; display: block;
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(201,168,76,0.08); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .app-platform {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .5rem;
+    }
+    .app-name {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+      color: var(--cream); margin-bottom: .5rem;
+    }
+    .app-desc { font-size: .9rem; color: var(--text-dim); margin-bottom: 1.2rem; }
+    .app-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
+    .app-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-dim);
+      border: 1px solid var(--border); padding: .2rem .6rem; border-radius: 20px;
+    }
+    .app-links { display: flex; gap: .8rem; }
+    .app-link {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: .1em;
+      text-transform: uppercase; text-decoration: none;
+      padding: .45rem 1rem; border-radius: var(--radius); transition: all .2s;
+    }
+    .app-link-primary { background: var(--gold); color: var(--bg); }
+    .app-link-primary:hover { background: var(--gold-light); }
+    .app-link-secondary { border: 1px solid var(--border); color: var(--cream-dim); }
+    .app-link-secondary:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+    /* ── CONTATO ── */
+    #contato {
+      background: var(--bg2); text-align: center;
+      padding: 7rem 4rem 5rem;
+    }
+    #contato .section-tag { justify-content: center; }
+    #contato .section-title { text-align: center; }
+    .contact-text {
+      font-size: 1.1rem; color: var(--cream-dim); font-style: italic;
+      max-width: 45ch; margin: 0 auto 2.5rem;
+    }
+    .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: .12em;
+      color: var(--text-dim); text-transform: uppercase;
+    }
+    footer span { color: var(--gold-dim); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 1.5rem 0;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      section, #hero { padding: 5rem 1.5rem; }
+      .poems-layout { grid-template-columns: 1fr; }
+      .article-row { grid-template-columns: 50px 1fr 24px; gap: 1rem; }
+      footer { flex-direction: column; gap: .8rem; text-align: center; }
+    }
+
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header class="topo">
-    <h1>Vinicius A. de Souza</h1>
-    <p class="autor"><a href="https://orcid.org/0009-0002-0651-4435" target="_blank">orcid.org/0009-0002-0651-4435</p>
-</header>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Seu Nome</a>
+  <ul class="nav-links">
+    <li><a href="#livros">Livros</a></li>
+    <li><a href="#poemas">Poemas</a></li>
+    <li><a href="#artigos">Artigos</a></li>
+    <li><a href="#apps">Aplicativos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
 
-<section class="sumario">
-    <h2>livros</h2>
-    <ul>
-        <li><a href="https://loja.uiclap.com/titulo/ua121635/" target="_blank">I. alhures: poesias e textos - ISBN 978-65-01-72876-6</a></li>
-         <li><a href="https://loja.uiclap.com/titulo/ua134745/" target="_blank">II. os limites teóricos da computação - ISBN 978-65-01-99171-9</a></li>
-    </ul>
-    <h2>sistemas web</h2>
-        <ul>
-            <li><a href="https://camoes.lovable.app/" target="_blank">I. análise de poemas - DOI: 10.5281/zenodo.18876704</a></li>
-    </ul>
-    <h2>aplicativos</h2>
-    <ul>
-        <li><a href="https://app-builder.manus.im/mobile-app-download/D5X7oQBvenw9xEJTUNhjue" target="_blank">I. consulta de temporalidade (arquivística) - DOI: 10.5281/zenodo.18880918</a></li>
-         <li><a href="https://app-builder.manus.im/mobile-app-download/Cby6H9J248LuKbxcj6Jauu" target="_blank">II. obras de domínio público - DOI: 10.5281/zenodo.19432938</a></li>
-    </ul>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-deco2"></div>
+  <p class="hero-eyebrow">Escritor · Desenvolvedor · Criador</p>
+  <h1 class="hero-title">Seu <em>Nome</em> Aqui</h1>
+  <p class="hero-sub">Palavras, código e ideias — tudo em um só lugar.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#livros">Ver livros</a>
+    <a class="btn btn-outline" href="#apps">Ver aplicativos</a>
+  </div>
+  <div class="scroll-hint">Role para explorar</div>
 </section>
 
+<!-- LIVROS -->
+<section id="livros">
+  <p class="section-tag reveal">Obras publicadas</p>
+  <h2 class="section-title reveal">Livros</h2>
+  <p class="section-lead reveal">Disponíveis para compra — clique em qualquer livro para adquirir.</p>
+
+  <div class="books-grid">
+
+    <!-- Livro 1 -->
+    <div class="book-card reveal">
+      <div class="book-cover">
+        <div class="book-cover-placeholder bc-bg-1">
+          <span class="bc-icon">📖</span>
+          <span class="bc-title">Título do Primeiro Livro</span>
+          <span class="bc-author">Seu Nome</span>
+        </div>
+      </div>
+      <div class="book-info">
+        <p class="book-genre">Romance · Ficção</p>
+        <h3 class="book-title">Título do Primeiro Livro</h3>
+        <p class="book-desc">Uma breve descrição envolvente do livro, destacando o tema principal e o que o leitor pode esperar encontrar.</p>
+        <div class="book-footer">
+          <span class="book-price">R$ 39,90</span>
+          <a class="book-btn" href="#" target="_blank">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Livro 2 -->
+    <div class="book-card reveal">
+      <div class="book-cover">
+        <div class="book-cover-placeholder bc-bg-2">
+          <span class="bc-icon">📘</span>
+          <span class="bc-title">Título do Segundo Livro</span>
+          <span class="bc-author">Seu Nome</span>
+        </div>
+      </div>
+      <div class="book-info">
+        <p class="book-genre">Não-ficção · Ensaio</p>
+        <h3 class="book-title">Título do Segundo Livro</h3>
+        <p class="book-desc">Uma breve descrição do segundo livro, com suas principais ideias e a proposta que ele traz ao leitor.</p>
+        <div class="book-footer">
+          <span class="book-price">R$ 44,90</span>
+          <a class="book-btn" href="#" target="_blank">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Livro 3 -->
+    <div class="book-card reveal">
+      <div class="book-cover">
+        <div class="book-cover-placeholder bc-bg-3">
+          <span class="bc-icon">📕</span>
+          <span class="bc-title">Título do Terceiro Livro</span>
+          <span class="bc-author">Seu Nome</span>
+        </div>
+      </div>
+      <div class="book-info">
+        <p class="book-genre">Poesia · Literatura</p>
+        <h3 class="book-title">Título do Terceiro Livro</h3>
+        <p class="book-desc">Uma coletânea que reúne anos de reflexões em forma poética, do cotidiano ao universal.</p>
+        <div class="book-footer">
+          <span class="book-price">R$ 32,90</span>
+          <a class="book-btn" href="#" target="_blank">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Livro 4 -->
+    <div class="book-card reveal">
+      <div class="book-cover">
+        <div class="book-cover-placeholder bc-bg-4">
+          <span class="bc-icon">📗</span>
+          <span class="bc-title">Título do Quarto Livro</span>
+          <span class="bc-author">Seu Nome</span>
+        </div>
+      </div>
+      <div class="book-info">
+        <p class="book-genre">Técnico · Desenvolvimento</p>
+        <h3 class="book-title">Título do Quarto Livro</h3>
+        <p class="book-desc">Um guia prático e aprofundado para quem deseja dominar determinado assunto técnico com clareza.</p>
+        <div class="book-footer">
+          <span class="book-price">R$ 59,90</span>
+          <a class="book-btn" href="#" target="_blank">Comprar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POEMAS -->
+<section id="poemas">
+  <p class="section-tag reveal">Escrita lírica</p>
+  <h2 class="section-title reveal">Poemas Esparsos</h2>
+  <p class="section-lead reveal">Fragmentos do que não cabe em prosa. Clique para ler o poema completo.</p>
+
+  <div class="poems-layout">
+
+    <div class="poem-card reveal" onclick="togglePoem(this)">
+      <h3 class="poem-title">Nome do Primeiro Poema</h3>
+      <p class="poem-date">Janeiro de 2024</p>
+      <p class="poem-excerpt">Insira aqui os primeiros versos do poema,
+aqueles que prendem o leitor
+na primeira leitura…</p>
+      <button class="poem-expand">Ler completo ↓</button>
+      <div class="poem-full">
+        <p>Insira aqui os primeiros versos do poema,
+aqueles que prendem o leitor
+na primeira leitura…
+
+Continue aqui com os demais versos do poema,
+explorando a temática central
+com cada imagem que você escolheu.
+
+Finalize com um verso memorável
+que ressoe no silêncio
+após a última palavra.</p>
+      </div>
+    </div>
+
+    <div class="poem-card reveal" onclick="togglePoem(this)">
+      <h3 class="poem-title">Nome do Segundo Poema</h3>
+      <p class="poem-date">Março de 2024</p>
+      <p class="poem-excerpt">Os primeiros versos de seu segundo poema
+convidando o leitor
+a continuar…</p>
+      <button class="poem-expand">Ler completo ↓</button>
+      <div class="poem-full">
+        <p>Os primeiros versos de seu segundo poema
+convidando o leitor
+a continuar…
+
+Aqui o coração do poema,
+onde a metáfora se desdobra
+em camadas de significado.
+
+E o encerramento que surpreende
+ou confirma tudo
+o que foi dito sem dizer.</p>
+      </div>
+    </div>
+
+    <div class="poem-card reveal" onclick="togglePoem(this)">
+      <h3 class="poem-title">Nome do Terceiro Poema</h3>
+      <p class="poem-date">Junho de 2023</p>
+      <p class="poem-excerpt">Cada linha um passo,
+cada pausa um mundo
+que não precisa de explicação…</p>
+      <button class="poem-expand">Ler completo ↓</button>
+      <div class="poem-full">
+        <p>Cada linha um passo,
+cada pausa um mundo
+que não precisa de explicação…
+
+Acrescente aqui os versos centrais
+com a imagem ou sensação
+que dá nome ao poema.
+
+Um fechamento que fica,
+que provoca,
+que permanece.</p>
+      </div>
+    </div>
+
+    <div class="poem-card reveal" onclick="togglePoem(this)">
+      <h3 class="poem-title">Nome do Quarto Poema</h3>
+      <p class="poem-date">Setembro de 2023</p>
+      <p class="poem-excerpt">A palavra certa no lugar certo
+vale mais do que
+mil palavras certas…</p>
+      <button class="poem-expand">Ler completo ↓</button>
+      <div class="poem-full">
+        <p>A palavra certa no lugar certo
+vale mais do que
+mil palavras certas…
+
+Desenvolva aqui o tema central
+com a precisão e o ritmo
+que definem sua voz poética.
+
+E conclua com aquilo
+que só a poesia consegue dizer
+sem precisar dizê-lo.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ARTIGOS -->
+<section id="artigos">
+  <p class="section-tag reveal">Reflexões e análises</p>
+  <h2 class="section-title reveal">Artigos Diversos</h2>
+  <p class="section-lead reveal">Textos sobre temas que me movem — da tecnologia à filosofia.</p>
+
+  <div class="articles-list">
+
+    <a class="article-row reveal" href="#" target="_blank">
+      <span class="article-num">01</span>
+      <div class="article-body">
+        <p class="article-cat">Tecnologia</p>
+        <h3 class="article-title">Título do Primeiro Artigo</h3>
+        <p class="article-desc">Uma breve descrição do assunto abordado e o que o leitor encontrará ao clicar.</p>
+      </div>
+      <span class="article-arrow">→</span>
+    </a>
+
+    <a class="article-row reveal" href="#" target="_blank">
+      <span class="article-num">02</span>
+      <div class="article-body">
+        <p class="article-cat">Filosofia</p>
+        <h3 class="article-title">Título do Segundo Artigo</h3>
+        <p class="article-desc">Uma breve descrição do segundo artigo e os temas principais discutidos no texto.</p>
+      </div>
+      <span class="article-arrow">→</span>
+    </a>
+
+    <a class="article-row reveal" href="#" target="_blank">
+      <span class="article-num">03</span>
+      <div class="article-body">
+        <p class="article-cat">Literatura</p>
+        <h3 class="article-title">Título do Terceiro Artigo</h3>
+        <p class="article-desc">Análise e reflexão sobre um aspecto literário ou cultural que merece atenção.</p>
+      </div>
+      <span class="article-arrow">→</span>
+    </a>
+
+    <a class="article-row reveal" href="#" target="_blank">
+      <span class="article-num">04</span>
+      <div class="article-body">
+        <p class="article-cat">Desenvolvimento</p>
+        <h3 class="article-title">Título do Quarto Artigo</h3>
+        <p class="article-desc">Insights práticos e teóricos sobre desenvolvimento de software e sistemas.</p>
+      </div>
+      <span class="article-arrow">→</span>
+    </a>
+
+    <a class="article-row reveal" href="#" target="_blank">
+      <span class="article-num">05</span>
+      <div class="article-body">
+        <p class="article-cat">Educação</p>
+        <h3 class="article-title">Título do Quinto Artigo</h3>
+        <p class="article-desc">Uma perspectiva sobre educação, aprendizado e o futuro do conhecimento.</p>
+      </div>
+      <span class="article-arrow">→</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- APPS -->
+<section id="apps">
+  <p class="section-tag reveal">Software & sistemas</p>
+  <h2 class="section-title reveal">Aplicativos</h2>
+  <p class="section-lead reveal">Ferramentas que desenvolvi para resolver problemas reais.</p>
+
+  <div class="apps-grid">
+
+    <div class="app-card reveal">
+      <div class="app-icon">🚀</div>
+      <p class="app-platform">Web App</p>
+      <h3 class="app-name">Nome do App 1</h3>
+      <p class="app-desc">Descreva aqui o que o aplicativo faz, o problema que resolve e o público-alvo principal.</p>
+      <div class="app-tags">
+        <span class="app-tag">React</span>
+        <span class="app-tag">Node.js</span>
+        <span class="app-tag">PostgreSQL</span>
+      </div>
+      <div class="app-links">
+        <a class="app-link app-link-primary" href="#" target="_blank">Acessar</a>
+        <a class="app-link app-link-secondary" href="#" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <div class="app-card reveal">
+      <div class="app-icon">📊</div>
+      <p class="app-platform">Desktop · Windows</p>
+      <h3 class="app-name">Nome do App 2</h3>
+      <p class="app-desc">Um sistema robusto desenvolvido para automatizar e otimizar processos específicos do dia a dia.</p>
+      <div class="app-tags">
+        <span class="app-tag">Python</span>
+        <span class="app-tag">SQLite</span>
+        <span class="app-tag">PyQt</span>
+      </div>
+      <div class="app-links">
+        <a class="app-link app-link-primary" href="#" target="_blank">Download</a>
+        <a class="app-link app-link-secondary" href="#" target="_blank">Saiba mais</a>
+      </div>
+    </div>
+
+    <div class="app-card reveal">
+      <div class="app-icon">📱</div>
+      <p class="app-platform">Mobile · Android & iOS</p>
+      <h3 class="app-name">Nome do App 3</h3>
+      <p class="app-desc">Aplicativo móvel focado em produtividade pessoal, com interface intuitiva e sincronização em nuvem.</p>
+      <div class="app-tags">
+        <span class="app-tag">Flutter</span>
+        <span class="app-tag">Firebase</span>
+        <span class="app-tag">Dart</span>
+      </div>
+      <div class="app-links">
+        <a class="app-link app-link-primary" href="#" target="_blank">App Store</a>
+        <a class="app-link app-link-secondary" href="#" target="_blank">Google Play</a>
+      </div>
+    </div>
+
+    <div class="app-card reveal">
+      <div class="app-icon">🔧</div>
+      <p class="app-platform">API · Sistema</p>
+      <h3 class="app-name">Nome do Sistema 4</h3>
+      <p class="app-desc">Plataforma backend de alta performance para gestão e integração de dados em tempo real.</p>
+      <div class="app-tags">
+        <span class="app-tag">Go</span>
+        <span class="app-tag">Docker</span>
+        <span class="app-tag">Redis</span>
+      </div>
+      <div class="app-links">
+        <a class="app-link app-link-primary" href="#" target="_blank">Documentação</a>
+        <a class="app-link app-link-secondary" href="#" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <div class="app-card reveal">
+      <div class="app-icon">🎓</div>
+      <p class="app-platform">Web App · Educação</p>
+      <h3 class="app-name">Nome do App 5</h3>
+      <p class="app-desc">Plataforma educacional para aprendizado interativo, com trilhas personalizadas e progresso rastreado.</p>
+      <div class="app-tags">
+        <span class="app-tag">Next.js</span>
+        <span class="app-tag">Prisma</span>
+        <span class="app-tag">TypeScript</span>
+      </div>
+      <div class="app-links">
+        <a class="app-link app-link-primary" href="#" target="_blank">Acessar</a>
+        <a class="app-link app-link-secondary" href="#" target="_blank">Demo</a>
+      </div>
+    </div>
+
+    <div class="app-card reveal">
+      <div class="app-icon">🤖</div>
+      <p class="app-platform">IA · Automação</p>
+      <h3 class="app-name">Nome do App 6</h3>
+      <p class="app-desc">Ferramenta de automação inteligente que utiliza IA para otimizar fluxos de trabalho complexos.</p>
+      <div class="app-tags">
+        <span class="app-tag">Python</span>
+        <span class="app-tag">LangChain</span>
+        <span class="app-tag">FastAPI</span>
+      </div>
+      <div class="app-links">
+        <a class="app-link app-link-primary" href="#" target="_blank">Testar</a>
+        <a class="app-link app-link-secondary" href="#" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <p class="section-tag">Vamos conversar</p>
+  <h2 class="section-title">Contato</h2>
+  <div class="divider" style="margin: 1rem auto;"></div>
+  <p class="contact-text">Seja para adquirir um livro, discutir um projeto ou apenas trocar ideias — estou disponível.</p>
+  <div class="contact-links">
+    <a class="btn btn-primary" href="mailto:seu@email.com">✉ Enviar e-mail</a>
+    <a class="btn btn-outline" href="https://linkedin.com/in/seuperfil" target="_blank">LinkedIn</a>
+    <a class="btn btn-outline" href="https://github.com/seuperfil" target="_blank">GitHub</a>
+    <a class="btn btn-outline" href="https://instagram.com/seuperfil" target="_blank">Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <p><a href="sobre.html">sobre</a></p>
+  <span>© 2025 Seu Nome</span>
+  <span>Feito com <span style="color:var(--gold)">♦</span> e muito café</span>
 </footer>
+
+<script>
+  // ── Reveal on scroll ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        // stagger siblings
+        const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
+        const idx = siblings.indexOf(e.target);
+        setTimeout(() => {
+          e.target.classList.add('visible');
+        }, idx * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => observer.observe(r));
+
+  // ── Poem toggle ──
+  function togglePoem(card) {
+    const isOpen = card.classList.contains('open');
+    // close all
+    document.querySelectorAll('.poem-card.open').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.poem-expand').textContent = 'Ler completo ↓';
+    });
+    if (!isOpen) {
+      card.classList.add('open');
+      card.querySelector('.poem-expand').textContent = 'Recolher ↑';
+    }
+  }
+
+  // ── Nav active highlight ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--gold)' : '';
+    });
+  });
+</script>
 
 </body>
 </html>
