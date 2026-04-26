@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Título do Artigo — Seu Nome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0b09;
+      --bg2:       #131009;
+      --bg3:       #1a1509;
+      --gold:      #c9a84c;
+      --gold-light:#e8cc7a;
+      --gold-dim:  #7a6330;
+      --cream:     #f0e8d4;
+      --cream-dim: #a89c80;
+      --text:      #d8d0bc;
+      --text-dim:  #8c8070;
+      --border:    rgba(201,168,76,0.15);
+      --col-width: 680px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* noise */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: .4;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(13,11,9,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: .08em;
+      color: var(--gold); text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--cream-dim); text-decoration: none;
+      display: flex; align-items: center; gap: .5rem; transition: color .2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back::before { content: '←'; font-size: .9rem; }
+
+    /* ── PROGRESS BAR ── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(to right, var(--gold-dim), var(--gold));
+      z-index: 200; transition: width .1s linear;
+    }
+
+    /* ── HERO HEADER ── */
+    .article-hero {
+      padding: 10rem 4rem 4rem;
+      max-width: 900px; margin: 0 auto;
+      position: relative;
+    }
+
+    .article-meta-top {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp .7s .1s forwards;
+    }
+    .article-cat {
+      font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid var(--gold-dim); padding: .25rem .8rem; border-radius: 20px;
+    }
+    .article-date {
+      font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--text-dim);
+    }
+    .dot { color: var(--gold-dim); }
+
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--cream); margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp .7s .2s forwards;
+    }
+    .article-title em { font-style: italic; color: var(--gold); }
+
+    .article-lead {
+      font-size: 1.25rem; color: var(--cream-dim); font-style: italic;
+      line-height: 1.7; max-width: 60ch;
+      border-left: 2px solid var(--gold-dim); padding-left: 1.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp .7s .3s forwards;
+    }
+
+    .article-byline {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.2rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      opacity: 0; animation: fadeUp .7s .4s forwards;
+    }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dim), var(--bg3));
+      border: 1px solid var(--gold-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 700;
+      color: var(--gold); flex-shrink: 0;
+    }
+    .byline-text { flex: 1; }
+    .byline-name {
+      font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 700;
+      color: var(--cream); display: block;
+    }
+    .byline-detail {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-dim);
+    }
+    .byline-read-time {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-dim);
+    }
+
+    /* ── LAYOUT: sidebar + conteúdo ── */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr min(var(--col-width), 100%) 1fr;
+      gap: 0;
+      padding: 0 4rem;
+      position: relative;
+    }
+
+    /* coluna esquerda — sticky index */
+    .article-sidebar {
+      padding: 3rem 3rem 3rem 0;
+      position: sticky; top: 5rem;
+      align-self: start; grid-column: 1;
+      opacity: 0; animation: fadeUp .7s .5s forwards;
+    }
+    .toc-label {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { margin-bottom: .6rem; }
+    .toc-list a {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .08em;
+      color: var(--text-dim); text-decoration: none; line-height: 1.5;
+      transition: color .2s; display: block;
+    }
+    .toc-list a:hover, .toc-list a.active { color: var(--gold); }
+    .toc-list a.active { border-left: 2px solid var(--gold); padding-left: .5rem; }
+
+    /* coluna direita — compartilhar */
+    .article-aside {
+      padding: 3rem 0 3rem 3rem;
+      position: sticky; top: 5rem;
+      align-self: start; grid-column: 3;
+      opacity: 0; animation: fadeUp .7s .5s forwards;
+    }
+    .share-label {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    .share-buttons { display: flex; flex-direction: column; gap: .6rem; }
+    .share-btn {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--cream-dim); text-decoration: none;
+      border: 1px solid var(--border); padding: .5rem .9rem; border-radius: 2px;
+      transition: all .2s; cursor: pointer; background: none;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .share-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .share-btn .si { font-size: .85rem; }
+
+    /* ── BODY DO ARTIGO ── */
+    .article-body {
+      grid-column: 2;
+      padding: 3rem 2rem;
+      opacity: 0; animation: fadeUp .8s .4s forwards;
+    }
+
+    /* Tipografia do artigo */
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--cream);
+      margin: 3rem 0 1rem; line-height: 1.2;
+      scroll-margin-top: 6rem;
+    }
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 600; font-style: italic; color: var(--cream);
+      margin: 2.2rem 0 .8rem;
+      scroll-margin-top: 6rem;
+    }
+    .article-body p { margin-bottom: 1.4rem; }
+
+    .article-body a {
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--gold-dim); transition: border-color .2s;
+    }
+    .article-body a:hover { border-color: var(--gold); }
+
+    .article-body strong { color: var(--cream); font-weight: 600; }
+    .article-body em { font-style: italic; color: var(--cream-dim); }
+
+    /* destaque / pull-quote */
+    .pullquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-style: italic; line-height: 1.5;
+      color: var(--cream); border-left: 3px solid var(--gold);
+      padding: 1rem 2rem; margin: 2.5rem 0;
+      background: rgba(201,168,76,0.04);
+    }
+    .pullquote cite {
+      display: block; margin-top: .8rem;
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-dim); font-style: normal;
+    }
+
+    /* nota lateral / aside dentro do artigo */
+    .article-body aside {
+      border: 1px solid var(--border); border-radius: 2px;
+      padding: 1.2rem 1.5rem; margin: 2rem 0;
+      background: var(--bg3); font-size: .88rem; color: var(--cream-dim);
+    }
+    .article-body aside strong { font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .4rem; }
+
+    /* imagem */
+    .article-body figure {
+      margin: 2.5rem 0;
+    }
+    .article-body figure img {
+      width: 100%; border-radius: 2px; display: block;
+      border: 1px solid var(--border);
+    }
+    .article-body figcaption {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-dim); margin-top: .6rem; text-align: center;
+    }
+
+    /* lista */
+    .article-body ul, .article-body ol {
+      padding-left: 1.5rem; margin-bottom: 1.4rem;
+    }
+    .article-body li { margin-bottom: .4rem; }
+    .article-body ul li::marker { color: var(--gold); }
+    .article-body ol li::marker { font-family: 'DM Mono', monospace; font-size: .75rem; color: var(--gold-dim); }
+
+    /* código inline */
+    .article-body code {
+      font-family: 'DM Mono', monospace; font-size: .8rem;
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: .1rem .4rem; border-radius: 2px; color: var(--gold-light);
+    }
+
+    /* bloco de código */
+    .article-body pre {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 2px; padding: 1.5rem; margin: 2rem 0; overflow-x: auto;
+    }
+    .article-body pre code {
+      background: none; border: none; padding: 0; font-size: .82rem; color: var(--cream-dim);
+    }
+
+    /* separador */
+    .article-body hr {
+      border: none; border-top: 1px solid var(--border);
+      margin: 3rem 0; position: relative;
+    }
+    .article-body hr::before {
+      content: '◆'; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg); padding: 0 .8rem;
+      color: var(--gold-dim); font-size: .7rem;
+    }
+
+    /* número de seção decorativo */
+    .section-num {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .4rem;
+    }
+
+    /* ── RODAPÉ DO ARTIGO ── */
+    .article-footer {
+      max-width: 900px; margin: 0 auto;
+      padding: 0 4rem 4rem;
+      opacity: 0; animation: fadeUp .7s .6s forwards;
+    }
+
+    .article-tags {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 3rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .tag {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-dim);
+      border: 1px solid var(--border); padding: .3rem .8rem; border-radius: 20px;
+      transition: all .2s;
+    }
+    .tag:hover { border-color: var(--gold-dim); color: var(--gold); cursor: pointer; }
+
+    /* bio do autor */
+    .author-bio {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 2px;
+      padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;
+      margin-bottom: 3rem;
+    }
+    .author-bio .author-avatar { width: 56px; height: 56px; font-size: 1.1rem; flex-shrink: 0; }
+    .author-bio-name {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--cream); margin-bottom: .3rem;
+    }
+    .author-bio-role {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .7rem;
+    }
+    .author-bio-text { font-size: .9rem; color: var(--cream-dim); }
+
+    /* artigos relacionados */
+    .related-title {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 1.5rem;
+    }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; }
+    .related-card {
+      border: 1px solid var(--border); border-radius: 2px; padding: 1.3rem;
+      text-decoration: none; transition: border-color .25s, transform .25s;
+      display: flex; flex-direction: column; gap: .4rem;
+    }
+    .related-card:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+    .related-cat {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .related-card-title {
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic;
+      color: var(--cream); line-height: 1.3;
+    }
+    .related-card-date {
+      font-family: 'DM Mono', monospace; font-size: .55rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-dim); margin-top: auto; padding-top: .5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .12em;
+      color: var(--text-dim); text-transform: uppercase;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .article-sidebar, .article-aside { display: none; }
+      .article-layout {
+        grid-template-columns: 1fr;
+        padding: 0 2rem;
+      }
+      .article-body { grid-column: 1; padding: 2rem 0; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .article-hero { padding: 8rem 1.5rem 3rem; }
+      .article-footer { padding: 0 1.5rem 3rem; }
+      .related-grid { grid-template-columns: 1fr; }
+      .author-bio { flex-direction: column; }
+      footer { flex-direction: column; gap: .6rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BARRA DE PROGRESSO DE LEITURA -->
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Seu Nome</a>
+  <a class="nav-back" href="index.html#artigos">Todos os artigos</a>
+</nav>
+
+<!-- CABEÇALHO DO ARTIGO -->
+<header class="article-hero">
+  <div class="article-meta-top">
+    <span class="article-cat">Tecnologia</span>
+    <span class="dot">·</span>
+    <span class="article-date">12 de janeiro de 2025</span>
+  </div>
+
+  <h1 class="article-title">
+    O Título Principal do <em>Artigo</em> Vai Aqui
+  </h1>
+
+  <p class="article-lead">
+    Uma frase de abertura impactante que resume a proposta do artigo e convida o leitor a mergulhar no texto — aquela que faz alguém parar de rolar e começar a ler.
+  </p>
+
+  <div class="article-byline">
+    <div class="author-avatar">SN</div>
+    <div class="byline-text">
+      <span class="byline-name">Seu Nome</span>
+      <span class="byline-detail">Escritor · Desenvolvedor</span>
+    </div>
+    <span class="byline-read-time">⏱ 8 min de leitura</span>
+  </div>
+</header>
+
+<!-- LAYOUT PRINCIPAL -->
+<div class="article-layout">
+
+  <!-- SUMÁRIO (esquerda) -->
+  <aside class="article-sidebar">
+    <p class="toc-label">Neste artigo</p>
+    <ul class="toc-list" id="toc">
+      <li><a href="#secao-1">Introdução ao tema</a></li>
+      <li><a href="#secao-2">O problema central</a></li>
+      <li><a href="#secao-3">Uma perspectiva diferente</a></li>
+      <li><a href="#secao-4">Implicações práticas</a></li>
+      <li><a href="#secao-5">Conclusão</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <article class="article-body">
+
+    <span class="section-num">§ 01</span>
+    <h2 id="secao-1">Introdução ao tema</h2>
+
+    <p>
+      Comece aqui com o parágrafo de abertura do seu artigo. Este é o momento de estabelecer o contexto e conquistar definitivamente o leitor que passou pela frase de chamada. Escreva com a sua voz — direta, precisa, mas com personalidade.
+    </p>
+
+    <p>
+      O segundo parágrafo aprofunda levemente o contexto. Aqui você pode trazer um dado relevante, uma anedota ou uma observação que ancora a discussão no mundo real. O leitor precisa sentir que está em boas mãos — que quem escreve sabe do que está falando.
+    </p>
+
+    <blockquote class="pullquote">
+      "A citação mais marcante do artigo vai aqui — aquela que resume tudo em uma linha e que as pessoas vão querer compartilhar."
+      <cite>— Autor ou fonte da citação</cite>
+    </blockquote>
+
+    <span class="section-num">§ 02</span>
+    <h2 id="secao-2">O problema central</h2>
+
+    <p>
+      Aqui você apresenta o nó da questão. O que exatamente está em jogo? Por que isso importa? Contextualize o problema com precisão, sem exagerar na introdução nem subestimar a complexidade.
+    </p>
+
+    <h3>Um aspecto específico do problema</h3>
+
+    <p>
+      Um subargumento, uma perspectiva mais granular. Use <strong>negrito para termos-chave</strong> e <em>itálico para ênfase ou termos técnicos</em> quando necessário. Não abuse — cada escolha tipográfica deve ter razão de ser.
+    </p>
+
+    <aside>
+      <strong>Nota</strong>
+      Use este bloco para inserir uma nota lateral, um aviso importante, uma definição técnica ou contexto adicional que enriquece sem interromper o fluxo principal do texto.
+    </aside>
+
+    <p>
+      Continue desenvolvendo o argumento. Lembre-se: cada parágrafo deve ter uma função clara — apresentar, desenvolver, exemplificar ou conectar. Evite parágrafos decorativos.
+    </p>
+
+    <figure>
+      <!-- Substitua pelo caminho da sua imagem real -->
+      <div style="aspect-ratio:16/7; background: linear-gradient(135deg, #1a1200, #2a2000); display:flex; align-items:center; justify-content:center; border-radius:2px; border:1px solid var(--border);">
+        <span style="font-family:'DM Mono',monospace; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text-dim);">Imagem ilustrativa do artigo</span>
+      </div>
+      <figcaption>Legenda descritiva da imagem — fonte ou contexto</figcaption>
+    </figure>
+
+    <span class="section-num">§ 03</span>
+    <h2 id="secao-3">Uma perspectiva diferente</h2>
+
+    <p>
+      Este é o ponto de virada — onde você introduz a sua visão própria, o argumento central que diferencia este artigo de tudo o que já foi dito sobre o assunto. Seja direto, mas não simplista.
+    </p>
+
+    <p>
+      Desenvolva a perspectiva com exemplos concretos. Listas podem ajudar quando há múltiplos elementos paralelos:
+    </p>
+
+    <ul>
+      <li>Primeiro ponto relevante que apoia o argumento central</li>
+      <li>Segundo ponto com um exemplo ou dado específico</li>
+      <li>Terceiro ponto que conecta ao próximo parágrafo</li>
+    </ul>
+
+    <p>
+      Após a lista, volte à prosa para integrar os pontos e avançar o argumento. Listas interrompem o fluxo — use-as conscientemente e sempre as envolva com texto que dá contexto.
+    </p>
+
+    <hr/>
+
+    <span class="section-num">§ 04</span>
+    <h2 id="secao-4">Implicações práticas</h2>
+
+    <p>
+      Todo bom artigo de ideias termina com um retorno ao concreto. O que o leitor faz com essa perspectiva? Como isso muda a forma como ele pensa ou age?
+    </p>
+
+    <p>
+      Se o artigo for técnico, aqui pode vir um exemplo de código:
+    </p>
+
+    <pre><code>// Exemplo de código relevante ao tema
+function exemplo(parametro) {
+  const resultado = processar(parametro);
+  return resultado;
+}</code></pre>
+
+    <p>
+      Ou pode ser uma enumeração ordenada de passos práticos:
+    </p>
+
+    <ol>
+      <li>Primeira ação concreta que o leitor pode tomar</li>
+      <li>Segunda ação, mais específica e acionável</li>
+      <li>Terceira ação que consolida o aprendizado</li>
+    </ol>
+
+    <span class="section-num">§ 05</span>
+    <h2 id="secao-5">Conclusão</h2>
+
+    <p>
+      A conclusão não é um resumo — é a última palavra. Aqui você não repete o que disse; você eleva. Conecte o específico ao universal, o técnico ao humano, o argumento à consequência.
+    </p>
+
+    <p>
+      Termine com uma frase que fique. Algo que o leitor carregue consigo depois de fechar a página — uma provocação, uma imagem, uma pergunta em aberto.
+    </p>
+
+  </article>
+
+  <!-- BARRA LATERAL DIREITA (compartilhar) -->
+  <aside class="article-aside">
+    <p class="share-label">Compartilhar</p>
+    <div class="share-buttons">
+      <button class="share-btn" onclick="copyLink()">
+        <span class="si">🔗</span> Copiar link
+      </button>
+      <a class="share-btn" href="#" target="_blank">
+        <span class="si">𝕏</span> Twitter / X
+      </a>
+      <a class="share-btn" href="#" target="_blank">
+        <span class="si">in</span> LinkedIn
+      </a>
+      <a class="share-btn" href="#" target="_blank">
+        <span class="si">✉</span> E-mail
+      </a>
+    </div>
+  </aside>
+
+</div>
+
+<!-- RODAPÉ DO ARTIGO -->
+<div class="article-footer">
+
+  <!-- Tags -->
+  <div class="article-tags">
+    <span class="tag">Tecnologia</span>
+    <span class="tag">Reflexão</span>
+    <span class="tag">Inovação</span>
+    <span class="tag">Desenvolvimento</span>
+    <span class="tag">Ensaio</span>
+  </div>
+
+  <!-- Bio do autor -->
+  <div class="author-bio">
+    <div class="author-avatar">SN</div>
+    <div>
+      <p class="author-bio-name">Seu Nome</p>
+      <p class="author-bio-role">Escritor · Desenvolvedor</p>
+      <p class="author-bio-text">
+        Escreva aqui uma breve apresentação — duas ou três frases sobre quem você é, o que o move e onde o leitor pode encontrar mais do seu trabalho. Seja humano, não corporativo.
+      </p>
+    </div>
+  </div>
+
+  <!-- Artigos relacionados -->
+  <h3 class="related-title">Outros artigos</h3>
+  <div class="related-grid">
+
+    <a class="related-card" href="#">
+      <span class="related-cat">Filosofia</span>
+      <span class="related-card-title">Título de um artigo relacionado ao tema</span>
+      <span class="related-card-date">Março de 2024</span>
+    </a>
+
+    <a class="related-card" href="#">
+      <span class="related-cat">Literatura</span>
+      <span class="related-card-title">Outro artigo que o leitor pode gostar</span>
+      <span class="related-card-date">Novembro de 2023</span>
+    </a>
+
+    <a class="related-card" href="#">
+      <span class="related-cat">Desenvolvimento</span>
+      <span class="related-card-title">Mais um texto que complementa este</span>
+      <span class="related-card-date">Agosto de 2023</span>
+    </a>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Seu Nome</span>
+  <a href="index.html#artigos" style="color:var(--gold-dim); text-decoration:none; font-size:.6rem; letter-spacing:.12em;">← Voltar aos artigos</a>
+</footer>
+
+<script>
+  // ── Barra de progresso de leitura ──
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  });
+
+  // ── Sumário: destaque da seção atual ──
+  const headings = document.querySelectorAll('.article-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const tocObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => tocObserver.observe(h));
+
+  // ── Copiar link ──
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = document.querySelector('.share-btn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span class="si">✓</span> Copiado!';
+      setTimeout(() => btn.innerHTML = orig, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
