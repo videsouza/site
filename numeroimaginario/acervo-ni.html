@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acervo: Número Imaginário - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1080px;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV MINIMALISTA ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER DO ACERVO ── */
+    .acervo-header {
+      background: var(--bg);
+      padding: 6rem 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+    }
+    .acervo-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400; line-height: 1.1; color: var(--ink); margin-bottom: 1rem;
+    }
+    .acervo-desc { font-size: 1.1rem; color: var(--ink2); line-height: 1.6; }
+
+    /* ── GRID DE CATEGORIAS ── */
+    .acervo-content {
+      max-width: var(--max); margin: 0 auto; padding: 5rem 2rem;
+      display: grid; grid-template-columns: 250px 1fr; gap: 4rem;
+    }
+    
+    /* Menu Lateral de Navegação Interna */
+    .sidebar { position: sticky; top: 6rem; height: fit-content; }
+    .sidebar-title {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem; display: block;
+    }
+    .sidebar-links { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .sidebar-links a {
+      font-family: 'EB Garamond', serif; font-size: 1.2rem; color: var(--ink2);
+      text-decoration: none; transition: color 0.2s; display: inline-block;
+    }
+    .sidebar-links a:hover { color: var(--ink); transform: translateX(4px); }
+
+    /* Listagem de Conteúdo */
+    .category-section { margin-bottom: 6rem; }
+    .category-section:last-child { margin-bottom: 0; }
+    .category-header {
+      font-family: 'EB Garamond', serif; font-size: 2rem; color: var(--ink);
+      padding-bottom: 1rem; border-bottom: 1px solid var(--line); margin-bottom: 2rem;
+    }
+
+    .item-row {
+      display: grid; grid-template-columns: 3rem 1fr; gap: 2rem; align-items: baseline;
+      padding: 1.5rem 0; border-bottom: 1px solid var(--line);
+      text-decoration: none; transition: padding 0.3s;
+    }
+    .item-row:hover { padding-left: 1rem; background: var(--bg); margin: 0 -1rem; padding-right: 1rem; }
+    .item-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3);
+    }
+    .item-title {
+      font-family: 'EB Garamond', serif; font-size: 1.3rem; color: var(--ink); margin-bottom: 0.2rem;
+    }
+    .item-subtitle { font-size: 0.95rem; color: var(--ink2); }
+
+    @media (max-width: 768px) {
+      .header-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .acervo-content { grid-template-columns: 1fr; gap: 3rem; }
+      .sidebar { position: relative; top: 0; border-bottom: 1px solid var(--line); padding-bottom: 2rem; }
+      .item-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .item-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">← Voltar ao Portfólio Principal</a>
+  </div>
+</nav>
+
+<header class="acervo-header">
+  <div class="header-inner">
+    <div>
+      <h1 class="acervo-title">Número<br>Imaginário</h1>
+    </div>
+    <div>
+      <p class="acervo-desc">Projeto independente dedicado à história, lógica e aos fundamentos da matemática. Produzido e publicado entre os anos de 2015 e 2023, o acervo agora se encontra catalogado para consulta e pesquisa.</p>
+    </div>
+  </div>
+</header>
+
+<main class="acervo-content">
+  
+  <!-- Navegação lateral (Sidebar) -->
+  <aside class="sidebar">
+    <span class="sidebar-title">Índice do Acervo</span>
+    <ul class="sidebar-links">
+      <li><a href="#artigos">I. Artigos & Ensaios</a></li>
+      <li><a href="#podcasts">II. Podcasts</a></li>
+      <li><a href="#videocasts">III. Videocasts</a></li>
+      <li><a href="#cursos">IV. Cursos Formais</a></li>
+    </ul>
+  </aside>
+
+  <!-- Lista de Conteúdos -->
+  <div class="content-list">
+    
+    <!-- Seção de Artigos -->
+    <section id="artigos" class="category-section">
+      <h2 class="category-header">I. Artigos & Ensaios</h2>
+      
+      <a href="artigos/platao.html" class="item-row">
+        <span class="item-meta">2018</span>
+        <div>
+          <h3 class="item-title">A Matemática como Conversão da Alma</h3>
+          <p class="item-subtitle">O papel dos números na Paideia Platônica.</p>
+        </div>
+      </a>
+
+      <a href="#" class="item-row">
+        <span class="item-meta">2018</span>
+        <div>
+          <h3 class="item-title">História da Teoria dos Conjuntos</h3>
+          <p class="item-subtitle">O desenvolvimento do conceito de infinito por Georg Cantor.</p>
+        </div>
+      </a>
+
+      <a href="#" class="item-row">
+        <span class="item-meta">2016</span>
+        <div>
+          <h3 class="item-title">Alan Mathison Turing: Brevíssima Biografia</h3>
+          <p class="item-subtitle">A vida e o legado do pai da computação.</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- Seção de Podcasts -->
+    <section id="podcasts" class="category-section">
+      <h2 class="category-header">II. Podcasts</h2>
+      
+      <a href="numeroimaginario/podcasts/eps37.html" class="item-row">
+        <span class="item-meta">Ep. 37</span>
+        <div>
+          <h3 class="item-title">Pensamento Crítico, Lógica e Argumentação</h3>
+          <p class="item-subtitle">Fundamentos para a construção de bons argumentos.</p>
+        </div>
+      </a>
+
+      <a href="#" class="item-row">
+        <span class="item-meta">Ep. 34</span>
+        <div>
+          <h3 class="item-title">Os Escritos Lógicos de Aristóteles (Organon)</h3>
+          <p class="item-subtitle">Uma introdução à lógica clássica silogística.</p>
+        </div>
+      </a>
+      
+      <a href="#" class="item-row">
+        <span class="item-meta">Ep. 30</span>
+        <div>
+          <h3 class="item-title">Indecidibilidade e Incompletude</h3>
+          <p class="item-subtitle">Os limites dos sistemas formais.</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- Seção de Videocasts -->
+    <section id="videocasts" class="category-section">
+      <h2 class="category-header">III. Videocasts</h2>
+      
+      <a href="#" class="item-row">
+        <span class="item-meta">Vídeo</span>
+        <div>
+          <h3 class="item-title">A Prova de Gödel</h3>
+          <p class="item-subtitle">Explicação visual do teorema da incompletude.</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- Seção de Cursos -->
+    <section id="cursos" class="category-section">
+      <h2 class="category-header">IV. Cursos Formais</h2>
+      
+      <a href="#" class="item-row">
+        <span class="item-meta">Curso</span>
+        <div>
+          <h3 class="item-title">Primeiros Passos na Lógica</h3>
+          <p class="item-subtitle">Módulos introdutórios sobre cálculo proposicional.</p>
+        </div>
+      </a>
+      
+      <a href="#" class="item-row">
+        <span class="item-meta">Curso</span>
+        <div>
+          <h3 class="item-title">Método Axiomático e Teorias Formais</h3>
+          <p class="item-subtitle">Aprofundamento na estrutura sintática das teorias.</p>
+        </div>
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div style="max-width: 1080px; margin: 0 auto; padding: 2rem; border-top: 1px solid var(--line); font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3); text-align: center;">
+    © 2026 Vinícius A. de Souza — Arquivo preservado
+  </div>
+</footer>
+
+</body>
+</html>
