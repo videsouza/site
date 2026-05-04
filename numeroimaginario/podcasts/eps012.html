@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podcast #012: Verdade, Incompletude e o Paradoxo do Mentiroso - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1080px;
+      --text-width: 720px; 
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--bg2); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER MEDIA ── */
+    .media-header {
+      background: var(--bg);
+      padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--text-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .media-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .media-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    .audio-player-container {
+      background: var(--paper); padding: 1.5rem; border: 1px solid var(--line);
+      border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    audio { width: 100%; height: 40px; outline: none; }
+    
+    .download-link {
+      display: flex; justify-content: space-between; margin-top: 1rem; 
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3); 
+    }
+    .download-link a {
+      color: var(--ink3); text-decoration: none; transition: color 0.2s;
+    }
+    .download-link a:hover { color: var(--ink); }
+
+    /* ── CORPO DA PÁGINA (SHOW NOTES) ── */
+    .media-body {
+      max-width: var(--text-width); margin: 0 auto; padding: 4rem 2rem 6rem;
+    }
+    .media-body h2 {
+      font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 400;
+      margin: 3rem 0 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;
+    }
+    .media-body h2:first-child { margin-top: 0; }
+    .media-body p { margin-bottom: 1.5rem; color: var(--ink2); }
+    .media-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+    
+    .reference-list { list-style: none; margin-top: 1rem; }
+    .reference-list li {
+      margin-bottom: 1rem; padding-left: 1.5rem; position: relative;
+      font-size: 1rem; color: var(--ink2); line-height: 1.6;
+    }
+    .reference-list li::before {
+      content: '■'; position: absolute; left: 0; top: 6px;
+      font-size: 0.5rem; color: var(--ink3);
+    }
+
+    .callout-box {
+      background: var(--bg2); padding: 1.5rem; border-left: 4px solid var(--ink);
+      margin: 2rem 0; font-size: 0.95rem; border-radius: 0 4px 4px 0;
+    }
+    .callout-box p:last-child { margin-bottom: 0; }
+    .callout-box ol { margin-left: 1.5rem; margin-top: 0.5rem; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem; color: var(--bg);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../acervo-ni.html" class="nav-back">← Voltar ao Acervo</a>
+    <span style="font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--ink2);">Número Imaginário</span>
+  </div>
+</nav>
+
+<header class="media-header">
+  <div class="header-inner">
+    <span class="media-meta">Podcast #012 • Lógica e Fundamentos • Janeiro de 2016</span>
+    <h1 class="media-title">Verdade, Incompletude e o Paradoxo do Mentiroso</h1>
+    
+    <div class="audio-player-container">
+      <audio controls preload="metadata">
+        <source src="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio012_201706/episodio012.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div class="download-link">
+        <a href="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio012_201706/episodio012.mp3" target="_blank" download>
+          ↓ Baixar episódio (MP3)
+        </a>
+        <span>Duração: 15:48 (14.5MB)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="media-body">
+  <h2>Sobre o Episódio</h2>
+  <p>Neste episódio falarei um pouco sobre o famoso <strong>paradoxo do mentiroso</strong> e sua relação com os fundamentos da matemática. Mais precisamente, falarei de sua influência direta (ou indireta) em dois resultados de grande importância para a lógica — o <em>teorema da indefinibilidade da verdade</em> de Tarski e o <em>teorema da incompletude</em> de Gödel.</p>
+
+  <p>Ouça o episódio e descubra se tudo o que eu disse é verdade ou se trata de uma grande mentira...</p>
+
+  <div class="callout-box">
+    <strong>Observação do Paradoxo:</strong>
+    <ol>
+      <li>A frase (2) é falsa.</li>
+      <li>A frase (1) é verdadeira.</li>
+    </ol>
+  </div>
+
+  <h2>Destaque</h2>
+  <ul class="reference-list">
+    <li>SANTOS, Ricardo. <a href="http://compendioemlinha.letras.ulisboa.pt/paradoxos-semanticos-ricardo-santos/" target="_blank" rel="noopener">Paradoxos Semânticos</a>. <em>Compêndio em Linha de Problemas de Filosofia Analítica</em> (2014) - João Branquinho e Ricardo Santos (eds.). Lisboa: Centro de Filosofia da Universidade de Lisboa.</li>
+  </ul>
+
+  <h2>Outras Referências</h2>
+  <ul class="reference-list">
+    <li>BEALL, Jc e GLANZBERG, Michael. <a href="http://plato.stanford.edu/entries/liar-paradox/" target="_blank" rel="noopener">Liar Paradox</a>. <em>The Stanford Encyclopedia of Philosophy</em> (Fall 2014 Edition), Edward N. Zalta (ed.).</li>
+    <li>CARNIELLI, Walter A. <a href="http://www.joinville.udesc.br/portal/professores/adolfo/materiais/Carnielli.pdf" target="_blank" rel="noopener">Os teoremas de Gödel, e o que eles não significam</a>.</li>
+    <li>D'OTTAVIANO, Ítala Maria Loffredo e FEITOSA, Hércules de Araujo. <a href="ftp://ftp.cle.unicamp.br/pub/arquivos/educacional/ArtGT.pdf" target="_blank" rel="noopener">Sobre a história da lógica, a lógica clássica e o surgimento das lógicas não clássicas</a>. Rio Claro, abril de 2003.</li>
+    <li>DOWDEN, Bradley. <a href="http://www.iep.utm.edu/par-liar/" target="_blank" rel="noopener">Liar Paradox</a>. <em>Internet Encyclopedia of Philosophy</em>.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Vinícius A. de Souza</span>
+    <span>São José dos Campos, SP</span>
+  </div>
+</footer>
+
+</body>
+</html>
