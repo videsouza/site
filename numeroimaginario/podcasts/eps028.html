@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podcast #028: Otimização Matemática - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1080px;
+      --text-width: 720px; 
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--bg2); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER MEDIA ── */
+    .media-header {
+      background: var(--bg);
+      padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--text-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .media-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .media-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    .audio-player-container {
+      background: var(--paper); padding: 1.5rem; border: 1px solid var(--line);
+      border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    audio { width: 100%; height: 40px; outline: none; }
+    
+    .download-link {
+      display: flex; justify-content: space-between; margin-top: 1rem; 
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3); 
+    }
+    .download-link a {
+      color: var(--ink3); text-decoration: none; transition: color 0.2s;
+    }
+    .download-link a:hover { color: var(--ink); }
+
+    /* ── CORPO DA PÁGINA (SHOW NOTES) ── */
+    .media-body {
+      max-width: var(--text-width); margin: 0 auto; padding: 4rem 2rem 6rem;
+    }
+    .media-body h2 {
+      font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 400;
+      margin: 3rem 0 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;
+    }
+    .media-body h2:first-child { margin-top: 0; }
+    .media-body p { margin-bottom: 1.5rem; color: var(--ink2); }
+    .media-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+    
+    .reference-list { list-style: none; margin-top: 1rem; }
+    .reference-list li {
+      margin-bottom: 1rem; padding-left: 1.5rem; position: relative;
+      font-size: 1rem; color: var(--ink2); line-height: 1.6;
+    }
+    .reference-list li::before {
+      content: '■'; position: absolute; left: 0; top: 6px;
+      font-size: 0.5rem; color: var(--ink3);
+    }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem; color: var(--bg);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../acervo-ni.html" class="nav-back">← Voltar ao Acervo</a>
+    <span style="font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--ink2);">Número Imaginário</span>
+  </div>
+</nav>
+
+<header class="media-header">
+  <div class="header-inner">
+    <span class="media-meta">Podcast #028 • Matemática Aplicada • Novembro de 2016</span>
+    <h1 class="media-title">Otimização Matemática</h1>
+    
+    <div class="audio-player-container">
+      <audio controls preload="metadata">
+        <source src="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio028/episodio028.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div class="download-link">
+        <a href="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio028/episodio028.mp3" target="_blank" download>
+          ↓ Baixar episódio (MP3)
+        </a>
+        <span>Duração: 19:22 (20.2MB)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="media-body">
+  <h2>Sobre o Episódio</h2>
+  <p>Neste episódio, apresento a <strong>otimização matemática</strong>, área da matemática aplicada e computacional que busca o valor máximo ou mínimo de funções, possuindo aplicações vitais em setores como logística, economia e engenharia.</p>
+
+  <h2>Pioneiros Citados</h2>
+  <ul class="reference-list">
+    <li>George Dantzig (1914-2005) - O pai da programação linear e do algoritmo Simplex.</li>
+  </ul>
+
+  <h2>Vídeos e Cursos</h2>
+  <ul class="reference-list">
+    <li><a href="https://www.youtube.com/watch?v=tX6Rw7KJGjE" target="_blank" rel="noopener">O que é Pesquisa Operacional?</a> (The OR Society).</li>
+    <li><a href="https://www.youtube.com/playlist?list=PLxI8Can9yAHfF7UUE4iyn0ZwKNrkft7nq" target="_blank" rel="noopener">Pesquisa Operacional I</a> - Engenharia de Produção UNIVESP.</li>
+    <li><a href="https://www.youtube.com/playlist?list=PLxI8Can9yAHcZjhWGY5LAahVKj1OA6Y-S" target="_blank" rel="noopener">Pesquisa Operacional II</a> - Engenharia de Produção UNIVESP.</li>
+  </ul>
+
+  <h2>Referências Técnicas</h2>
+  <ul class="reference-list">
+    <li>FRIEDLANDER, Ana. <a href="http://www.ime.unicamp.br/~friedlan/livro.htm" target="_blank" rel="noopener">Elementos de Programação Não Linear</a>.</li>
+    <li>CARDOSO, Andréa. <a href="http://www.unifal-mg.edu.br/matematica/files/file/po.pdf" target="_blank" rel="noopener">Fundamentos da Pesquisa Operacional</a>. UNIFAL-MG, 2011.</li>
+    <li>LUENBERGER, David G.; YE, Yinyu. <a href="http://web.stanford.edu/class/msande310/310trialtext.pdf" target="_blank" rel="noopener">Linear and Nonlinear Programming</a>. Springer, 2008.</li>
+    <li>ARENALES, Marcos (et al.). <em>Pesquisa Operacional Para Cursos de Engenharia</em>. Elsevier, 2007.</li>
+    <li>OLIVEIRA, Max Gontijo de. <a href="http://www.inf.ufg.br/mestrado/sites/www.inf.ufg.br.mestrado/files/uploads/Dissertacoes/max-dissertacao-2012.pdf" target="_blank" rel="noopener">Sistema de Localização de Facilidades</a>. Dissertação (Mestrado) - UFG, 2012.</li>
+    <li>MENEZES, Rafael Cezar. <a href="http://www2.dbd.puc-rio.br/pergamum/biblioteca/php/mostrateses.php?open=1&arqtese=0721382_10_Indice.html" target="_blank" rel="noopener">O uso do SIG no planejamento de escolas municipais</a>. Dissertação (Mestrado) - PUC-Rio, 2010.</li>
+    <li>GASS, Saul. <a href="http://www.orms-today.org/orms-8-05/dantzig.html" target="_blank" rel="noopener">The Life and Times of the Father of Linear Programming</a>. OR/MS Today, 2005.</li>
+    <li>RANGEL, Socorro. <a href="http://www.sbmac.org.br/boletim/pdf_2005/Volume-18.pdf" target="_blank" rel="noopener">Introdução à Construção de Modelos de Otimização Linear e Inteira</a>. SBMAC, 2005.</li>
+  </ul>
+
+  <h2>Trilha Sonora</h2>
+  <ul class="reference-list">
+    <li><strong>Abertura:</strong> Mozart - <a href="https://musopen.org/music/1356/wolfgang-amadeus-mozart/serenade-no-13-a-little-night-music-k-525/" target="_blank" rel="noopener">Serenade No. 13 in G major, K. 525 (Allegro)</a>.</li>
+    <li><strong>Intervalos:</strong> Kevin MacLeod - <a href="https://incompetech.com/wordpress/2015/04/motherlode/" target="_blank" rel="noopener">Motherlode</a>.</li>
+    <li><strong>Encerramento:</strong> Ivan Chew - <a href="http://dig.ccmixter.org/files/ramblinglibrarian/41284" target="_blank" rel="noopener">I Have Often Told You Stories</a>.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Vinícius A. de Souza</span>
+    <span>São José dos Campos, SP</span>
+  </div>
+</footer>
+
+</body>
+</html>
