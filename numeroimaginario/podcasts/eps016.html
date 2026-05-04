@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podcast #016: "P vs. NP" e Criptografia - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1080px;
+      --text-width: 720px; 
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--bg2); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER MEDIA ── */
+    .media-header {
+      background: var(--bg);
+      padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--text-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .media-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .media-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    .audio-player-container {
+      background: var(--paper); padding: 1.5rem; border: 1px solid var(--line);
+      border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    audio { width: 100%; height: 40px; outline: none; }
+    
+    .download-link {
+      display: flex; justify-content: space-between; margin-top: 1rem; 
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3); 
+    }
+    .download-link a {
+      color: var(--ink3); text-decoration: none; transition: color 0.2s;
+    }
+    .download-link a:hover { color: var(--ink); }
+
+    /* ── CORPO DA PÁGINA (SHOW NOTES) ── */
+    .media-body {
+      max-width: var(--text-width); margin: 0 auto; padding: 4rem 2rem 6rem;
+    }
+    .media-body h2 {
+      font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 400;
+      margin: 3rem 0 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;
+    }
+    .media-body h2:first-child { margin-top: 0; }
+    .media-body p { margin-bottom: 1.5rem; color: var(--ink2); }
+    .media-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+    
+    .reference-list { list-style: none; margin-top: 1rem; }
+    .reference-list li {
+      margin-bottom: 1rem; padding-left: 1.5rem; position: relative;
+      font-size: 1rem; color: var(--ink2); line-height: 1.6;
+    }
+    .reference-list li::before {
+      content: '■'; position: absolute; left: 0; top: 6px;
+      font-size: 0.5rem; color: var(--ink3);
+    }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem; color: var(--bg);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../acervo-ni.html" class="nav-back">← Voltar ao Acervo</a>
+    <span style="font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--ink2);">Número Imaginário</span>
+  </div>
+</nav>
+
+<header class="media-header">
+  <div class="header-inner">
+    <span class="media-meta">Podcast #016 • Teoria da Computação • Março de 2016</span>
+    <h1 class="media-title">"P vs. NP" e Criptografia</h1>
+    
+    <div class="audio-player-container">
+      <audio controls preload="metadata">
+        <source src="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio016_201706/episodio016.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div class="download-link">
+        <a href="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio016_201706/episodio016.mp3" target="_blank" download>
+          ↓ Baixar episódio (MP3)
+        </a>
+        <span>Duração: 19:02 (20.6MB)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="media-body">
+  <h2>Sobre o Episódio</h2>
+  <p>Neste episódio falarei um pouco sobre o método de criptografia de chave pública, inventado por Diffie e Hellman em 1976 (vencedores do prêmio Turing 2015 por essa contribuição), sobre o algoritmo RSA e a relação desses métodos com o problema "P vs. NP".</p>
+
+  <h2>Pioneiros Citados</h2>
+  <ul class="reference-list">
+    <li><strong>Whitfield Diffie</strong> (1944 - ) - EUA.</li>
+    <li><strong>Martin Hellman</strong> (1945 - ) - EUA.</li>
+    <li><strong>Ronald Linn Rivest</strong> (1947 - ) - EUA.</li>
+    <li><strong>Adi Shamir</strong> (1952 - ) - Israel.</li>
+    <li><strong>Leonard Adleman</strong> (1945 - ) - EUA.</li>
+  </ul>
+
+  <h2>Indicações</h2>
+  <ul class="reference-list">
+    <li><strong>Vídeo:</strong> <a href="https://pt.khanacademy.org/computing/computer-science/cryptography" target="_blank" rel="noopener">Uma jornada pela criptografia</a>, da Khan Academy.</li>
+    <li><strong>Livro:</strong> COUTINHO, Severino Collier. <em>Números Inteiros e Criptografia RSA</em>. Instituto de Matemática Pura e Aplicada (IMPA), 2014.</li>
+    <li><strong>Texto:</strong> ORMOND, Jim. <a href="https://www.acm.org/binaries/content/assets/press-releases/turing-award-2015a.pdf" target="_blank" rel="noopener">Cryptography pioneers receive ACM A.M. TURING Award</a>. ACM, NY - Mar/2016.</li>
+  </ul>
+
+  <h2>Referências</h2>
+  <ul class="reference-list">
+    <li>WIGDERSON, Avi. <a href="http://www.math.ias.edu/~avi/PUBLICATIONS/MYPAPERS/W06/w06.pdf" target="_blank" rel="noopener">P, NP and mathematics – a computational complexity perspective</a>. <em>Proceedings of the International Congress of Mathematicians</em>, Madrid, Espanha, 2006.</li>
+    <li>FORTNOW, Lance. <em>The Golden Ticket: P, NP and the search for the impossible</em>. Princeton University Press, 2013. (<a href="https://books.google.com.br/books?id=iF1q7LzCcKYC&printsec=frontcover&hl=pt-BR#v=onepage&q&f=false" target="_blank" rel="noopener">Visualização parcial no Google books</a>).</li>
+    <li>DA COSTA, Newton C. A.; DORIA, Francisco A. <a href="https://www.academia.edu/12991297/Why_is_the_P_NP_question_so_difficult" target="_blank" rel="noopener">Why is the P=?NP question so difficult?</a> 2013.</li>
+    <li>DA COSTA, Newton C. A.; DORIA, Francisco A.; BIR, Eric. <a href="https://www.researchgate.net/publication/220565314_On_the_metamathematics_of_the_P_vs_NP_question" target="_blank" rel="noopener">On the metamathematics of the P vs .NP question</a>. <em>Applied Mathematics and Computation</em> 189 (2007) 1223–1240.</li>
+    <li>MALAGUTTI, Pedro Luiz Aparecido. <a href="http://www.dm.ufscar.br/hp/hp501/hp501001/hp501001.html" target="_blank" rel="noopener">P versus NP</a>. <em>Hipertexto Pitágoras</em>, 2001 (atualizado em 2002).</li>
+    <li>AARONSON, Scott. <a href="http://www.scottaaronson.com/papers/pnp.pdf" target="_blank" rel="noopener">Is P Versus NP Formally Independent?</a> <em>Bulletin of the European Association for Theoretical Computer Science</em>, 2003, vol. 81, pp. 109-136.</li>
+    <li>DIFFIE, Whitfield; HELLMAN, Martin E. <a href="https://www-ee.stanford.edu/~hellman/publications/24.pdf" target="_blank" rel="noopener">New Directions in Cryptography</a>. <em>IEEE TRANSACTIONS ON INFORMATION THEORY</em>, VOL. IT-22, NO. 6, NOVEMBER 1976.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Vinícius A. de Souza</span>
+    <span>São José dos Campos, SP</span>
+  </div>
+</footer>
+
+</body>
+</html>
