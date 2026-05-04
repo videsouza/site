@@ -212,24 +212,7 @@
     }
     .app-link:hover { opacity: 0.5; }
 
-    /* ── TABS ── */
-    .ni-tabs { display: flex; gap: 2rem; border-bottom: 1px solid var(--line); margin-bottom: 1rem; }
-    .ni-tab {
-      font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.05em;
-      text-transform: uppercase; color: var(--ink3); padding: 1rem 0;
-      cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    .ni-tab:hover { color: var(--ink); }
-    .ni-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
-    .ni-panel { display: none; }
-    .ni-panel.active { display: block; }
-    
-    .ni-more {
-      display: inline-block; margin-top: 2rem; font-family: 'Inter', sans-serif;
-      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
-      color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink);
-    }
+
 
     /* ── CONTATO ── */
     #contato { background: var(--ink); border-bottom: none; color: var(--bg); padding: 8rem 0; }
@@ -520,12 +503,7 @@ Continue aqui com os demais versos.
 </footer>
 
 <script>
-  function switchTab(btn, panelId) {
-    document.querySelectorAll('.ni-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.ni-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(panelId).classList.add('active');
-  }
+  
 
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
