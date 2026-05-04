@@ -12,13 +12,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #ffffff;
-      --bg2:     #f5f5f5;
-      --paper:   #fafafa;
-      --ink:     #1c1916;
-      --ink2:    #444444;
-      --ink3:    #999999;
-      --line:    #e8e8e8;
+      --bg:      #faf9f5; /* Um tom de papel muito sutil e elegante */
+      --bg2:     #f0eee6;
+      --paper:   #ffffff;
+      --ink:     #1a1a1a;
+      --ink2:    #4a4a4a;
+      --ink3:    #888888;
+      --line:    #e6e4e0;
       --max:     1080px;
     }
 
@@ -30,33 +30,34 @@
       font-family: 'EB Garamond', serif;
       font-size: 18px;
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
-    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--ink3); }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(247,244,239,0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(250, 249, 245, 0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
     .nav-inner {
       max-width: var(--max); margin: 0 auto;
-      padding: .55rem 2rem;
+      padding: 1rem 2rem;
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'EB Garamond', serif; font-size: .85rem; font-weight: 500;
-      color: var(--ink); text-decoration: none; letter-spacing: .01em;
+      font-family: 'EB Garamond', serif; font-size: 1rem; font-weight: 500;
+      color: var(--ink); text-decoration: none; letter-spacing: 0.02em;
     }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-family: 'Inter', sans-serif; font-size: .6rem; font-weight: 400;
-      letter-spacing: .1em; text-transform: uppercase;
-      color: var(--ink2); text-decoration: none; transition: color .2s;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--ink3); text-decoration: none; transition: color 0.3s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
@@ -65,320 +66,211 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh; display: flex; align-items: center;
+      min-height: 90vh; display: flex; align-items: center;
       border-bottom: 1px solid var(--line);
     }
     .hero-inner {
-      max-width: var(--max); margin: 0 auto; padding: 8rem 2rem 6rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+      max-width: var(--max); margin: 0 auto; padding: 10rem 2rem 6rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
     }
     .hero-label {
-      font-family: 'Inter', sans-serif; font-size: .65rem; letter-spacing: .18em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem;
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--ink3); margin-bottom: 1rem;
       display: block;
     }
     .hero-name {
-      font-family: 'EB Garamond', serif; font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 400; line-height: 1.05; color: var(--ink);
+      font-family: 'EB Garamond', serif; font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 400; line-height: 1; color: var(--ink); margin-bottom: 1rem;
     }
-    .hero-name em { font-style: italic; }
+    .hero-name em { font-style: italic; color: var(--ink2); }
     .hero-desc {
-      font-size: 1.15rem; color: var(--ink2); line-height: 1.8;
-      border-left: 1px solid var(--line); padding-left: 2rem; margin-bottom: 2.5rem;
+      font-size: 1.25rem; color: var(--ink2); line-height: 1.6;
     }
-    .hero-nav { display: flex; flex-direction: column; gap: .5rem; }
-    .hero-nav a {
-      font-family: 'Inter', sans-serif; font-size: .72rem; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ink2); text-decoration: none;
-      display: flex; align-items: center; gap: .8rem; transition: color .2s;
-    }
-    .hero-nav a::before {
-      content: ''; width: 24px; height: 1px; background: currentColor; transition: width .3s;
-    }
-    .hero-nav a:hover { color: var(--ink); }
-    .hero-nav a:hover::before { width: 40px; }
 
     /* ── SECTION BASE ── */
-    section { border-bottom: 1px solid var(--line); }
+    section { padding: 6rem 0; border-bottom: 1px solid var(--line); }
+    #livros, #artigos { background: var(--paper); }
 
     .section-header {
-      display: flex; align-items: baseline; justify-content: space-between;
-      padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--line);
+      margin-bottom: 4rem;
     }
     .section-title {
-      font-family: 'EB Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 400; color: var(--ink);
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 400; color: var(--ink); margin-bottom: 0.5rem;
     }
     .section-sub {
-      font-size: 1rem; color: var(--ink2); font-style: italic;
-      padding: 1rem 0 2rem; border-bottom: 1px solid var(--line);
-    }
-    .section-count {
-      font-family: 'Inter', sans-serif; font-size: .65rem; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--ink3);
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--ink3); 
+      letter-spacing: 0.02em; text-transform: uppercase;
     }
 
     /* ── LIVROS ── */
-    #livros { background: var(--paper); }
-
     .books-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-left: 1px solid var(--line);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 3rem;
     }
     .book-card {
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      padding: 2rem 1.5rem; transition: background .2s;
-      display: flex; flex-direction: column;
+      display: flex; flex-direction: column; group;
     }
-    .book-card:hover { background: var(--bg2); }
-
     .book-cover {
       aspect-ratio: 2/3; background: var(--bg2);
-      margin-bottom: 1.2rem; overflow: hidden; border: 1px solid var(--line);
-      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem; overflow: hidden; border: 1px solid var(--line);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .book-card:hover .book-cover {
+      transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.06);
     }
     .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
     .book-genre {
-      font-family: 'Inter', sans-serif; font-size: .58rem; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: .4rem;
+      font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink3); margin-bottom: 0.5rem;
     }
     .book-title {
-      font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 500;
-      color: var(--ink); margin-bottom: .5rem; line-height: 1.3;
+      font-family: 'EB Garamond', serif; font-size: 1.3rem; font-weight: 500;
+      color: var(--ink); margin-bottom: 0.5rem; line-height: 1.2;
     }
-    .book-desc { font-size: .95rem; color: var(--ink2); flex: 1; margin-bottom: 1.2rem; }
-    .book-footer { display: flex; justify-content: space-between; align-items: center; }
-    .book-price {
-      font-family: 'Inter', sans-serif; font-size: .85rem; font-weight: 500; color: var(--ink);
-    }
+    .book-desc { font-size: 1rem; color: var(--ink2); flex: 1; margin-bottom: 1.5rem; }
+    .book-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 1rem; }
+    .book-price { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; color: var(--ink); }
     .book-buy {
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .1em;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.05em;
       text-transform: uppercase; color: var(--ink); text-decoration: none;
-      border-bottom: 1px solid var(--ink); padding-bottom: 1px; transition: opacity .2s;
+      transition: color 0.3s;
     }
-    .book-buy:hover { opacity: .4; }
+    .book-buy:hover { color: var(--ink3); }
 
     /* ── POEMAS ── */
-    #poemas { background: var(--bg); }
-
-    .poems-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .poems-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
     .poem-card {
-      padding: 3rem 2.5rem; border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line); cursor: pointer; transition: background .2s;
+      padding: 2rem; background: var(--paper); border: 1px solid var(--line);
+      transition: box-shadow 0.3s ease; cursor: pointer;
     }
-    .poem-card:nth-child(even) { border-right: none; }
-    .poem-card:hover { background: var(--paper); }
-
+    .poem-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
     .poem-num {
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: 1rem; display: block;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em;
+      color: var(--ink3); margin-bottom: 1rem; display: block;
     }
     .poem-title {
-      font-family: 'EB Garamond', serif; font-size: 1.4rem; font-style: italic;
-      color: var(--ink); margin-bottom: .3rem;
+      font-family: 'EB Garamond', serif; font-size: 1.6rem; font-style: italic;
+      color: var(--ink); margin-bottom: 0.5rem;
     }
-    .poem-date {
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem; display: block;
-    }
-    .poem-excerpt {
-      font-size: 1rem; color: var(--ink2); line-height: 2.1; white-space: pre-line;
-    }
+    .poem-excerpt { font-size: 1.1rem; color: var(--ink2); line-height: 1.8; white-space: pre-line; margin-top: 1.5rem; }
     .poem-full { display: none; margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
-    .poem-full p { font-size: 1rem; color: var(--ink); line-height: 2.2; white-space: pre-line; }
+    .poem-full p { font-size: 1.1rem; color: var(--ink); line-height: 1.8; white-space: pre-line; }
     .poem-card.open .poem-full { display: block; }
     .poem-toggle {
-      margin-top: 1.2rem; display: inline-flex; align-items: center; gap: .5rem;
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ink3); border: none; background: none;
-      cursor: pointer; padding: 0; transition: color .2s;
+      margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink3);
+      border: none; background: none; cursor: pointer; transition: color 0.3s;
     }
     .poem-toggle:hover { color: var(--ink); }
-    .poem-toggle .arrow { transition: transform .3s; display: inline-block; }
-    .poem-card.open .poem-toggle .arrow { transform: rotate(180deg); }
 
-    /* ── ARTIGOS ── */
-    #artigos { background: var(--paper); }
-
+    /* ── ARTIGOS & NI ── */
     .article-row {
       display: grid; grid-template-columns: 3rem 1fr 2rem;
       align-items: center; gap: 2rem;
-      padding: 1.8rem 0; border-bottom: 1px solid var(--line);
-      text-decoration: none; transition: background .15s;
+      padding: 2rem 0; border-bottom: 1px solid var(--line);
+      text-decoration: none; transition: padding 0.3s ease;
     }
-    .article-row:hover { background: var(--bg2); margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem; }
+    .article-row:hover { padding-left: 1rem; }
     .art-num {
-      font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .1em;
-      color: var(--ink3); text-align: right;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--ink3); text-align: left;
     }
     .art-cat {
-      font-family: 'Inter', sans-serif; font-size: .58rem; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: .2rem;
+      font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink3); margin-bottom: 0.3rem;
     }
     .art-title {
-      font-family: 'EB Garamond', serif; font-size: 1.2rem; color: var(--ink);
-      margin-bottom: .2rem;
+      font-family: 'EB Garamond', serif; font-size: 1.4rem; color: var(--ink); margin-bottom: 0.3rem;
     }
-    .art-desc { font-size: .9rem; color: var(--ink2); font-style: italic; }
-    .art-arrow { font-size: 1rem; color: var(--ink3); transition: transform .2s; }
-    .article-row:hover .art-arrow { transform: translateX(4px); color: var(--ink); }
+    .art-desc { font-size: 1rem; color: var(--ink2); }
+    .art-arrow { font-size: 1.2rem; color: var(--ink3); transition: transform 0.3s, color 0.3s; }
+    .article-row:hover .art-arrow { transform: translateX(8px); color: var(--ink); }
 
     /* ── APPS ── */
-    #apps { background: var(--bg); }
-
-    .apps-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      border-left: 1px solid var(--line);
-    }
+    .apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     .app-card {
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      padding: 2.5rem 2rem; transition: background .2s; display: flex; flex-direction: column;
+      padding: 2.5rem; background: var(--paper); border: 1px solid var(--line);
+      display: flex; flex-direction: column; transition: box-shadow 0.3s ease;
     }
-    .app-card:hover { background: var(--paper); }
-
-    .app-icon-wrap {
-      font-size: 1.5rem; margin-bottom: 1.5rem; width: 44px; height: 44px;
-      border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
-    }
+    .app-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .app-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
     .app-platform {
-      font-family: 'Inter', sans-serif; font-size: .58rem; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: .4rem;
+      font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink); border: 1px solid var(--line); padding: 0.3rem 0.6rem; border-radius: 2px;
     }
-    .app-name {
-      font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 500;
-      color: var(--ink); margin-bottom: .5rem;
-    }
-    .app-desc { font-size: .95rem; color: var(--ink2); flex: 1; margin-bottom: 1.5rem; }
-    .app-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem; }
+    .app-name { font-family: 'EB Garamond', serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 0.5rem; }
+    .app-desc { font-size: 1rem; color: var(--ink2); flex: 1; margin-bottom: 2rem; }
+    .app-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
     .app-tag {
-      font-family: 'Inter', sans-serif; font-size: .55rem; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ink3); border: 1px solid var(--line); padding: .2rem .5rem;
+      font-family: 'Inter', sans-serif; font-size: 0.7rem; color: var(--ink3);
+      background: var(--bg2); padding: 0.2rem 0.6rem;
     }
-    .app-links { display: flex; gap: 1rem; margin-top: auto; }
+    .app-links { display: flex; gap: 1.5rem; margin-top: auto; border-top: 1px solid var(--line); padding-top: 1.5rem; }
     .app-link {
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .1em;
-      text-transform: uppercase; text-decoration: none;
-      border-bottom: 1px solid; padding-bottom: 1px; transition: opacity .2s;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.05em;
+      text-transform: uppercase; text-decoration: none; color: var(--ink); transition: opacity 0.3s;
     }
-    .app-link:hover { opacity: .45; }
-    .app-link-primary { color: var(--ink); border-color: var(--ink); }
-    .app-link-secondary { color: var(--ink3); border-color: var(--ink3); }
+    .app-link:hover { opacity: 0.5; }
 
-    /* ── CONTATO ── */
-    #contato { background: var(--ink); border-bottom: none; }
-    .contact-inner {
-      max-width: var(--max); margin: 0 auto; padding: 6rem 2rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    }
-    .contact-label {
-      font-family: 'Inter', sans-serif; font-size: .65rem; letter-spacing: .18em;
-      text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 1rem; display: block;
-    }
-    .contact-heading {
-      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 400; font-style: italic; color: #f7f4ef; line-height: 1.1;
-    }
-    .contact-sub {
-      margin-top: 1rem; font-size: 1rem; color: rgba(255,255,255,.4); font-style: italic;
-    }
-    .contact-right { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-link {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 1.5rem; border: 1px solid rgba(255,255,255,.1);
-      text-decoration: none; color: rgba(255,255,255,.6);
-      font-family: 'Inter', sans-serif; font-size: .75rem; letter-spacing: .08em;
-      transition: all .2s;
-    }
-    .contact-link:hover { border-color: rgba(255,255,255,.35); color: #f7f4ef; }
-    .contact-link span { font-size: .9rem; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink); border-top: 1px solid rgba(255,255,255,.08);
-      padding: 1.5rem 2rem;
-    }
-    .footer-inner {
-      max-width: var(--max); margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.25);
-    }
-
-    /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .books-grid { grid-template-columns: 1fr 1fr; }
-      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .books-grid { grid-template-columns: 1fr; }
-      .poems-grid { grid-template-columns: 1fr; }
-      .poem-card:nth-child(even) { border-right: 1px solid var(--line); }
-      .apps-grid { grid-template-columns: 1fr; }
-      .hero-inner { padding: 7rem 1.5rem 4rem; }
-      .wrap { padding: 0 1.5rem; }
-      .article-row { grid-template-columns: 2.5rem 1fr 1.5rem; gap: 1rem; }
-    }
-    /* ── NÚMERO IMAGINÁRIO ── */
-    #ni { background: var(--paper); }
-    .ni-desc {
-      font-size: 1rem; color: var(--ink2); font-style: italic;
-      padding: .8rem 0 0; max-width: 60ch;
-    }
-    .ni-site-link {
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ink3); text-decoration: none;
-      border-bottom: 1px solid var(--line); padding-bottom: 1px;
-      transition: color .2s;
-    }
-    .ni-site-link:hover { color: var(--ink); }
-    .ni-tabs {
-      display: flex; gap: 0; border-bottom: 1px solid var(--line);
-      margin: 2rem 0 0;
-    }
+    /* ── TABS ── */
+    .ni-tabs { display: flex; gap: 2rem; border-bottom: 1px solid var(--line); margin-bottom: 1rem; }
     .ni-tab {
-      font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--ink3);
-      padding: .8rem 1.5rem; cursor: pointer; border: none; background: none;
-      border-bottom: 2px solid transparent; margin-bottom: -1px;
-      transition: color .2s, border-color .2s;
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--ink3); padding: 1rem 0;
+      cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color 0.3s, border-color 0.3s;
     }
     .ni-tab:hover { color: var(--ink); }
     .ni-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
     .ni-panel { display: none; }
     .ni-panel.active { display: block; }
-    .ni-row {
-      display: grid; grid-template-columns: 2.5rem 1fr 1.5rem;
-      align-items: center; gap: 2rem;
-      padding: 1.4rem 0; border-bottom: 1px solid var(--line);
-      text-decoration: none; transition: background .15s;
-    }
-    .ni-row:hover { background: var(--bg2); margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem; }
-    .ni-num { font-family: 'Inter', sans-serif; font-size: .58rem; letter-spacing: .1em; color: var(--ink3); text-align: right; }
-    .ni-cat { font-family: 'Inter', sans-serif; font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; color: var(--ink3); margin-bottom: .15rem; }
-    .ni-title { font-family: 'EB Garamond', serif; font-size: 1.1rem; color: var(--ink); }
-    .ni-date { font-family: 'Inter', sans-serif; font-size: .55rem; color: var(--ink3); margin-top: .1rem; }
-    .ni-arrow { font-size: .9rem; color: var(--ink3); transition: transform .2s; }
-    .ni-row:hover .ni-arrow { transform: translateX(4px); color: var(--ink); }
+    
     .ni-more {
-      display: inline-flex; align-items: center; gap: .6rem;
-      margin: 1.5rem 0 2rem;
-      font-family: 'Inter', sans-serif; font-size: .6rem; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--ink3); text-decoration: none;
-      border-bottom: 1px solid var(--line); padding-bottom: 1px; transition: color .2s;
+      display: inline-block; margin-top: 2rem; font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink);
     }
-    .ni-more:hover { color: var(--ink); }
+
+    /* ── CONTATO ── */
+    #contato { background: var(--ink); border-bottom: none; color: var(--bg); padding: 8rem 0; }
+    .contact-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .contact-heading { font-family: 'EB Garamond', serif; font-size: clamp(2.5rem, 4vw, 4rem); font-style: italic; line-height: 1.1; margin-bottom: 1rem;}
+    .contact-right { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-decoration: none; color: var(--bg); font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; transition: border-color 0.3s;
+    }
+    .contact-link:hover { border-color: var(--bg); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .poems-grid, .apps-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .article-row { grid-template-columns: 2rem 1fr 1rem; gap: 1rem; }
+    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="#hero">Vinícius A. de Souza</a>
@@ -393,83 +285,67 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-left">
-      <span class="hero-label">Escritor · Desenvolvedor · Criador</span>
+    <div class="hero-left reveal">
+      <span class="hero-label">Escritor · Desenvolvedor</span>
       <h1 class="hero-name">Vinícius<br><em>A. de</em><br>Souza</h1>
     </div>
-    <div class="hero-right">
-      <p class="hero-desc">
-        Palavras, código e ideias reunidos em um só lugar — livros publicados, poemas, artigos e aplicativos desenvolvidos ao longo dos anos.
-      </p>
-      
+    <div class="hero-right reveal">
+      <p class="hero-desc">Palavras, código e ideias reunidos em um só lugar — livros publicados, poemas, artigos e aplicações voltadas à gestão da informação e preservação documental.</p>
     </div>
   </div>
 </section>
 
-<!-- LIVROS -->
 <section id="livros">
   <div class="wrap">
     <div class="section-header reveal">
-      <h2 class="section-title">Livros</h2>
-      <span class="section-count">4 publicados</span>
+      <h2 class="section-title">Livros Publicados</h2>
+      <span class="section-sub">Obras impressas disponíveis</span>
     </div>
-    <p class="section-sub reveal">Disponíveis para compra — clique em qualquer livro para adquirir.</p>
-  </div>
-  <div class="wrap">
     <div class="books-grid">
 
       <div class="book-card reveal">
-        <div class="book-cover">
-          <img src="img/alhures.jpg" alt="Alhures: Poesias e Textos"/>
-        </div>
+        <div class="book-cover"><img src="img/alhures.jpg" alt="Alhures: Poesias e Textos"/></div>
         <p class="book-genre">Poesia · Prosa</p>
         <h3 class="book-title">Alhures: Poesias e Textos</h3>
         <p class="book-desc">Poemas que encontram no cotidiano mais simples os fios secretos que tecem nossa ligação com o eterno.</p>
         <div class="book-footer">
           <span class="book-price">R$ 26,30</span>
-          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua121635/" target="_blank">Comprar</a>
+          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua121635/" target="_blank">Adquirir</a>
         </div>
       </div>
 
       <div class="book-card reveal">
-        <div class="book-cover">
-          <img src="img/limite.jpg" alt="Os Limites da Computação"/>
-        </div>
+        <div class="book-cover"><img src="img/limite.jpg" alt="Os Limites da Computação"/></div>
         <p class="book-genre">Lógica · Computabilidade</p>
         <h3 class="book-title">Os Limites da Computação</h3>
         <p class="book-desc">Os fenômenos lógicos da indecidibilidade e incompletude em sistemas formais.</p>
         <div class="book-footer">
           <span class="book-price">R$ 27,94</span>
-          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua134745/" target="_blank">Comprar</a>
+          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua134745/" target="_blank">Adquirir</a>
         </div>
       </div>
 
       <div class="book-card reveal">
-        <div class="book-cover">
-          <img src="img/amostragem.jpg" alt="Manual de Amostragem Documental"/>
-        </div>
+        <div class="book-cover"><img src="img/amostragem.jpg" alt="Manual de Amostragem Documental"/></div>
         <p class="book-genre">Amostragem · Gestão</p>
         <h3 class="book-title">Manual de Amostragem Documental</h3>
         <p class="book-desc">Método híbrido probabilístico e não probabilístico para amostragem de documentos.</p>
         <div class="book-footer">
           <span class="book-price">R$ 28,53</span>
-          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua159234" target="_blank">Comprar</a>
+          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua159234" target="_blank">Adquirir</a>
         </div>
       </div>
 
       <div class="book-card reveal">
-        <div class="book-cover">
-          <img src="img/axioma.jpg" alt="Método Axiomático e Teorias Físicas"/>
-        </div>
+        <div class="book-cover"><img src="img/axioma.jpg" alt="Métodos Axiomáticos e Teorias Físicas"/></div>
         <p class="book-genre">Lógica Matemática · Física</p>
-        <h3 class="book-title">Método Axiomático e Teorias Físicas</h3>
+        <h3 class="book-title">Métodos Axiomáticos e Teorias Físicas</h3>
         <p class="book-desc">Como a estrutura sintática de uma teoria pode desvendar compromissos conceituais da física.</p>
         <div class="book-footer">
           <span class="book-price">R$ 28,83</span>
-          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua168210" target="_blank">Comprar</a>
+          <a class="book-buy" href="https://loja.uiclap.com/titulo/ua168210" target="_blank">Adquirir</a>
         </div>
       </div>
 
@@ -477,22 +353,16 @@
   </div>
 </section>
 
-<!-- POEMAS -->
 <section id="poemas">
   <div class="wrap">
     <div class="section-header reveal">
-      <h2 class="section-title">Poemas</h2>
-      <span class="section-count">Esparsos</span>
+      <h2 class="section-title">Fragmentos Poéticos</h2>
+      <span class="section-sub">Registros esparsos</span>
     </div>
-    <p class="section-sub reveal">Fragmentos do que não cabe em prosa. Clique para ler o poema completo.</p>
-  </div>
-  <div class="wrap">
     <div class="poems-grid">
-
       <div class="poem-card reveal" onclick="togglePoem(this)">
-        <span class="poem-num">Poema 01</span>
-        <h3 class="poem-title">Nome do Primeiro Poema</h3>
-        <span class="poem-date">Janeiro de 2024</span>
+        <span class="poem-num">01.</span>
+        <h3 class="poem-title">A vanda amarela</h3>
         <p class="poem-excerpt">Insira aqui os primeiros versos do poema,
 aqueles que prendem o leitor
 na primeira leitura…</p>
@@ -501,184 +371,66 @@ na primeira leitura…</p>
 aqueles que prendem o leitor
 na primeira leitura…
 
-Continue aqui com os demais versos,
-explorando a temática central
-com cada imagem escolhida.
-
-Finalize com um verso memorável
-que ressoe no silêncio
-após a última palavra.</p>
+Continue aqui com os demais versos.
+</p>
         </div>
-        <button class="poem-toggle">Ler completo <span class="arrow">↓</span></button>
+        <button class="poem-toggle">Ler na íntegra</button>
       </div>
 
-      <div class="poem-card reveal" onclick="togglePoem(this)">
-        <span class="poem-num">Poema 02</span>
-        <h3 class="poem-title">Nome do Segundo Poema</h3>
-        <span class="poem-date">Março de 2024</span>
-        <p class="poem-excerpt">Os primeiros versos de seu segundo poema
-convidando o leitor
-a continuar…</p>
-        <div class="poem-full">
-          <p>Os primeiros versos de seu segundo poema
-convidando o leitor
-a continuar…
-
-Aqui o coração do poema,
-onde a metáfora se desdobra
-em camadas de significado.
-
-E o encerramento que surpreende
-ou confirma tudo
-o que foi dito sem dizer.</p>
-        </div>
-        <button class="poem-toggle">Ler completo <span class="arrow">↓</span></button>
-      </div>
-
-      <div class="poem-card reveal" onclick="togglePoem(this)">
-        <span class="poem-num">Poema 03</span>
-        <h3 class="poem-title">Nome do Terceiro Poema</h3>
-        <span class="poem-date">Junho de 2023</span>
-        <p class="poem-excerpt">Cada linha um passo,
-cada pausa um mundo
-que não precisa de explicação…</p>
-        <div class="poem-full">
-          <p>Cada linha um passo,
-cada pausa um mundo
-que não precisa de explicação…
-
-Acrescente aqui os versos centrais
-com a imagem ou sensação
-que dá nome ao poema.
-
-Um fechamento que fica,
-que provoca,
-que permanece.</p>
-        </div>
-        <button class="poem-toggle">Ler completo <span class="arrow">↓</span></button>
-      </div>
-
-      <div class="poem-card reveal" onclick="togglePoem(this)">
-        <span class="poem-num">Poema 04</span>
-        <h3 class="poem-title">Nome do Quarto Poema</h3>
-        <span class="poem-date">Setembro de 2023</span>
-        <p class="poem-excerpt">A palavra certa no lugar certo
-vale mais do que
-mil palavras certas…</p>
-        <div class="poem-full">
-          <p>A palavra certa no lugar certo
-vale mais do que
-mil palavras certas…
-
-Desenvolva aqui o tema central
-com a precisão e o ritmo
-que definem sua voz poética.
-
-E conclua com aquilo
-que só a poesia consegue dizer
-sem precisar dizê-lo.</p>
-        </div>
-        <button class="poem-toggle">Ler completo <span class="arrow">↓</span></button>
-      </div>
-
+      <!-- Outros poemas podem ser adicionados seguindo a mesma estrutura da classe poem-card -->
     </div>
   </div>
 </section>
 
-<!-- ARTIGOS -->
 <section id="artigos">
   <div class="wrap">
     <div class="section-header reveal">
       <h2 class="section-title">Artigos</h2>
-      <span class="section-count">5 textos</span>
+      <span class="section-sub">Ensaios sobre Filosofia, Lógica e Literatura</span>
     </div>
-    <p class="section-sub reveal">Textos sobre temas variados: filosofia, matemática, língua portuguesa etc.</p>
     <div class="articles-list">
-
       <a class="article-row reveal" href="artigos/platao.html" target="_blank">
         <span class="art-num">01</span>
         <div>
           <p class="art-cat">Filosofia</p>
-          <h3 class="art-title">A Matemática como Conversão da Alma: O Papel dos Números na Paideia Platônica</h3>
-          <p class="art-desc">Como Platão via a matemática como uma virtude educativa capaz de despertar o espírito para verdades superiores.</p>
+          <h3 class="art-title">A Matemática como Conversão da Alma</h3>
+          <p class="art-desc">O papel dos números na Paideia Platônica e seu despertar para verdades superiores.</p>
         </div>
         <span class="art-arrow">→</span>
       </a>
-
-      <a class="article-row reveal" href="#" target="_blank">
-        <span class="art-num">02</span>
-        <div>
-          <p class="art-cat">Filosofia</p>
-          <h3 class="art-title">Título do Segundo Artigo</h3>
-          <p class="art-desc">Uma breve descrição do segundo artigo e os temas principais discutidos no texto.</p>
-        </div>
-        <span class="art-arrow">→</span>
-      </a>
-
-      <a class="article-row reveal" href="#" target="_blank">
-        <span class="art-num">03</span>
-        <div>
-          <p class="art-cat">Literatura</p>
-          <h3 class="art-title">Título do Terceiro Artigo</h3>
-          <p class="art-desc">Análise e reflexão sobre um aspecto literário ou cultural que merece atenção.</p>
-        </div>
-        <span class="art-arrow">→</span>
-      </a>
-
-      <a class="article-row reveal" href="#" target="_blank">
-        <span class="art-num">04</span>
-        <div>
-          <p class="art-cat">Desenvolvimento</p>
-          <h3 class="art-title">Título do Quarto Artigo</h3>
-          <p class="art-desc">Insights práticos e teóricos sobre desenvolvimento de software e sistemas.</p>
-        </div>
-        <span class="art-arrow">→</span>
-      </a>
-
-      <a class="article-row reveal" href="#" target="_blank">
-        <span class="art-num">05</span>
-        <div>
-          <p class="art-cat">Educação</p>
-          <h3 class="art-title">Título do Quinto Artigo</h3>
-          <p class="art-desc">Uma perspectiva sobre educação, aprendizado e o futuro do conhecimento.</p>
-        </div>
-        <span class="art-arrow">→</span>
-      </a>
-
+      <!-- Outros artigos seguem a mesma classe article-row -->
     </div>
   </div>
 </section>
 
-<!-- APPS -->
 <section id="apps">
   <div class="wrap">
     <div class="section-header reveal">
-      <h2 class="section-title">Aplicativos</h2>
-      <span class="section-count">4 projetos</span>
+      <h2 class="section-title">Aplicações e Ferramentas</h2>
+      <span class="section-sub">Desenvolvimento Web e Mobile</span>
     </div>
-    <p class="section-sub reveal">Ferramentas desenvolvidas com auxílio de IA.</p>
-  </div>
-  <div class="wrap">
     <div class="apps-grid">
 
       <div class="app-card reveal">
-        <div class="app-icon-wrap">📜</div>
-        <p class="app-platform">Web</p>
+        <div class="app-header">
+          <span class="app-platform">Web</span>
+        </div>
         <h3 class="app-name">Métrica Poética</h3>
-        <p class="app-desc">Sistema web criado totalmente com a ferramenta Lovable para análise automática de poemas.</p>
+        <p class="app-desc">Sistema web para análise automática da escansão, métrica e ritmos de poemas.</p>
         <div class="app-tags">
           <span class="app-tag">Lovable</span>
-          <span class="app-tag">Poesia</span>
+          <span class="app-tag">Literatura</span>
         </div>
         <div class="app-links">
-          <a class="app-link app-link-primary" href="https://camoes.lovable.app/" target="_blank">Acessar</a>
-          <a class="app-link app-link-secondary" href="https://zenodo.org/doi/10.5281/zenodo.18876704" target="_blank">Manual</a>
+          <a class="app-link" href="https://camoes.lovable.app/" target="_blank">Acessar App</a>
+          <a class="app-link" href="https://zenodo.org/doi/10.5281/zenodo.18876704" target="_blank">Documentação</a>
         </div>
       </div>
 
       <div class="app-card reveal">
-        <div class="app-icon-wrap">⏱️</div>
-        <p class="app-platform">Android</p>
+        <div class="app-header">
+          <span class="app-platform">Android</span>
+        </div>
         <h3 class="app-name">Temporalidade</h3>
         <p class="app-desc">Aplicativo para consulta de temporalidade de documentos do sistema de Arquivos da PMSJC.</p>
         <div class="app-tags">
@@ -686,39 +438,8 @@ sem precisar dizê-lo.</p>
           <span class="app-tag">Manus.ai</span>
         </div>
         <div class="app-links">
-          <a class="app-link app-link-primary" href="https://vida-prod-webdev-app.s3.us-east-1.amazonaws.com/android-builds/310519663134364355/46df701e-10ca-4303-8517-6711690868b0/temporalidade-app-v1_0_8.apk?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZV3A2ECZO4N7RSPW%2F20260429%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260429T202825Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=1f189c093befa01db18c6f999e43924400094387cae6d03e713490a2c319db78" target="_blank">Download</a>
-          <a class="app-link app-link-secondary" href="https://zenodo.org/doi/10.5281/zenodo.18880918" target="_blank">Manual</a>
-        </div>
-      </div>
-
-      <div class="app-card reveal">
-        <div class="app-icon-wrap">🗄️</div>
-        <p class="app-platform">Web</p>
-        <h3 class="app-name">Gestão Documental</h3>
-        <p class="app-desc">Sistema web para apoio à gestão documental, com visualizações, estatísticas e otimização.</p>
-        <div class="app-tags">
-          <span class="app-tag">ChatGPT</span>
-          <span class="app-tag">Gemini</span>
-          <span class="app-tag">Claude</span>
-        </div>
-        <div class="app-links">
-          <a class="app-link app-link-primary" href="img/quadrado.pdf" target="_blank">Olhar</a>
-          <a class="app-link app-link-secondary" href="#contato">Contato</a>
-        </div>
-      </div>
-
-      <div class="app-card reveal">
-        <div class="app-icon-wrap">📖</div>
-        <p class="app-platform">Android</p>
-        <h3 class="app-name">Obras Domínio Público</h3>
-        <p class="app-desc">App para visualização de obras em domínio público. Em fase de testes, correções e ajustes finos — mas já funcional.</p>
-        <div class="app-tags">
-          <span class="app-tag">Manus.ai</span>
-          <span class="app-tag">Portal Domínio Público</span>
-        </div>
-        <div class="app-links">
-          <a class="app-link app-link-primary" href="https://vida-prod-webdev-app.s3.us-east-1.amazonaws.com/android-builds/310519663134364355/8cda11a1-4a81-41b0-ae8e-7cc099c0c1f6/obras-dominio-publico-v1_0_12.apk?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZV3A2ECZO4N7RSPW%2F20260430%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260430T125343Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=95295752eb7f2fad2c3043828175b6efc0e4270ac8e77216c97aaf0fec9f7051" target="_blank">Download</a>
-          <a class="app-link app-link-secondary" href="https://zenodo.org/records/19432938" target="_blank">Manual</a>
+          <a class="app-link" href="#" target="_blank">Download APK</a>
+          <a class="app-link" href="https://zenodo.org/doi/10.5281/zenodo.18880918" target="_blank">Documentação</a>
         </div>
       </div>
 
@@ -726,205 +447,35 @@ sem precisar dizê-lo.</p>
   </div>
 </section>
 
-<!-- CONTATO -->
 <section id="ni">
   <div class="wrap">
     <div class="section-header reveal">
       <h2 class="section-title">Número Imaginário</h2>
-      <a class="ni-site-link" href="https://numeroimaginario.wordpress.com" target="_blank">Visitar site ↗</a>
+      <span class="section-sub">Arquivo 2015–2023</span>
     </div>
-    <p class="ni-desc reveal">Antigo projeto dedicado à história, lógica e fundamentos da matemática, com artigos, podcasts, videocasts e cursos publicados entre os anos de 2015 e 2023.</p>
+    <p class="art-desc reveal" style="max-width: 70ch; margin-bottom: 2rem;">Antigo projeto dedicado à história, lógica e fundamentos da matemática. Todo o acervo de artigos, videocasts e cursos foi preservado para consulta.</p>
 
     <div class="ni-tabs reveal">
       <button class="ni-tab active" onclick="switchTab(this,'ni-artigos')">Artigos</button>
       <button class="ni-tab" onclick="switchTab(this,'ni-podcasts')">Podcasts</button>
-      <button class="ni-tab" onclick="switchTab(this,'ni-videocasts')">Videocasts</button>
-      <button class="ni-tab" onclick="switchTab(this,'ni-cursos')">Cursos</button>
     </div>
 
-    <!-- ARTIGOS -->
     <div id="ni-artigos" class="ni-panel active">
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2023/09/30/dicas-para-o-estudo-da-matematica/" target="_blank">
-        <span class="ni-num">01</span>
-        <div><p class="ni-cat">Estudo</p><p class="ni-title">Dicas para o estudo da matemática</p><p class="ni-date">Set. 2023</p></div>
-        <span class="ni-arrow">→</span>
+      <a class="article-row" href="https://numeroimaginario.wordpress.com/2023/09/30/dicas-para-o-estudo-da-matematica/" target="_blank">
+        <span class="art-num">01</span>
+        <div><p class="art-cat">Metodologia</p><h3 class="art-title">Dicas para o estudo da matemática</h3></div>
+        <span class="art-arrow">→</span>
       </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/08/17/historia-da-teoria-dos-conjuntos/" target="_blank">
-        <span class="ni-num">02</span>
-        <div><p class="ni-cat">História</p><p class="ni-title">História da Teoria dos Conjuntos</p><p class="ni-date">Ago. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/07/04/alguns-livros-fundamentais-de-matematica/" target="_blank">
-        <span class="ni-num">03</span>
-        <div><p class="ni-cat">Livros</p><p class="ni-title">Alguns livros fundamentais de matemática</p><p class="ni-date">Jul. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/07/15/um-pouco-da-matematica-do-pais-das-maravilhas/" target="_blank">
-        <span class="ni-num">04</span>
-        <div><p class="ni-cat">Curiosidades</p><p class="ni-title">Um pouco da matemática do País das Maravilhas</p><p class="ni-date">Jul. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/05/26/o-teste-da-estrela-para-a-validade-de-silogismos/" target="_blank">
-        <span class="ni-num">05</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">O "teste da estrela" para a validade de silogismos</p><p class="ni-date">Mai. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/04/28/alguns-cuidados-com-estatistica/" target="_blank">
-        <span class="ni-num">06</span>
-        <div><p class="ni-cat">Estatística</p><p class="ni-title">Alguns Cuidados com Estatística</p><p class="ni-date">Abr. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/04/19/leituras-e-estudos-iniciais-sobre-logica-matematica/" target="_blank">
-        <span class="ni-num">07</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Leituras e estudos iniciais sobre lógica matemática</p><p class="ni-date">Abr. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2017/01/06/tazos-e-probabilidade/" target="_blank">
-        <span class="ni-num">08</span>
-        <div><p class="ni-cat">Probabilidade</p><p class="ni-title">Tazos e Probabilidade</p><p class="ni-date">Jan. 2017</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/09/20/paul-erdos-uma-vida-dedicada-a-matematica/" target="_blank">
-        <span class="ni-num">09</span>
-        <div><p class="ni-cat">História</p><p class="ni-title">Paul Erdős: uma vida dedicada à matemática</p><p class="ni-date">Set. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/06/23/alan-mathison-turing-brevissima-biografia/" target="_blank">
-        <span class="ni-num">10</span>
-        <div><p class="ni-cat">História</p><p class="ni-title">Alan Mathison Turing: Brevíssima Biografia</p><p class="ni-date">Jun. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2015/12/18/o-infinito-de-georg-cantor-alguns-aspectos-historicos/" target="_blank">
-        <span class="ni-num">11</span>
-        <div><p class="ni-cat">História</p><p class="ni-title">O Infinito de Georg Cantor: Alguns Aspectos Históricos</p><p class="ni-date">Dez. 2015</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/artigo/" target="_blank">Ver todos os artigos ↗</a>
+      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/artigo/" target="_blank">Acessar Acervo Completo</a>
     </div>
 
-    <!-- PODCASTS -->
     <div id="ni-podcasts" class="ni-panel">
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2019/09/28/podcast-37-pensamento-critico-logica-e-argumentacao/" target="_blank">
-        <span class="ni-num">#37</span>
-        <div><p class="ni-cat">Argumentação</p><p class="ni-title">Pensamento Crítico, Lógica e Argumentação</p><p class="ni-date">Set. 2019</p></div>
-        <span class="ni-arrow">→</span>
+      <a class="article-row" href="https://numeroimaginario.wordpress.com/2019/09/28/podcast-37-pensamento-critico-logica-e-argumentacao/" target="_blank">
+        <span class="art-num">#37</span>
+        <div><p class="art-cat">Argumentação</p><h3 class="art-title">Pensamento Crítico e Lógica</h3></div>
+        <span class="art-arrow">→</span>
       </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/08/14/podcast-36-a-importancia-da-matematica-no-programa-educacional-de-platao/" target="_blank">
-        <span class="ni-num">#36</span>
-        <div><p class="ni-cat">Filosofia</p><p class="ni-title">A importância da matemática no programa educacional de Platão</p><p class="ni-date">Ago. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/07/22/podcast-35-a-organizacao-da-logica-segundo-tomas-de-aquino/" target="_blank">
-        <span class="ni-num">#35</span>
-        <div><p class="ni-cat">Filosofia</p><p class="ni-title">A Organização da Lógica Segundo Tomás de Aquino</p><p class="ni-date">Jul. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/05/31/podcast-34-os-escritos-logicos-de-aristoteles-organon/" target="_blank">
-        <span class="ni-num">#34</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Os Escritos Lógicos de Aristóteles (Organon)</p><p class="ni-date">Mai. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/05/15/podcast-33-logica-dialetica-e-retorica/" target="_blank">
-        <span class="ni-num">#33</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Lógica, Dialética e Retórica</p><p class="ni-date">Mai. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2017/09/07/podcast-32-definicoes/" target="_blank">
-        <span class="ni-num">#32</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Definições</p><p class="ni-date">Set. 2017</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2017/04/25/podcast-31-notas-sobre-a-tese-de-church/" target="_blank">
-        <span class="ni-num">#31</span>
-        <div><p class="ni-cat">Computabilidade</p><p class="ni-title">Notas Sobre a Tese de Church</p><p class="ni-date">Abr. 2017</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2017/03/01/indecidibilidade-e-incompletude-em-sistemas-formais/" target="_blank">
-        <span class="ni-num">#30</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Indecidibilidade e Incompletude em Sistemas Formais</p><p class="ni-date">Mar. 2017</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/12/16/reverse-mathematics/" target="_blank">
-        <span class="ni-num">#29</span>
-        <div><p class="ni-cat">Fundamentos</p><p class="ni-title">Matemática Reversa (Reverse Mathematics)</p><p class="ni-date">Dez. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/11/19/otimizacao-matematica/" target="_blank">
-        <span class="ni-num">#28</span>
-        <div><p class="ni-cat">Matemática Aplicada</p><p class="ni-title">Otimização Matemática</p><p class="ni-date">Nov. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/podcast/" target="_blank">Ver todos os 37 podcasts ↗</a>
-    </div>
-
-    <!-- VIDEOCASTS -->
-    <div id="ni-videocasts" class="ni-panel">
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/11/10/videocast-04-complexidade-computacional/" target="_blank">
-        <span class="ni-num">#04</span>
-        <div><p class="ni-cat">Computação</p><p class="ni-title">Complexidade Computacional</p><p class="ni-date">Nov. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/10/13/videocast-03-platao-matematica-e-educacao/" target="_blank">
-        <span class="ni-num">#03</span>
-        <div><p class="ni-cat">Filosofia</p><p class="ni-title">Platão, Matemática e Educação</p><p class="ni-date">Out. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/07/26/videocast-02-logicismo-intuicionismo-e-formalismo/" target="_blank">
-        <span class="ni-num">#02</span>
-        <div><p class="ni-cat">Fundamentos</p><p class="ni-title">Logicismo, Intuicionismo e Formalismo</p><p class="ni-date">Jul. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/07/17/videocast-01-a-prova-de-godel/" target="_blank">
-        <span class="ni-num">#01</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">A Prova de Gödel</p><p class="ni-date">Jul. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/videocast/" target="_blank">Ver todos os videocasts ↗</a>
-    </div>
-
-    <!-- CURSOS -->
-    <div id="ni-cursos" class="ni-panel">
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2018/11/16/primeiros-passos-na-logica/" target="_blank">
-        <span class="ni-num">01</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Primeiros Passos na Lógica</p><p class="ni-date">Nov. 2018</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2017/07/03/metodo-axiomatico-e-teorias-formais/" target="_blank">
-        <span class="ni-num">02</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Método Axiomático e Teorias Formais</p><p class="ni-date">Jul. 2017</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2017/06/14/ciencias-formais/" target="_blank">
-        <span class="ni-num">03</span>
-        <div><p class="ni-cat">Ciências Formais</p><p class="ni-title">Escola Online de Ciências Formais</p><p class="ni-date">Jun. 2017</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2017/04/12/maquinas-de-turing-e-o-problema-da-parada/" target="_blank">
-        <span class="ni-num">04</span>
-        <div><p class="ni-cat">Computabilidade</p><p class="ni-title">Os Limites Teóricos da Computação</p><p class="ni-date">Abr. 2017</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/11/23/topicos-em-filosofia-e-fundamentos-da-matematica/" target="_blank">
-        <span class="ni-num">05</span>
-        <div><p class="ni-cat">Fundamentos</p><p class="ni-title">Brevíssima Introdução aos Fundamentos da Matemática</p><p class="ni-date">Nov. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/09/02/logica-matematica/" target="_blank">
-        <span class="ni-num">06</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Metalógica do Cálculo Proposicional</p><p class="ni-date">Set. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/07/28/sistemas-formais/" target="_blank">
-        <span class="ni-num">07</span>
-        <div><p class="ni-cat">Lógica</p><p class="ni-title">Introdução aos Sistemas Formais</p><p class="ni-date">Jul. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-row" href="https://numeroimaginario.wordpress.com/2016/07/28/elementos-de-teoria-de-conjuntos/" target="_blank">
-        <span class="ni-num">08</span>
-        <div><p class="ni-cat">Conjuntos</p><p class="ni-title">Elementos de Teoria Axiomática dos Conjuntos</p><p class="ni-date">Jul. 2016</p></div>
-        <span class="ni-arrow">→</span>
-      </a>
-      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/cursos/" target="_blank">Ver todos os cursos ↗</a>
+      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/podcast/" target="_blank">Acessar Podcasts</a>
     </div>
   </div>
 </section>
@@ -932,28 +483,17 @@ sem precisar dizê-lo.</p>
 <section id="contato">
   <div class="contact-inner">
     <div>
-      <span class="contact-label">Vamos conversar</span>
-      <h2 class="contact-heading">Entre em<br>contato</h2>
-      <p class="contact-sub">Para adquirir um livro, discutir um projeto ou apenas trocar ideias.</p>
+      <h2 class="contact-heading">Vamos<br>conversar.</h2>
+      <p style="color: rgba(255,255,255,0.6);">Sinta-se livre para entrar em contato para projetos ou troca de ideias.</p>
     </div>
     <div class="contact-right">
-      <a class="contact-link" href="mailto:va.vinicius@gmail.com">
-        va.vinicius@gmail.com <span>↗</span>
-      </a>
-      <a class="contact-link" href="https://www.linkedin.com/in/vihdesouza/" target="_blank">
-        LinkedIn <span>↗</span>
-      </a>
-      <a class="contact-link" href="https://www.chess.com/member/videsouza" target="_blank">
-        Xadrez <span>↗</span>
-      </a>
-      <a class="contact-link" href="https://instagram.com/amorummalquemataenaoseve" target="_blank">
-        Instagram <span>↗</span>
-      </a>
+      <a class="contact-link" href="mailto:va.vinicius@gmail.com">va.vinicius@gmail.com <span>↗</span></a>
+      <a class="contact-link" href="https://www.linkedin.com/in/vihdesouza/" target="_blank">LinkedIn <span>↗</span></a>
+      <a class="contact-link" href="https://www.chess.com/member/videsouza" target="_blank">Chess.com <span>↗</span></a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <span>© 2026 Vinícius A. de Souza</span>
@@ -962,7 +502,6 @@ sem precisar dizê-lo.</p>
 </footer>
 
 <script>
-  // Reveal on scroll
   function switchTab(btn, panelId) {
     document.querySelectorAll('.ni-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.ni-panel').forEach(p => p.classList.remove('active'));
@@ -973,33 +512,29 @@ sem precisar dizê-lo.</p>
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
-      const idx = siblings.indexOf(e.target);
-      setTimeout(() => e.target.classList.add('visible'), idx * 70);
+      setTimeout(() => e.target.classList.add('visible'), 100);
       revealObserver.unobserve(e.target);
     });
-  }, { threshold: 0.07 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
 
-  // Poem toggle
   function togglePoem(card) {
     const isOpen = card.classList.contains('open');
     document.querySelectorAll('.poem-card.open').forEach(c => {
       c.classList.remove('open');
-      c.querySelector('.poem-toggle').innerHTML = 'Ler completo <span class="arrow">↓</span>';
+      c.querySelector('.poem-toggle').innerText = 'Ler na íntegra';
     });
     if (!isOpen) {
       card.classList.add('open');
-      card.querySelector('.poem-toggle').innerHTML = 'Recolher <span class="arrow">↓</span>';
+      card.querySelector('.poem-toggle').innerText = 'Recolher';
     }
   }
 
-  // Nav active highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
     navLinks.forEach(a => {
       a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
     });
