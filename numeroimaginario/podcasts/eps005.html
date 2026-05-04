@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podcast #005: Uma Jornada Épica em Busca dos Fundamentos da Matemática - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1080px;
+      --text-width: 720px; 
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--bg2); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER MEDIA ── */
+    .media-header {
+      background: var(--bg);
+      padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--text-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .media-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .media-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    .audio-player-container {
+      background: var(--paper); padding: 1.5rem; border: 1px solid var(--line);
+      border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    audio { width: 100%; height: 40px; outline: none; }
+    
+    .download-link {
+      display: flex; justify-content: space-between; margin-top: 1rem; 
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3); 
+    }
+    .download-link a {
+      color: var(--ink3); text-decoration: none; transition: color 0.2s;
+    }
+    .download-link a:hover { color: var(--ink); }
+
+    /* ── CORPO DA PÁGINA (SHOW NOTES) ── */
+    .media-body {
+      max-width: var(--text-width); margin: 0 auto; padding: 4rem 2rem 6rem;
+    }
+    .media-body h2 {
+      font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 400;
+      margin: 3rem 0 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;
+    }
+    .media-body h2:first-child { margin-top: 0; }
+    .media-body p { margin-bottom: 1.5rem; color: var(--ink2); }
+    .media-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+    
+    .reference-list { list-style: none; margin-top: 1rem; }
+    .reference-list li {
+      margin-bottom: 1rem; padding-left: 1.5rem; position: relative;
+      font-size: 1rem; color: var(--ink2); line-height: 1.6;
+    }
+    .reference-list li::before {
+      content: '■'; position: absolute; left: 0; top: 6px;
+      font-size: 0.5rem; color: var(--ink3);
+    }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem; color: var(--bg);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../acervo-ni.html" class="nav-back">← Voltar ao Acervo</a>
+    <span style="font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--ink2);">Número Imaginário</span>
+  </div>
+</nav>
+
+<header class="media-header">
+  <div class="header-inner">
+    <span class="media-meta">Podcast #005 • Fundamentos da Matemática • Setembro de 2015</span>
+    <h1 class="media-title">Uma Jornada Épica em Busca dos Fundamentos da Matemática</h1>
+    
+    <div class="audio-player-container">
+      <audio controls preload="metadata">
+        <source src="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio005_201706/episodio005.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div class="download-link">
+        <a href="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio005_201706/episodio005.mp3" target="_blank" download>
+          ↓ Baixar episódio (MP3)
+        </a>
+        <span>Duração: 23:50 (21.8MB)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="media-body">
+  <h2>Sobre o Episódio</h2>
+  <p>Neste episódio iniciaremos uma viagem cujo destino é o entendimento da própria natureza fundamental da matemática — uma busca épica pelos seus fundamentos, onde várias surpresas e reviravoltas nos esperam.</p>
+  <p>Nosso ponto de partida são três grandes linhas de pensamento: o <em>logicismo</em> de Frege e Russell, o <em>intuicionismo</em> de Brouwer e o <em>formalismo</em> de Hilbert. Ao final do episódio, deixarei sugestões de dois livros especiais sobre o assunto.</p>
+
+  <h2>Figuras Citadas</h2>
+  <ul class="reference-list">
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Frege.html" target="_blank" rel="noopener">Friedrich Ludwig Gottlob Frege</a> (1848 - 1925)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Russell.html" target="_blank" rel="noopener">Bertrand Arthur William Russell</a> (1872 - 1970)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Brouwer.html" target="_blank" rel="noopener">Luitzen Egbertus Jan Brouwer</a> (1881 - 1966)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Hilbert.html" target="_blank" rel="noopener">David Hilbert</a> (1862 - 1943)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Godel.html" target="_blank" rel="noopener">Kurt Gödel</a> (1906 - 1978)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Weierstrass.html" target="_blank" rel="noopener">Karl Theodor Wilhelm Weierstrass</a> (1815 - 1897)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Cantor.html" target="_blank" rel="noopener">Georg Ferdinand Ludwig Philipp Cantor</a> (1845 - 1918)</li>
+  </ul>
+
+  <h2>Destaques Literários</h2>
+  <ul class="reference-list">
+    <li><strong>Introdução aos Fundamentos da Matemática</strong> — Newton da Costa. Publicado pela Editora Hucitec, 2008.</li>
+    <li><strong>Logicomix</strong> — Papadimitriou, Doxiads, Papadatos e Di Donna. Editora WMF Martins Fontes, 2010.</li>
+  </ul>
+
+  <h2>Outras Referências</h2>
+  <ul class="reference-list">
+    <li>SILVA, Jairo José da. <em>Filosofias da Matemática</em>. São Paulo: Editora UNESP, 2007.</li>
+    <li>HORSTEN, Leon. <a href="http://plato.stanford.edu/archives/spr2015/entries/philosophy-mathematics/" target="_blank" rel="noopener">Philosophy of Mathematics</a>. <em>The Stanford Encyclopedia of Philosophy</em> (Spring 2015 Edition), Edward N. Zalta (ed.).</li>
+    <li>GEORGE, Alexander; VELLEMAN, Daniel. <em>Philosophies of Mathematics</em>. Blackwell Publishers, 2002.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Vinícius A. de Souza</span>
+    <span>São José dos Campos, SP</span>
+  </div>
+</footer>
+
+</body>
+</html>
