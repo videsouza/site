@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podcast #006: Eu sou um robô! (mas posso estar te enganando) - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1080px;
+      --text-width: 720px; 
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--bg2); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER MEDIA ── */
+    .media-header {
+      background: var(--bg);
+      padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--text-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .media-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .media-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    .audio-player-container {
+      background: var(--paper); padding: 1.5rem; border: 1px solid var(--line);
+      border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    audio { width: 100%; height: 40px; outline: none; }
+    
+    .download-link {
+      display: flex; justify-content: space-between; margin-top: 1rem; 
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3); 
+    }
+    .download-link a {
+      color: var(--ink3); text-decoration: none; transition: color 0.2s;
+    }
+    .download-link a:hover { color: var(--ink); }
+
+    /* ── CORPO DA PÁGINA (SHOW NOTES) ── */
+    .media-body {
+      max-width: var(--text-width); margin: 0 auto; padding: 4rem 2rem 6rem;
+    }
+    .media-body h2 {
+      font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 400;
+      margin: 3rem 0 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;
+    }
+    .media-body h2:first-child { margin-top: 0; }
+    .media-body p { margin-bottom: 1.5rem; color: var(--ink2); }
+    .media-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+    
+    .reference-list { list-style: none; margin-top: 1rem; }
+    .reference-list li {
+      margin-bottom: 1rem; padding-left: 1.5rem; position: relative;
+      font-size: 1rem; color: var(--ink2); line-height: 1.6;
+    }
+    .reference-list li::before {
+      content: '■'; position: absolute; left: 0; top: 6px;
+      font-size: 0.5rem; color: var(--ink3);
+    }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem; color: var(--bg);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../acervo-ni.html" class="nav-back">← Voltar ao Acervo</a>
+    <span style="font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--ink2);">Número Imaginário</span>
+  </div>
+</nav>
+
+<header class="media-header">
+  <div class="header-inner">
+    <span class="media-meta">Podcast #006 • Filosofia da Mente • Outubro de 2015</span>
+    <h1 class="media-title">Eu sou um robô! (mas posso estar te enganando)</h1>
+    
+    <div class="audio-player-container">
+      <audio controls preload="metadata">
+        <source src="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio006_201706/episodio006.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div class="download-link">
+        <a href="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio006_201706/episodio006.mp3" target="_blank" download>
+          ↓ Baixar episódio (MP3)
+        </a>
+        <span>Duração: 14:21 (13.1MB)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="media-body">
+  <h2>Sobre o Episódio</h2>
+  <p>Neste episódio falarei um pouco sobre o famoso <strong>Jogo da Imitação</strong>. Não é sobre o filme homônimo, mas sim sobre o experimento proposto pelo matemático inglês Alan Turing em 1950, hoje mais conhecido por <em>Teste de Turing</em>, no qual ele propõe uma forma de investigarmos a seguinte questão: poderão as máquinas pensar?</p>
+  
+  <p>De forma breve, apresentarei ainda uma das grandes objeções ao Teste de Turing proposta pelo filósofo americano John Searle — o experimento mental conhecido como <strong>O Quarto Chinês</strong>.</p>
+
+  <h2>Figuras Citadas</h2>
+  <ul class="reference-list">
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Mathematicians/Turing.html" target="_blank" rel="noopener">Alan Turing</a> (1912 - 1954)</li>
+    <li><a href="http://socrates.berkeley.edu/~jsearle/" target="_blank" rel="noopener">John Searle</a> (1932 - )</li>
+  </ul>
+
+  <h2>Destaque Literário</h2>
+  <p>Recomendação do livro <strong>"Turing - um filósofo da natureza"</strong>, escrito por Andrew Hodges (famoso biógrafo de Turing) e publicado pela Editora UNESP, 2001.</p>
+
+  <h2>Vídeos Recomendados</h2>
+  <ul class="reference-list">
+    <li><a href="https://www.youtube.com/watch?v=6qvYM1XHdBU" target="_blank" rel="noopener">O que é Mente?</a> - Ives Alejandro Munoz.</li>
+    <li><a href="https://www.youtube.com/watch?v=eogpIG53Cis" target="_blank" rel="noopener">Blade Runner</a> - Trailer Oficial (Ridley Scott, 1982).</li>
+  </ul>
+
+  <h2>Referências Citadas</h2>
+  <ul class="reference-list">
+    <li>TURING, A.M. <a href="http://www.loebner.net/Prizef/TuringArticle.html" target="_blank" rel="noopener">Computing machinery and intelligence</a>. <em>Mind</em>, 59, 433-460 (1950).</li>
+    <li>TEIXEIRA, João de Fernandes. <a href="https://books.google.com.br/books?id=FHnAXY5fHqoC&lpg=PA2&ots=gSRaYUdpBp&dq=Teixeira%2C%20Jo%C3%A3o%20de%20Fernandes%20%E2%80%93%20Mentes%20e%20m%C3%A1quinas%3A%20uma%20introdu%C3%A7%C3%A3o%20%C3%A0%20ci%C3%AAncia%20cognitiva.&hl=pt-BR&pg=PA7#v=onepage&q&f=false" target="_blank" rel="noopener">Mentes e máquinas: uma introdução à ciência cognitiva</a>. Porto Alegre: Artes Médicas, 1998.</li>
+    <li>SEARLE, John. R. <a href="http://cogprints.org/7150/1/10.1.1.83.5248.pdf" target="_blank" rel="noopener">Minds, brains, and programs</a>. <em>Behavioral and Brain Sciences</em> 3 (3): 417-457 (1980).</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Vinícius A. de Souza</span>
+    <span>São José dos Campos, SP</span>
+  </div>
+</footer>
+
+</body>
+</html>
