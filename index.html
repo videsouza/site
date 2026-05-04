@@ -451,31 +451,49 @@ Continue aqui com os demais versos.
   <div class="wrap">
     <div class="section-header reveal">
       <h2 class="section-title">Número Imaginário</h2>
-      <span class="section-sub">Arquivo 2015–2023</span>
+      <span class="section-sub">Arquivo Histórico (2015–2023)</span>
     </div>
-    <p class="art-desc reveal" style="max-width: 70ch; margin-bottom: 2rem;">Antigo projeto dedicado à história, lógica e fundamentos da matemática. Todo o acervo de artigos, videocasts e cursos foi preservado para consulta.</p>
-
-    <div class="ni-tabs reveal">
-      <button class="ni-tab active" onclick="switchTab(this,'ni-artigos')">Artigos</button>
-      <button class="ni-tab" onclick="switchTab(this,'ni-podcasts')">Podcasts</button>
+    
+    <div class="ni-intro reveal" style="max-width: 70ch; margin-bottom: 3rem;">
+      <p style="font-size: 1.1rem; color: var(--ink2); line-height: 1.6;">
+        Projeto independente dedicado à história, lógica e aos fundamentos da matemática. O acervo original — composto por dezenas de artigos, podcasts e cursos — foi integralmente preservado e recatalogado para consulta permanente.
+      </p>
     </div>
 
-    <div id="ni-artigos" class="ni-panel active">
-      <a class="article-row" href="https://numeroimaginario.wordpress.com/2023/09/30/dicas-para-o-estudo-da-matematica/" target="_blank">
-        <span class="art-num">01</span>
-        <div><p class="art-cat">Metodologia</p><h3 class="art-title">Dicas para o estudo da matemática</h3></div>
+    <!-- Destaques do Acervo -->
+    <div class="articles-list reveal">
+      <a class="article-row" href="artigos/platao.html">
+        <span class="art-num" style="font-size: 0.7rem; text-transform: uppercase;">Artigo</span>
+        <div>
+          <p class="art-cat">Filosofia</p>
+          <h3 class="art-title">A Matemática como Conversão da Alma</h3>
+          <p class="art-desc">O papel dos números na Paideia Platônica.</p>
+        </div>
         <span class="art-arrow">→</span>
       </a>
-      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/artigo/" target="_blank">Acessar Acervo Completo</a>
-    </div>
 
-    <div id="ni-podcasts" class="ni-panel">
-      <a class="article-row" href="https://numeroimaginario.wordpress.com/2019/09/28/podcast-37-pensamento-critico-logica-e-argumentacao/" target="_blank">
-        <span class="art-num">#37</span>
-        <div><p class="art-cat">Argumentação</p><h3 class="art-title">Pensamento Crítico e Lógica</h3></div>
+      <a class="article-row" href="acervo-ni.html#podcasts">
+        <span class="art-num" style="font-size: 0.7rem; text-transform: uppercase;">Podcast</span>
+        <div>
+          <p class="art-cat">Lógica</p>
+          <h3 class="art-title">Indecidibilidade e Incompletude</h3>
+          <p class="art-desc">Os limites dos sistemas formais e a prova de Gödel.</p>
+        </div>
         <span class="art-arrow">→</span>
       </a>
-      <a class="ni-more" href="https://numeroimaginario.wordpress.com/category/podcast/" target="_blank">Acessar Podcasts</a>
+    </div>
+
+    <!-- Botão para a página dedicada -->
+    <div class="reveal" style="margin-top: 3.5rem;">
+      <a href="acervo-ni.html" style="
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
+        letter-spacing: 0.08em; text-transform: uppercase; color: var(--paper);
+        background: var(--ink); padding: 1rem 2rem; text-decoration: none;
+        transition: background 0.3s;
+      " onmouseover="this.style.background='var(--ink2)'" onmouseout="this.style.background='var(--ink)'">
+        Acessar Acervo Completo ↗
+      </a>
     </div>
   </div>
 </section>
