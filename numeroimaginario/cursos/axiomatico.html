@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curso: Método Axiomático e Teorias Formais - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta Rigor Acadêmico */
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1180px; /* Levemente mais largo para comportar a barra lateral */
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--bg2); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER DO CURSO ── */
+    .course-header {
+      background: var(--bg);
+      padding: 5rem 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--max); margin: 0 auto;
+    }
+    .course-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .course-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 400; line-height: 1.15; color: var(--ink);
+      margin-bottom: 1rem; max-width: 800px;
+    }
+    .course-subtitle {
+      font-size: 1.2rem; color: var(--ink2); max-width: 800px;
+    }
+
+    /* ── LAYOUT PRINCIPAL (2 COLUNAS) ── */
+    .course-layout {
+      max-width: var(--max); margin: 0 auto; padding: 4rem 2rem 6rem;
+      display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start;
+    }
+
+    /* ── CONTEÚDO DA AULA ── */
+    /* Container de Vídeo (Proporção 16:9) */
+    .video-wrapper {
+      position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 */
+      background: var(--ink); margin-bottom: 2.5rem;
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    .video-wrapper iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+
+    .lesson-content h2 {
+      font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 400;
+      margin-bottom: 1rem; color: var(--ink);
+    }
+    .lesson-content p { margin-bottom: 1.5rem; color: var(--ink2); }
+    
+    /* Arquivos de Apoio */
+    .attachments {
+      margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);
+    }
+    .attachments h3 {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--ink3); margin-bottom: 1rem;
+    }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.2rem; border: 1px solid var(--line);
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; text-decoration: none;
+      color: var(--ink); transition: background 0.2s;
+    }
+    .btn-download:hover { background: var(--bg); }
+
+    /* ── BARRA LATERAL (EMENTA) ── */
+    .course-sidebar {
+      position: sticky; top: 6rem;
+      background: var(--bg); border: 1px solid var(--line);
+      padding: 2rem; border-radius: 4px;
+    }
+    .sidebar-title {
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink);
+      margin-bottom: 1.5rem; display: block; border-bottom: 1px solid var(--line);
+      padding-bottom: 1rem;
+    }
+
+    /* Acordeão de Módulos */
+    .module { margin-bottom: 1.5rem; }
+    .module:last-child { margin-bottom: 0; }
+    .module-title {
+      font-family: 'EB Garamond', serif; font-size: 1.2rem; font-weight: 500;
+      color: var(--ink); margin-bottom: 0.8rem;
+    }
+    .lesson-list { list-style: none; }
+    .lesson-list li { margin-bottom: 0.3rem; }
+    .lesson-link {
+      display: flex; align-items: baseline; gap: 0.5rem;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem;
+      text-decoration: none; color: var(--ink2);
+      padding: 0.4rem 0.6rem; margin: 0 -0.6rem; border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .lesson-link:hover { background: var(--bg2); color: var(--ink); }
+    
+    /* Aula Ativa */
+    .lesson-link.active {
+      background: var(--paper); border: 1px solid var(--line);
+      color: var(--ink); font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+    .lesson-duration { font-size: 0.7rem; color: var(--ink3); margin-left: auto; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 900px) {
+      .course-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .course-sidebar { position: relative; top: 0; }
+    }
+    @media (max-width: 600px) {
+      .course-header { padding: 4rem 1.5rem; }
+      .course-layout { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="acervo-ni.html" class="nav-back">← Voltar ao Acervo</a>
+    <span style="font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--ink2);">Número Imaginário</span>
+  </div>
+</nav>
+
+<header class="course-header">
+  <div class="header-inner">
+    <span class="course-meta">Curso Completo • Lógica Formais • 2017</span>
+    <h1 class="course-title">Método Axiomático e Teorias Formais</h1>
+    <p class="course-subtitle">Um aprofundamento na estrutura sintática das teorias e o papel dos axiomas na matemática e na física.</p>
+  </div>
+</header>
+
+<div class="course-layout">
+  
+  <!-- CONTEÚDO PRINCIPAL (AULA) -->
+  <main class="lesson-content">
+    
+    <div class="video-wrapper">
+      <!-- Substitua pelo embed do YouTube ou vídeo próprio -->
+      <iframe src="https://www.youtube.com/embed/EXEMPLO_DE_ID?rel=0" allowfullscreen></iframe>
+    </div>
+
+    <h2>1.1 Introdução aos Sistemas Formais</h2>
+    <p>Nesta primeira aula, estabelecemos as bases do que constitui uma teoria formal. Diferenciamos a linguagem natural da linguagem estritamente formalizada, preparando o terreno para a introdução dos axiomas.</p>
+    <p>Discutimos também brevemente a crise dos fundamentos da matemática no início do século XX, que motivou figuras como David Hilbert a buscar a axiomatização completa, uma busca que culminaria nos famosos teoremas de Gödel que analisaremos nos módulos finais.</p>
+
+    <div class="attachments">
+      <h3>Materiais de Apoio</h3>
+      <a href="#" class="btn-download">📄 Slides da Aula (PDF)</a>
+      <a href="#" class="btn-download">📝 Lista de Exercícios 01 (PDF)</a>
+    </div>
+
+  </main>
+
+  <!-- BARRA LATERAL (EMENTA) -->
+  <aside class="course-sidebar">
+    <span class="sidebar-title">Ementa do Curso</span>
+
+    <!-- Módulo 1 -->
+    <div class="module">
+      <h3 class="module-title">Módulo I: Fundamentos</h3>
+      <ul class="lesson-list">
+        <li>
+          <a href="#" class="lesson-link active">
+            <span>1.1 Introdução aos Sistemas Formais</span>
+            <span class="lesson-duration">15:20</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="lesson-link">
+            <span>1.2 Alfabeto e Regras de Formação</span>
+            <span class="lesson-duration">22:10</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="lesson-link">
+            <span>1.3 Diferença entre Sintaxe e Semântica</span>
+            <span class="lesson-duration">18:45</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Módulo 2 -->
+    <div class="module">
+      <h3 class="module-title">Módulo II: O Papel dos Axiomas</h3>
+      <ul class="lesson-list">
+        <li>
+          <a href="#" class="lesson-link">
+            <span>2.1 Axiomas vs. Regras de Inferência</span>
+            <span class="lesson-duration">25:00</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="lesson-link">
+            <span>2.2 Consistência e Completude</span>
+            <span class="lesson-duration">31:15</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </aside>
+
+</div>
+
+<footer style="background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1); padding: 2rem; color: var(--bg);">
+  <div style="max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;">
+    <span>© 2026 Vinícius A. de Souza</span>
+    <span>São José dos Campos, SP</span>
+  </div>
+</footer>
+
+</body>
+</html>
