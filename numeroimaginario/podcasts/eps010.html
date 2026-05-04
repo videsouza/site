@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podcast #010: O Infinito de Georg Cantor: Vejo, Mas Não Acredito! - Vinícius A. de Souza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f7f9;
+      --bg2:     #e5e9f0;
+      --paper:   #ffffff;
+      --ink:     #1e293b;
+      --ink2:    #475569;
+      --ink3:    #94a3b8;
+      --line:    #cbd5e1;
+      --max:     1080px;
+      --text-width: 720px; 
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--bg2); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-back {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── HEADER MEDIA ── */
+    .media-header {
+      background: var(--bg);
+      padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: var(--text-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .media-meta {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .media-title {
+      font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    .audio-player-container {
+      background: var(--paper); padding: 1.5rem; border: 1px solid var(--line);
+      border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    audio { width: 100%; height: 40px; outline: none; }
+    
+    .download-link {
+      display: flex; justify-content: space-between; margin-top: 1rem; 
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--ink3); 
+    }
+    .download-link a {
+      color: var(--ink3); text-decoration: none; transition: color 0.2s;
+    }
+    .download-link a:hover { color: var(--ink); }
+
+    /* ── CORPO DA PÁGINA (SHOW NOTES) ── */
+    .media-body {
+      max-width: var(--text-width); margin: 0 auto; padding: 4rem 2rem 6rem;
+    }
+    .media-body h2 {
+      font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 400;
+      margin: 3rem 0 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;
+    }
+    .media-body h2:first-child { margin-top: 0; }
+    .media-body p { margin-bottom: 1.5rem; color: var(--ink2); }
+    .media-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+    
+    .reference-list { list-style: none; margin-top: 1rem; }
+    .reference-list li {
+      margin-bottom: 1rem; padding-left: 1.5rem; position: relative;
+      font-size: 1rem; color: var(--ink2); line-height: 1.6;
+    }
+    .reference-list li::before {
+      content: '■'; position: absolute; left: 0; top: 6px;
+      font-size: 0.5rem; color: var(--ink3);
+    }
+    
+    .callout-box {
+      background: var(--bg2); padding: 1.5rem; border-left: 4px solid var(--ink);
+      margin: 2rem 0; font-size: 0.95rem; border-radius: 0 4px 4px 0;
+    }
+    .callout-box p:last-child { margin-bottom: 0; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem; color: var(--bg);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../acervo-ni.html" class="nav-back">← Voltar ao Acervo</a>
+    <span style="font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--ink2);">Número Imaginário</span>
+  </div>
+</nav>
+
+<header class="media-header">
+  <div class="header-inner">
+    <span class="media-meta">Podcast #010 • Teoria dos Conjuntos • Dezembro de 2015</span>
+    <h1 class="media-title">O Infinito de Georg Cantor: Vejo, Mas Não Acredito!</h1>
+    
+    <div class="audio-player-container">
+      <audio controls preload="metadata">
+        <source src="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio010_201706/episodio010.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div class="download-link">
+        <a href="https://media.blubrry.com/numeroimaginario/archive.org/download/episodio010_201706/episodio010.mp3" target="_blank" download>
+          ↓ Baixar episódio (MP3)
+        </a>
+        <span>Duração: 26:17 (24.1MB)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="media-body">
+  <h2>Sobre o Episódio</h2>
+  <p>Esta é a primeira parte do episódio "O Infinito de Georg Cantor". Falarei sobre a <em>teoria intuitiva de conjuntos</em> criada pelo matemático <a href="http://www-history.mcs.st-and.ac.uk/Biographies/Cantor.html" target="_blank" rel="noopener">Georg Ferdinand Ludwig Philipp Cantor</a> (1845 - 1918).</p>
+  
+  <p>Em particular, darei ênfase em alguns resultados encontrados sobre conjuntos infinitos que vão contra nossa intuição imediata. O que poderia acontecer de tão surpreendente para um matemático exclamar "Vejo, mas não acredito"? Finalmente, farei ainda uma introdução aos números cardinais infinitos.</p>
+
+  <div class="callout-box">
+    <strong>Observações e Erratas do Episódio:</strong>
+    <p>No podcast eu esqueci de falar que a letra <em>Aleph</em> (ℵ), utilizada para denotar as cardinalidades dos conjuntos infinitos, é a primeira letra do alfabeto hebraico.</p>
+    <p>Mais para o final do episódio (por volta de 18:20), utilizei o termo <em>família</em> no sentido intuitivo de coleção para designar uma coleção de conjuntos que possuem algo em comum, no caso, sua cardinalidade. Depois, introduzi o termo <em>classe</em>, dizendo que as famílias formam classes disjuntas. Para ser mais exato e correto matematicamente: a existência de uma função bijetora entre dois conjuntos nos permite definir uma <em>relação de equivalência</em>. Essa relação nos permite dividir o universo de conjuntos em classes de conjuntos que satisfazem a relação de possuir uma bijeção entre eles, e essas classes são disjuntas. Cada classe, então, representa um número cardinal.</p>
+  </div>
+
+  <h2>Figuras Citadas Brevemente</h2>
+  <ul class="reference-list">
+    <li>Galileu Galilei (1564 - 1642)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Biographies/Bolzano.html" target="_blank" rel="noopener">Bernard Placidus Johann Nepomuk Bolzano</a> (1781 - 1848)</li>
+    <li><a href="http://www-history.mcs.st-and.ac.uk/Biographies/Dedekind.html" target="_blank" rel="noopener">Julius Wilhelm Richard Dedekind</a> (1831 - 1916)</li>
+  </ul>
+
+  <h2>Referências Citadas</h2>
+  <ul class="reference-list">
+    <li>ANDRADE, Maria Gorete Carreira. <a href="http://www.mat.ufpb.br/bienalsbm/arquivos/Conferencias%20Apresentadas/C%205.pdf" target="_blank" rel="noopener">Um breve passeio ao infinito real de Cantor</a>. V Bienal da SBM, UFPB, 18 a 22 de outubro de 2010.</li>
+    <li>BEZHANISHVILI, Guram; LANDRETH, Eachan. <a href="https://www.maa.org/sites/default/files/images/upload_library/46/Pengelley_projects/Project-5/set_theory_project.pdf" target="_blank" rel="noopener">An Introduction to Elementary Set Theory</a>.</li>
+    <li>CANTOR, G. <a href="https://books.google.com.br/books?id=flb_nnYJJYkC&printsec=frontcover&hl=pt-BR#v=onepage&q&f=false" target="_blank" rel="noopener">Contributions to the Founding of the Theory of Transfinite Numbers</a>. Tradução de Philip Jourdain. Dover Publications, 1955.</li>
+    <li>HRBACEK, Karel; JECH, Thomas. <a href="http://www.unalmed.edu.co/~jmramirezo/Jorge_Ramirez/Conjuntos_files/introdiction-to-set-Theory.pdf" target="_blank" rel="noopener">Introduction to Set Theory</a>. Marcel Dekker; 3 edition, 1999.</li>
+    <li>SENA, Christiano Otávio de Rezende. <a href="http://www.mat.ufmg.br/~espec/Monografias_Noturna/Monografia_ChristianoOtavio.pdf" target="_blank" rel="noopener">Uma história sobre o infinito atual</a> (Monografia). UFMG, Belo Horizonte, 2011.</li>
+    <li>SHEN, A.; VERESHCHAGIN. <a href="http://inspirasi.co/jbcontents/14282749613293401_basic_set_theory_student_mathematical_library.pdf" target="_blank" rel="noopener">Basic Set Theory</a>. American Mathematical Society.</li>
+    <li>TORRETTI, Roberto. <a href="http://www.memoriachilena.cl/archivos2/pdfs/MC0031052.pdf" target="_blank" rel="noopener">La Tradición Conjuntista en la Filosofía Matemática</a>. Editorial Universitaria, 1998.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Vinícius A. de Souza</span>
+    <span>São José dos Campos, SP</span>
+  </div>
+</footer>
+
+</body>
+</html>
