@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Página pessoal para divulgação de livros e artigos acadêmicos." />
+  <title>Nome do Autor — Livros &amp; Artigos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand">Nome do Autor</a>
+      <nav class="nav" aria-label="Navegação principal">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#livros">Livros</a></li>
+          <li><a href="#artigos">Artigos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container">
+        <p class="hero-eyebrow">Pesquisador · Escritor</p>
+        <h1 class="hero-title">Nome do Autor</h1>
+        <p class="hero-lead">
+          Pesquisa e escrita sobre <em>sua área de atuação</em>. Aqui reúno meus
+          livros publicados e artigos, organizados para leitura e consulta.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#livros">Ver livros</a>
+          <a class="btn btn-ghost" href="#artigos">Ler artigos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section">
+      <div class="container narrow">
+        <h2 class="section-title">Sobre</h2>
+        <div class="about">
+          <p>
+            Escreva aqui uma breve apresentação em um ou dois parágrafos: sua formação,
+            suas linhas de pesquisa e os temas que atravessam seu trabalho. Mantenha um
+            tom sóbrio e direto — o suficiente para que o leitor entenda o seu percurso.
+          </p>
+          <p>
+            Você pode mencionar instituições, projetos em andamento ou o objetivo desta
+            página: reunir a produção intelectual em um só lugar, de acesso aberto.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="livros" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Livros</h2>
+        <p class="section-intro">Obras publicadas e em preparação.</p>
+        <div class="grid books-grid" id="books-grid"><!-- preenchido via JavaScript --></div>
+      </div>
+    </section>
+
+    <section id="artigos" class="section">
+      <div class="container">
+        <h2 class="section-title">Artigos</h2>
+        <p class="section-intro">Artigos, ensaios e textos avulsos.</p>
+        <ul class="articles" id="articles-list"><!-- preenchido via JavaScript --></ul>
+      </div>
+    </section>
+
+    <section id="contato" class="section section-alt">
+      <div class="container narrow">
+        <h2 class="section-title">Contato</h2>
+        <p class="section-intro">
+          Para contato, colaborações ou acesso a textos completos.
+        </p>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">GitHub</span>
+            <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">github.com/seu-usuario</a>
+          </li>
+          <li>
+            <span class="contact-label">E-mail</span>
+            <a href="mailto:seu-email@exemplo.com">seu-email@exemplo.com</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Nome do Autor. Todos os direitos reservados.</p>
+      <p class="footer-note">Hospedado no GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
