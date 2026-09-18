@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre &middot; Número Imaginário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">
+        <span class="site-title-main">Número Imaginário</span>
+        <span class="site-title-sub">História, lógica e fundamentos da matemática</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Abrir menu</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="livros.html">Livros</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html" class="is-active">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container container-narrow">
+
+      <header class="page-header">
+        <h1 class="page-title">Sobre</h1>
+      </header>
+
+      <section class="prose">
+        <p>
+          Olá, meu nome é <strong>Vinícius</strong>. Sou responsável pelo
+          projeto <em>Número Imaginário</em>, um espaço de divulgação da
+          matemática e de temas afins que existe desde 2015.
+        </p>
+
+        <h2>O projeto</h2>
+        <p>
+          O objetivo principal do <em>Número Imaginário</em> é apresentar
+          temas relacionados ao universo matemático sem abandonar o rigor
+          característico desta disciplina. A ênfase está na matemática em
+          si, mas procuro também ressaltar suas conexões com outros campos
+          do saber &mdash; filosofia, biologia, física, computação &mdash;
+          e trazer conteúdos do universo pop, como livros, filmes e
+          documentários.
+        </p>
+        <p>
+          O nível dos temas tratados é introdutório. A ideia principal é
+          que os assuntos apresentados possam instigar a curiosidade e a
+          reflexão de quem acompanha as publicações. Reconhecendo que falar
+          sobre matemática de forma correta (e rigorosa) é bastante difícil,
+          conto com a colaboração dos leitores e ouvintes para a melhoria
+          contínua do projeto.
+        </p>
+
+        <h2>Trajetória</h2>
+        <p>
+          O projeto nasceu como um <em>podcast</em> em 2015 e cresceu para
+          incluir também vídeos, textos e cursos online. Ao longo dos anos,
+          foram publicados episódios sobre axiomas, os fundamentos da
+          matemática, lógica, computabilidade, teoria dos conjuntos,
+          o infinito de Cantor, entre muitos outros temas.
+        </p>
+        <p>
+          Mais recentemente, o foco passou a incluir também a publicação de
+          livros autorais &mdash; <em>Os Limites da Computação</em> e
+          <em>Método Axiomático e Teorias Físicas</em> &mdash;, que
+          reúnem de forma mais sistemática alguns dos assuntos tratados no
+          podcast e nos cursos.
+        </p>
+
+        <h2>Sobre este site</h2>
+        <p>
+          Este site reúne, em um só lugar, os livros e artigos publicados
+          pelo projeto. É um espaço deliberadamente minimalista: sem
+          distrações, sem métricas, sem ruído &mdash; apenas textos e
+          livros para quem se interessa pelas questões mais profundas da
+          matemática.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="profile-card">
+          <img src="assets/images/perfil.jpg" alt="Retrato de Vinícius"
+               class="profile-photo" onerror="this.style.display='none'">
+          <div>
+            <h3>Vinícius</h3>
+            <p class="prose-sm">
+              Responsável pelo projeto Número Imaginário. Interessa-se por
+              história, lógica e fundamentos da matemática, além das suas
+              interfaces com a filosofia e a computação.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Apoio</h2>
+        <p class="prose">
+          Você pode apoiar o projeto tornando-se um padrinho ou madrinha.
+          Toda colaboração é revertida em novos textos, vídeos e episódios.
+        </p>
+        <p>
+          <a href="contato.html" class="link-arrow">Entre em contato &rarr;</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; <span id="year"></span> Vinícius &middot; Número Imaginário</p>
+      <p class="footer-links">
+        <a href="contato.html">Contato</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
