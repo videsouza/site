@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livros &middot; Número Imaginário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">
+        <span class="site-title-main">Número Imaginário</span>
+        <span class="site-title-sub">História, lógica e fundamentos da matemática</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Abrir menu</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="livros.html" class="is-active">Livros</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container container-narrow">
+      <header class="page-header">
+        <h1 class="page-title">Livros</h1>
+        <p class="page-lead">
+          Publicações autorais sobre fundamentos, lógica e história da matemática.
+        </p>
+      </header>
+    </div>
+
+    <!-- LIVROS -->
+    <section class="section">
+      <div class="container">
+        <div class="book-grid book-grid-large">
+
+          <article id="limites" class="book-card book-card-large">
+            <div class="book-cover">
+              <img src="assets/images/livros/os-limites-da-computacao.jpg"
+                   alt="Capa do livro Os Limites da Computação"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="book-info">
+              <p class="book-year">2026</p>
+              <h2 class="book-title">Os Limites da Computação</h2>
+              <p class="book-desc">
+                Um panorama acessível e rigoroso sobre o que pode e o que
+                não pode ser computado. Partindo da máquina de Turing e da
+                tese de Church, o livro percorre os grandes resultados da
+                teoria da computabilidade &mdash; indecidibilidade,
+                incompletude e o problema da parada &mdash; mostrando por
+                que certos limites são intrínsecos, e não tecnológicos.
+              </p>
+              <ul class="book-meta">
+                <li><strong>Temas:</strong> computabilidade, lógica, teoria da recursão</li>
+                <li><strong>Público:</strong> estudantes de matemática, computação e filosofia</li>
+              </ul>
+            </div>
+          </article>
+
+          <article id="axiomatico" class="book-card book-card-large">
+            <div class="book-cover">
+              <img src="assets/images/livros/metodo-axiomatico.jpg"
+                   alt="Capa do livro Método Axiomático e Teorias Físicas"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="book-info">
+              <p class="book-year">2026</p>
+              <h2 class="book-title">Método Axiomático e Teorias Físicas</h2>
+              <p class="book-desc">
+                Uma introdução ao método axiomático e à sua aplicação na
+                formulação de teorias físicas. Discute o papel dos axiomas
+                na construção do conhecimento científico, as relações
+                entre matemática e física e o sentido em que se pode
+                falar de "axiomas" fora da matemática pura.
+              </p>
+              <ul class="book-meta">
+                <li><strong>Temas:</strong> método axiomático, fundamentos da física</li>
+                <li><strong>Público:</strong> filósofos, físicos e matemáticos</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SÉRIES E CURSOS -->
+    <section class="section section-alt">
+      <div class="container container-narrow">
+        <header class="section-header">
+          <h2 class="section-title">Séries e cursos</h2>
+        </header>
+        <p class="section-lead">
+          Séries de aulas e cursos introdutórios publicados ao longo dos anos,
+          disponíveis gratuitamente.
+        </p>
+
+        <ol class="series-list">
+          <li>
+            <h3>Elementos de Teoria de Conjuntos</h3>
+            <p>Curso introdutório sobre os fundamentos axiomáticos da teoria de conjuntos, dos axiomas de Zermelo-Fraenkel aos números naturais.</p>
+          </li>
+          <li>
+            <h3>Lógica Matemática</h3>
+            <p>Do cálculo proposicional aos teoremas de completude e de adequação, com demonstrações formais passo a passo.</p>
+          </li>
+          <li>
+            <h3>Sistemas Formais</h3>
+            <p>Definição de sistemas formais, provas, teoremas e a noção de consequência sintática.</p>
+          </li>
+          <li>
+            <h3>Método Axiomático e Teorias Formais</h3>
+            <p>Estudo do método axiomático e das teorias formais, com exemplos que vão dos grupos à mecânica de partículas.</p>
+          </li>
+          <li>
+            <h3>Tópicos em Filosofia e Fundamentos da Matemática</h3>
+            <p>Panorama histórico-filosófico dos programas fundacionais: logicismo, intuicionismo e formalismo.</p>
+          </li>
+          <li>
+            <h3>Teoria da Recursão: Máquinas de Turing</h3>
+            <p>Introdução às máquinas de Turing, funções computáveis, decidibilidade e o problema da parada.</p>
+          </li>
+          <li>
+            <h3>Primeiros Passos na Lógica</h3>
+            <p>Material introdutório para quem nunca teve contato formal com a lógica.</p>
+          </li>
+          <li>
+            <h3>Introdução à Lógica Tradicional</h3>
+            <p>Percurso pela lógica aristotélica: termos, proposições, silogismos e falácias materiais.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; <span id="year"></span> Vinícius &middot; Número Imaginário</p>
+      <p class="footer-links">
+        <a href="contato.html">Contato</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
