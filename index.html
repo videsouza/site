@@ -1,109 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Página pessoal para divulgação de livros e artigos acadêmicos." />
-  <title>Nome do Autor — Livros &amp; Artigos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Número Imaginário — História, lógica e fundamentos da matemática</title>
+  <meta name="description" content="Livros e artigos sobre história, lógica e fundamentos da matemática, por Vinícius.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#inicio" class="brand">Nome do Autor</a>
-      <nav class="nav" aria-label="Navegação principal">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
-          <span></span><span></span><span></span>
-        </button>
-        <ul id="nav-menu" class="nav-menu">
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#livros">Livros</a></li>
-          <li><a href="#artigos">Artigos</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
+      <a href="index.html" class="site-title">
+        <span class="site-title-main">Número Imaginário</span>
+        <span class="site-title-sub">História, lógica e fundamentos da matemática</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Abrir menu</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Navegação principal">
+        <a href="index.html" class="is-active">Início</a>
+        <a href="livros.html">Livros</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="inicio" class="hero">
-      <div class="container">
-        <p class="hero-eyebrow">Pesquisador · Escritor</p>
-        <h1 class="hero-title">Nome do Autor</h1>
+
+    <section class="hero">
+      <div class="container container-narrow">
+        <p class="hero-kicker">Um espaço de divulgação</p>
+        <h1 class="hero-title">
+          Sobre as origens, os fundamentos<br>e os limites da matemática.
+        </h1>
         <p class="hero-lead">
-          Pesquisa e escrita sobre <em>sua área de atuação</em>. Aqui reúno meus
-          livros publicados e artigos, organizados para leitura e consulta.
+          Reúno aqui livros e artigos escritos ao longo dos anos sobre história,
+          lógica e fundamentos da matemática &mdash; um convite a pensar os
+          alicerces do que fazemos quando fazemos matemática.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#livros">Ver livros</a>
-          <a class="btn btn-ghost" href="#artigos">Ler artigos</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title">Livros</h2>
+          <a href="livros.html" class="section-link">ver todos &rarr;</a>
+        </header>
+
+        <div class="book-grid">
+          <article class="book-card">
+            <a href="livros.html#limites" class="book-cover">
+              <img src="assets/images/livros/os-limites-da-computacao.jpg"
+                   alt="Capa do livro Os Limites da Computação"
+                   onerror="this.style.display='none'">
+            </a>
+            <div class="book-info">
+              <p class="book-year">2026</p>
+              <h3 class="book-title"><a href="livros.html#limites">Os Limites da Computação</a></h3>
+              <p class="book-desc">
+                Um panorama acessível sobre o que pode e o que não pode ser
+                computado &mdash; de Turing e Church aos resultados modernos
+                da teoria da computabilidade.
+              </p>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <a href="livros.html#axiomatico" class="book-cover">
+              <img src="assets/images/livros/metodo-axiomatico.jpg"
+                   alt="Capa do livro Método Axiomático e Teorias Físicas"
+                   onerror="this.style.display='none'">
+            </a>
+            <div class="book-info">
+              <p class="book-year">2026</p>
+              <h3 class="book-title"><a href="livros.html#axiomatico">Método Axiomático e Teorias Físicas</a></h3>
+              <p class="book-desc">
+                Uma introdução ao método axiomático e à sua aplicação na
+                formulação de teorias físicas, discutindo o papel dos
+                axiomas na construção do conhecimento científico.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="sobre" class="section">
-      <div class="container narrow">
-        <h2 class="section-title">Sobre</h2>
-        <div class="about">
-          <p>
-            Escreva aqui uma breve apresentação em um ou dois parágrafos: sua formação,
-            suas linhas de pesquisa e os temas que atravessam seu trabalho. Mantenha um
-            tom sóbrio e direto — o suficiente para que o leitor entenda o seu percurso.
-          </p>
-          <p>
-            Você pode mencionar instituições, projetos em andamento ou o objetivo desta
-            página: reunir a produção intelectual em um só lugar, de acesso aberto.
-          </p>
-        </div>
-      </div>
-    </section>
+    <section class="section section-alt">
+      <div class="container container-narrow">
+        <header class="section-header">
+          <h2 class="section-title">Artigos recentes</h2>
+          <a href="artigos.html" class="section-link">ver todos &rarr;</a>
+        </header>
 
-    <section id="livros" class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">Livros</h2>
-        <p class="section-intro">Obras publicadas e em preparação.</p>
-        <div class="grid books-grid" id="books-grid"><!-- preenchido via JavaScript --></div>
-      </div>
-    </section>
-
-    <section id="artigos" class="section">
-      <div class="container">
-        <h2 class="section-title">Artigos</h2>
-        <p class="section-intro">Artigos, ensaios e textos avulsos.</p>
-        <ul class="articles" id="articles-list"><!-- preenchido via JavaScript --></ul>
-      </div>
-    </section>
-
-    <section id="contato" class="section section-alt">
-      <div class="container narrow">
-        <h2 class="section-title">Contato</h2>
-        <p class="section-intro">
-          Para contato, colaborações ou acesso a textos completos.
-        </p>
-        <ul class="contact-list">
+        <ul class="article-list-compact">
           <li>
-            <span class="contact-label">GitHub</span>
-            <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">github.com/seu-usuario</a>
+            <a href="artigos.html#dicas-estudo">
+              <span class="article-list-title">Dicas para o Estudo da Matemática</span>
+              <span class="article-list-meta">Ensino &middot; 2023</span>
+            </a>
           </li>
           <li>
-            <span class="contact-label">E-mail</span>
-            <a href="mailto:seu-email@exemplo.com">seu-email@exemplo.com</a>
+            <a href="artigos.html#primeiros-passos">
+              <span class="article-list-title">Primeiros Passos na Lógica</span>
+              <span class="article-list-meta">Lógica &middot; 2018</span>
+            </a>
+          </li>
+          <li>
+            <a href="artigos.html#pais-maravilhas">
+              <span class="article-list-title">Um pouco da matemática do País das Maravilhas</span>
+              <span class="article-list-meta">Literatura &middot; 2018</span>
+            </a>
+          </li>
+          <li>
+            <a href="artigos.html#livros-fundamentais">
+              <span class="article-list-title">Alguns livros fundamentais de matemática</span>
+              <span class="article-list-meta">Bibliografia &middot; 2018</span>
+            </a>
+          </li>
+          <li>
+            <a href="artigos.html#teste-estrela">
+              <span class="article-list-title">O teste da estrela para a validade de silogismos</span>
+              <span class="article-list-meta">Lógica &middot; 2018</span>
+            </a>
           </li>
         </ul>
       </div>
     </section>
+
+    <section class="section">
+      <div class="container container-narrow">
+        <header class="section-header">
+          <h2 class="section-title">Sobre o projeto</h2>
+        </header>
+        <p class="prose">
+          O <em>Número Imaginário</em> é um projeto de divulgação da matemática
+          e de temas afins, ativo desde 2015. Nasceu como um podcast e
+          cresceu para incluir vídeos, cursos e textos escritos. A ênfase
+          está na matemática em si &mdash; sem abandonar o rigor &mdash;,
+          mas sempre atento às suas conexões com a filosofia, a computação
+          e a história das ideias.
+        </p>
+        <p><a href="sobre.html" class="link-arrow">Leia mais &rarr;</a></p>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Nome do Autor. Todos os direitos reservados.</p>
-      <p class="footer-note">Hospedado no GitHub Pages.</p>
+      <p class="footer-copy">&copy; <span id="year"></span> Vinícius &middot; Número Imaginário</p>
+      <p class="footer-links">
+        <a href="contato.html">Contato</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
