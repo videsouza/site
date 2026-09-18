@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poemas — Seu Nome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-poemas">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-name">Seu Nome</span>
+        <span class="brand-tag">Escritor &amp; Pesquisador</span>
+      </a>
+      <nav class="main-nav">
+        <a href="livros.html">Livros</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="poemas.html" class="nav-current">Poemas</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="container">
+        <p class="eyebrow">Criação literária</p>
+        <h1 class="page-title">Poemas</h1>
+        <p class="page-lead">Versos autorais. Selecione um título para ler.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="poems-layout">
+          <ul id="poems-list" class="poems-list"></ul>
+          <article id="poem-viewer" class="poem-viewer" aria-live="polite">
+            <p class="poem-placeholder">Selecione um poema à esquerda.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; <span id="year"></span> Seu Nome</p>
+      <nav class="footer-nav">
+        <a href="index.html">Início</a>
+        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
