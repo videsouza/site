@@ -10,107 +10,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="page-home">
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#topo" class="brand">
-        <span class="brand-name">Seu Nome</span>
-        <span class="brand-tag">Escritor &amp; Pesquisador</span>
-      </a>
-      <nav class="main-nav">
-        <a href="#livros">Livros</a>
-        <a href="#artigos">Artigos</a>
-        <a href="#poemas">Poemas</a>
-        <a href="#sobre">Sobre</a>
+  <main class="home">
+    <div class="home-inner">
+
+      <header class="home-header">
+        <h1 class="home-name">Seu Nome</h1>
+        <p class="home-tag">Escritor &amp; Pesquisador</p>
+      </header>
+
+      <div class="home-rule"></div>
+
+      <nav class="home-nav">
+        <a class="home-link" href="livros.html">
+          <span class="home-link-num">01</span>
+          <span class="home-link-label">Livros</span>
+          <span class="home-link-desc">Publicações em formato longo</span>
+        </a>
+        <a class="home-link" href="artigos.html">
+          <span class="home-link-num">02</span>
+          <span class="home-link-label">Artigos</span>
+          <span class="home-link-desc">Ensaios, capítulos &amp; papers</span>
+        </a>
+        <a class="home-link" href="poemas.html">
+          <span class="home-link-num">03</span>
+          <span class="home-link-label">Poemas</span>
+          <span class="home-link-desc">Versos autorais</span>
+        </a>
+        <a class="home-link" href="sobre.html">
+          <span class="home-link-num">04</span>
+          <span class="home-link-label">Sobre</span>
+          <span class="home-link-desc">Nota biográfica</span>
+        </a>
       </nav>
+
+      <footer class="home-footer">
+        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a>
+        <span class="home-footer-sep">·</span>
+        <a href="mailto:seu@email.com">Contato</a>
+      </footer>
+
     </div>
-  </header>
-
-  <main id="topo">
-
-    <section class="hero">
-      <div class="container">
-        <p class="eyebrow">Bem-vindo</p>
-        <h1 class="hero-title">
-          Escrita como ofício,<br />
-          leitura como método.
-        </h1>
-        <p class="hero-lead">
-          Aqui reúno meus livros publicados, artigos acadêmicos e poemas autorais.
-          Uma pequena biblioteca pessoal, aberta a quem quiser percorrer.
-        </p>
-        <div class="hero-rule"></div>
-      </div>
-    </section>
-
-    <section id="livros" class="section">
-      <div class="container">
-        <header class="section-header">
-          <h2 class="section-title">Livros</h2>
-          <p class="section-subtitle">Publicações em formato longo.</p>
-        </header>
-        <div id="books-grid" class="books-grid"></div>
-      </div>
-    </section>
-
-    <section id="artigos" class="section section-alt">
-      <div class="container">
-        <header class="section-header">
-          <h2 class="section-title">Artigos</h2>
-          <p class="section-subtitle">Ensaios, capítulos e papers revisados por pares.</p>
-        </header>
-        <ul id="articles-list" class="articles-list"></ul>
-      </div>
-    </section>
-
-    <section id="poemas" class="section">
-      <div class="container">
-        <header class="section-header">
-          <h2 class="section-title">Poemas</h2>
-          <p class="section-subtitle">Versos autorais. Clique em um título para ler.</p>
-        </header>
-
-        <div class="poems-layout">
-          <ul id="poems-list" class="poems-list"></ul>
-          <article id="poem-viewer" class="poem-viewer" aria-live="polite">
-            <p class="poem-placeholder">Selecione um poema à esquerda.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="sobre" class="section section-alt">
-      <div class="container about">
-        <header class="section-header">
-          <h2 class="section-title">Sobre</h2>
-        </header>
-        <div class="about-content">
-          <p>
-            Breve biografia. Substitua este texto pela sua apresentação:
-            formação, áreas de interesse, trajetória de pesquisa e criação literária.
-          </p>
-          <p>
-            Pode mencionar orientações, prêmios, residências, projetos em andamento.
-            Mantenha o tom sóbrio e em primeira ou terceira pessoa, conforme preferir.
-          </p>
-          <p class="about-signature">— Seu Nome</p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-copy">&copy; <span id="year"></span> Seu Nome. Todos os textos são de autoria própria.</p>
-      <nav class="footer-nav">
-        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:seu@email.com">Contato</a>
-      </nav>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
