@@ -3,56 +3,1427 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seu Nome — Escritor & Pesquisador</title>
-  <meta name="description" content="Livros, artigos acadêmicos e poemas autorais." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Seu Nome — Portfólio Acadêmico</title>
+  <meta name="description" content="Portfólio acadêmico e profissional: pesquisa, serviços, publicações e sistemas desenvolvidos." />
+  <meta name="theme-color" content="#0a66c2" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+
+  <style>
+    /* ============================================================
+       1. VARIÁVEIS E RESET
+       ============================================================ */
+    :root {
+      --bg:          #f4f6f9;
+      --surface:     #ffffff;
+      --surface-alt: #fcfdfe;
+      --border:      #e4e8ee;
+      --text:        #151b23;
+      --muted:       #5b6672;
+      --blue:        #0a66c2;
+      --blue-dark:   #0b4f92;
+      --blue-soft:   #eaf2fb;
+      --radius:      14px;
+      --shadow-sm:   0 1px 2px rgba(16, 24, 40, .05);
+      --shadow-md:   0 4px 16px rgba(16, 24, 40, .08);
+      --max:         940px;
+      --nav-h:       62px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--blue); }
+
+    [hidden] { display: none !important; }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ============================================================
+       2. NAVEGAÇÃO
+       ============================================================ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, .88);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      height: var(--nav-h);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav__brand {
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: -.01em;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav__brand span { color: var(--blue); }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav__links a {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+
+    .nav__links a:hover {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .nav__links a.active {
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-weight: 650;
+    }
+
+    .nav__toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      cursor: pointer;
+      place-items: center;
+      color: var(--text);
+    }
+
+    .nav__toggle svg { width: 20px; height: 20px; }
+
+    /* ============================================================
+       3. LAYOUT
+       ============================================================ */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 20px 72px;
+      display: grid;
+      gap: 20px;
+    }
+
+    section[id], header[id] { scroll-margin-top: calc(var(--nav-h) + 18px); }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px 34px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section__label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin: 0 0 6px;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      line-height: 1.3;
+      margin: 0 0 22px;
+      letter-spacing: -.015em;
+    }
+
+    .card p { margin: 0 0 14px; }
+    .card p:last-child { margin-bottom: 0; }
+
+    .muted { color: var(--muted); }
+
+    /* ============================================================
+       4. HERO
+       ============================================================ */
+    .hero {
+      display: flex;
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .hero__avatar {
+      flex: 0 0 96px;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--blue) 0%, #1e88e5 100%);
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      user-select: none;
+    }
+
+    .hero__info { flex: 1; min-width: 0; }
+
+    .hero h1 {
+      font-size: 1.75rem;
+      line-height: 1.2;
+      margin: 4px 0 6px;
+      letter-spacing: -.02em;
+    }
+
+    .hero__role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin: 0 0 6px;
+    }
+
+    .hero__meta {
+      font-size: .875rem;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .hero__meta span + span::before {
+      content: "·";
+      margin: 0 7px;
+      color: var(--border);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ============================================================
+       5. BOTÕES E CHIPS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 17px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-family: inherit;
+      font-size: .85rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, transform .15s;
+    }
+
+    .btn:hover {
+      background: #f8fafc;
+      border-color: #c9d7e8;
+    }
+
+    .btn--primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .chip {
+      font-family: inherit;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .chip:hover { border-color: #c9d7e8; color: var(--blue); }
+
+    .chip.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tags span {
+      font-size: .72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: #f1f4f7;
+      color: var(--muted);
+    }
+
+    /* ============================================================
+       6. LISTAS / TIMELINE
+       ============================================================ */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .item {
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .item:last-child { padding-bottom: 0; }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2.5px solid var(--blue);
+    }
+
+    .item__head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px 14px;
+    }
+
+    .item h3 {
+      font-size: 1rem;
+      margin: 0;
+      letter-spacing: -.01em;
+    }
+
+    .item__period {
+      font-size: .78rem;
+      font-weight: 650;
+      color: var(--blue);
+      background: var(--blue-soft);
+      padding: 2px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .item__org {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin: 3px 0 8px;
+    }
+
+    .item__desc {
+      margin: 0;
+      padding-left: 18px;
+      font-size: .895rem;
+      color: var(--muted);
+    }
+
+    .item__desc li { margin-bottom: 4px; }
+    .item__desc li::marker { color: #c3ccd6; }
+
+    /* ============================================================
+       7. SERVIÇOS
+       ============================================================ */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      gap: 14px;
+    }
+
+    .service {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 17px 19px;
+      background: var(--surface-alt);
+      transition: border-color .15s, background .15s;
+    }
+
+    .service:hover {
+      border-color: #c9d7e8;
+      background: #f8fbff;
+    }
+
+    .service__icon {
+      font-size: 1.15rem;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .service h3 {
+      font-size: .93rem;
+      margin: 0 0 6px;
+      letter-spacing: -.005em;
+    }
+
+    .service p {
+      margin: 0;
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       8. PUBLICAÇÕES
+       ============================================================ */
+    .pub {
+      display: flex;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub:first-of-type { padding-top: 4px; }
+    .pub:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+    .pub__year {
+      flex: 0 0 46px;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--blue);
+      padding-top: 3px;
+    }
+
+    .pub__body { flex: 1; min-width: 0; }
+
+    .pub h3 {
+      font-size: .97rem;
+      line-height: 1.45;
+      margin: 0 0 5px;
+      letter-spacing: -.005em;
+    }
+
+    .pub__authors {
+      font-size: .84rem;
+      color: var(--muted);
+      margin: 0 0 3px;
+    }
+
+    .pub__venue {
+      font-size: .84rem;
+      font-style: italic;
+      color: var(--muted);
+      margin: 0 0 9px;
+    }
+
+    .pub__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .pub__links a {
+      font-size: .78rem;
+      font-weight: 650;
+      text-decoration: none;
+      padding: 4px 11px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      color: var(--blue);
+      transition: background .15s, border-color .15s;
+    }
+
+    .pub__links a:hover {
+      background: var(--blue-soft);
+      border-color: #c9d7e8;
+    }
+
+    /* ============================================================
+       9. SISTEMAS E APLICATIVOS
+       ============================================================ */
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .app {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 19px 20px;
+      background: var(--surface-alt);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .app:hover {
+      transform: translateY(-3px);
+      border-color: #c9d7e8;
+      box-shadow: var(--shadow-md);
+    }
+
+    .app__icon {
+      font-size: 1.25rem;
+      line-height: 1;
+      margin-bottom: 11px;
+    }
+
+    .app h3 {
+      font-size: .95rem;
+      margin: 0 0 7px;
+      letter-spacing: -.005em;
+    }
+
+    .app p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 12px;
+      flex: 1;
+    }
+
+    .app__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .app__links a {
+      font-size: .78rem;
+      font-weight: 650;
+      text-decoration: none;
+      color: var(--blue);
+    }
+
+    .app__links a:hover { text-decoration: underline; }
+
+    /* ============================================================
+       10. CONTATO
+       ============================================================ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 14px 17px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-alt);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .15s, background .15s;
+    }
+
+    .contact-item:hover {
+      border-color: #c9d7e8;
+      background: var(--blue-soft);
+    }
+
+    .contact-item__icon {
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: .95rem;
+    }
+
+    .contact-item__text { min-width: 0; }
+
+    .contact-item__text small {
+      display: block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1px;
+    }
+
+    .contact-item__text strong {
+      display: block;
+      font-size: .875rem;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .contact-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-cta p {
+      flex: 1 1 260px;
+      font-size: .875rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ============================================================
+       11. RODAPÉ / VOLTAR AO TOPO
+       ============================================================ */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .footer__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 20px;
+      font-size: .8rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      justify-content: space-between;
+    }
+
+    .footer a { color: var(--muted); text-decoration: none; }
+    .footer a:hover { color: var(--blue); }
+
+    .to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--blue);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity .2s, transform .2s, visibility .2s;
+      z-index: 90;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .to-top svg { width: 18px; height: 18px; }
+
+    /* ============================================================
+       12. RESPONSIVO
+       ============================================================ */
+    @media (max-width: 860px) {
+      .nav__toggle { display: grid; }
+
+      .nav__links {
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        padding: 10px 14px 18px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+        display: none;
+      }
+
+      .nav__links.open { display: flex; }
+
+      .nav__links a { padding: 11px 14px; font-size: .9rem; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { padding: 20px 14px 60px; }
+      .card { padding: 24px 20px; }
+
+      .hero {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero__avatar { flex: 0 0 80px; width: 80px; height: 80px; font-size: 1.6rem; }
+      .hero h1 { font-size: 1.45rem; }
+      .hero__actions { justify-content: center; }
+
+      .pub { flex-direction: column; gap: 6px; }
+      .pub__year { padding-top: 0; }
+
+      .to-top { right: 14px; bottom: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
-<body class="page-home">
 
-  <main class="home">
-    <div class="home-inner">
+<body>
 
-      <header class="home-header">
-        <h1 class="home-name">VINICIVS</h1>
-        <p class="home-tag">Escritor &amp; Pesquisador</p>
-      </header>
+  <!-- ==================== NAVEGAÇÃO ==================== -->
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#topo">Seu Nome<span>.</span></a>
 
-      <div class="home-rule"></div>
+      <button class="nav__toggle" id="navToggle"
+              aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
 
-      <nav class="home-nav">
-        <a class="home-link" href="livros.html">
-          <span class="home-link-num">01</span>
-          <span class="home-link-label">Livros</span>
-          <span class="home-link-desc">Publicações em formato longo</span>
-        </a>
-        <a class="home-link" href="artigos.html">
-          <span class="home-link-num">02</span>
-          <span class="home-link-label">Artigos</span>
-          <span class="home-link-desc">Ensaios, capítulos &amp; papers</span>
-        </a>
-        <a class="home-link" href="poemas.html">
-          <span class="home-link-num">03</span>
-          <span class="home-link-label">Poemas</span>
-          <span class="home-link-desc">Versos autorais</span>
-        </a>
-        <a class="home-link" href="sobre.html">
-          <span class="home-link-num">04</span>
-          <span class="home-link-label">Sobre</span>
-          <span class="home-link-desc">Nota biográfica</span>
-        </a>
-      </nav>
-
-      <footer class="home-footer">
-        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a>
-        <span class="home-footer-sep">·</span>
-        <a href="mailto:seu@email.com">Contato</a>
-      </footer>
-
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#publicacoes">Publicações</a></li>
+        <li><a href="#sistemas">Sistemas</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
     </div>
+  </nav>
+
+  <main class="wrap" id="topo">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="card hero">
+      <div class="hero__avatar" aria-hidden="true">SN</div>
+
+      <div class="hero__info">
+        <h1>Seu Nome</h1>
+        <p class="hero__role">Pesquisador · Cientista de Dados · Desenvolvedor</p>
+        <p class="hero__meta">
+          <span>Universidade Exemplo</span>
+          <span>Cidade, Brasil</span>
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contato">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/>
+            </svg>
+            Entrar em contato
+          </a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Currículo Lattes</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== SOBRE ==================== -->
+    <section class="card" id="sobre">
+      <span class="section__label">Apresentação</span>
+      <h2>Sobre</h2>
+
+      <p>
+        Sou pesquisador e desenvolvedor com interesse na interseção entre
+        <strong>ciência de dados</strong>, <strong>computação aplicada</strong> e
+        <strong>métodos quantitativos</strong>. Atuo no desenvolvimento de soluções
+        computacionais para problemas científicos e na análise de grandes volumes de dados.
+      </p>
+      <p class="muted">
+        Minha pesquisa concentra-se em aprendizado de máquina aplicado, visualização de dados
+        e infraestrutura reprodutível para experimentos computacionais. Tenho experiência
+        tanto no ambiente acadêmico quanto em projetos de consultoria e desenvolvimento de software.
+      </p>
+
+      <div class="tags">
+        <span>Aprendizado de Máquina</span>
+        <span>Ciência de Dados</span>
+        <span>Python</span>
+        <span>R</span>
+        <span>Visualização de Dados</span>
+        <span>Computação Científica</span>
+        <span>SQL</span>
+        <span>Cloud Computing</span>
+      </div>
+    </section>
+
+    <!-- ==================== SERVIÇOS ==================== -->
+    <section class="card" id="servicos">
+      <span class="section__label">Atuação profissional</span>
+      <h2>Serviços</h2>
+
+      <div class="grid-2">
+        <article class="service">
+          <div class="service__icon" aria-hidden="true">🔬</div>
+          <h3>Consultoria em Análise de Dados</h3>
+          <p>Modelagem estatística, mineração de dados e construção de indicadores para apoio à decisão.</p>
+        </article>
+
+        <article class="service">
+          <div class="service__icon" aria-hidden="true">💻</div>
+          <h3>Desenvolvimento de Software Científico</h3>
+          <p>Aplicações web, pipelines de processamento e ferramentas computacionais sob medida.</p>
+        </article>
+
+        <article class="service">
+          <div class="service__icon" aria-hidden="true">📝</div>
+          <h3>Revisão e Escrita Científica</h3>
+          <p>Revisão técnica de artigos, estruturação metodológica e adequação a normas de publicação.</p>
+        </article>
+
+        <article class="service">
+          <div class="service__icon" aria-hidden="true">🎓</div>
+          <h3>Treinamentos e Minicursos</h3>
+          <p>Capacitação em Python, estatística aplicada, análise de dados e boas práticas de pesquisa reproduzível.</p>
+        </article>
+
+        <article class="service">
+          <div class="service__icon" aria-hidden="true">📊</div>
+          <h3>Visualização e Dashboards</h3>
+          <p>Criação de painéis interativos e relatórios visuais para comunicação de resultados complexos.</p>
+        </article>
+
+        <article class="service">
+          <div class="service__icon" aria-hidden="true">🧭</div>
+          <h3>Parecer Técnico e Ad Hoc</h3>
+          <p>Avaliação de artigos, projetos de pesquisa e relatórios técnicos em áreas correlatas.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== EXPERIÊNCIA ==================== -->
+    <section class="card" id="experiencia">
+      <span class="section__label">Trajetória</span>
+      <h2>Experiência</h2>
+
+      <div class="timeline">
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Pesquisador Pós-Doutorando</h3>
+            <span class="item__period">2023 — Atual</span>
+          </div>
+          <p class="item__org">Universidade Exemplo · Cidade, Brasil</p>
+          <ul class="item__desc">
+            <li>Coordenação de projeto de pesquisa em aprendizado de máquina aplicado.</li>
+            <li>Desenvolvimento de pipelines reprodutíveis para análise de dados experimentais.</li>
+            <li>Orientação de estudantes de iniciação científica e mestrado.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Cientista de Dados</h3>
+            <span class="item__period">2020 — 2023</span>
+          </div>
+          <p class="item__org">Empresa Exemplo S.A. · Remoto</p>
+          <ul class="item__desc">
+            <li>Construção de modelos preditivos para otimização de processos internos.</li>
+            <li>Implementação de dashboards e sistemas de monitoramento em tempo real.</li>
+            <li>Estruturação de infraestrutura de dados e boas práticas de versionamento.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Professor Substituto</h3>
+            <span class="item__period">2018 — 2020</span>
+          </div>
+          <p class="item__org">Instituto Federal Exemplo · Cidade, Brasil</p>
+          <ul class="item__desc">
+            <li>Docência em disciplinas de programação, banco de dados e estatística.</li>
+            <li>Elaboração de material didático e atividades práticas em laboratório.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Desenvolvedor de Software</h3>
+            <span class="item__period">2015 — 2018</span>
+          </div>
+          <p class="item__org">Startup Exemplo · Cidade, Brasil</p>
+          <ul class="item__desc">
+            <li>Desenvolvimento full-stack de aplicações web e APIs REST.</li>
+            <li>Automação de rotinas de integração e processamento de dados.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== FORMAÇÃO ==================== -->
+    <section class="card" id="formacao">
+      <span class="section__label">Educação</span>
+      <h2>Formação Acadêmica</h2>
+
+      <div class="timeline">
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Doutorado em Ciência da Computação</h3>
+            <span class="item__period">2019 — 2023</span>
+          </div>
+          <p class="item__org">Universidade Exemplo</p>
+          <ul class="item__desc">
+            <li>Tese: “Métodos computacionais para análise de dados complexos”.</li>
+            <li>Área de concentração: Inteligência Artificial e Ciência de Dados.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Mestrado em Estatística Aplicada</h3>
+            <span class="item__period">2017 — 2019</span>
+          </div>
+          <p class="item__org">Universidade Exemplo</p>
+          <ul class="item__desc">
+            <li>Dissertação: “Modelos estatísticos aplicados a séries temporais”.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Especialização em Ciência de Dados</h3>
+            <span class="item__period">2016 — 2017</span>
+          </div>
+          <p class="item__org">Instituição Exemplo</p>
+          <ul class="item__desc">
+            <li>Ênfase em aprendizado de máquina e engenharia de dados.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item__head">
+            <h3>Bacharelado em Sistemas de Informação</h3>
+            <span class="item__period">2011 — 2015</span>
+          </div>
+          <p class="item__org">Universidade Exemplo</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== PUBLICAÇÕES ==================== -->
+    <section class="card" id="publicacoes">
+      <span class="section__label">Produção científica</span>
+      <h2>Publicações</h2>
+
+      <div class="chips" role="group" aria-label="Filtrar publicações por tipo">
+        <button class="chip active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="artigo">Artigos</button>
+        <button class="chip" data-filter="conferencia">Conferências</button>
+        <button class="chip" data-filter="capitulo">Capítulos</button>
+      </div>
+
+      <div class="pubs">
+
+        <article class="pub" data-type="artigo">
+          <div class="pub__year">2024</div>
+          <div class="pub__body">
+            <h3>Um método escalável para análise de dados experimentais em larga escala</h3>
+            <p class="pub__authors">SEU NOME; Silva, A. B.; Souza, C. D.</p>
+            <p class="pub__venue">Revista Brasileira de Computação Aplicada, v. 16, n. 2, p. 45–62</p>
+            <div class="pub__links">
+              <span class="badge">Artigo</span>
+              <a href="#" target="_blank" rel="noopener">DOI</a>
+              <a href="#" target="_blank" rel="noopener">PDF</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub" data-type="artigo">
+          <div class="pub__year">2023</div>
+          <div class="pub__body">
+            <h3>Avaliação de modelos de aprendizado de máquina para séries temporais não estacionárias</h3>
+            <p class="pub__authors">SEU NOME; Oliveira, E. F.</p>
+            <p class="pub__venue">Journal of Applied Data Science, v. 9, n. 4, p. 210–228</p>
+            <div class="pub__links">
+              <span class="badge">Artigo</span>
+              <a href="#" target="_blank" rel="noopener">DOI</a>
+              <a href="#" target="_blank" rel="noopener">PDF</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub" data-type="conferencia">
+          <div class="pub__year">2023</div>
+          <div class="pub__body">
+            <h3>Reprodutibilidade em pipelines de ciência de dados: um estudo de caso</h3>
+            <p class="pub__authors">SEU NOME; Costa, G. H.; Lima, M. R.</p>
+            <p class="pub__venue">Anais do Congresso Brasileiro de Computação — CBComp 2023, p. 112–121</p>
+            <div class="pub__links">
+              <span class="badge">Conferência</span>
+              <a href="#" target="_blank" rel="noopener">DOI</a>
+              <a href="#" target="_blank" rel="noopener">Slides</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub" data-type="capitulo">
+          <div class="pub__year">2022</div>
+          <div class="pub__body">
+            <h3>Visualização de dados como ferramenta de comunicação científica</h3>
+            <p class="pub__authors">SEU NOME; Pereira, L. M.</p>
+            <p class="pub__venue">In: Métodos Contemporâneos em Pesquisa Quantitativa. Editora Exemplo, cap. 7, p. 143–168</p>
+            <div class="pub__links">
+              <span class="badge">Capítulo</span>
+              <a href="#" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub" data-type="conferencia">
+          <div class="pub__year">2022</div>
+          <div class="pub__body">
+            <h3>Otimização de consultas analíticas em ambientes distribuídos</h3>
+            <p class="pub__authors">SEU NOME; Almeida, R. S.; Nunes, T. P.</p>
+            <p class="pub__venue">Anais do Simpósio Brasileiro de Banco de Dados — SBBD 2022, p. 88–97</p>
+            <div class="pub__links">
+              <span class="badge">Conferência</span>
+              <a href="#" target="_blank" rel="noopener">DOI</a>
+              <a href="#" target="_blank" rel="noopener">PDF</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub" data-type="capitulo">
+          <div class="pub__year">2021</div>
+          <div class="pub__body">
+            <h3>Introdução à computação científica com Python</h3>
+            <p class="pub__authors">SEU NOME; Ferreira, J. K.</p>
+            <p class="pub__venue">In: Fundamentos de Programação para Pesquisadores. Editora Exemplo, cap. 3, p. 51–84</p>
+            <div class="pub__links">
+              <span class="badge">Capítulo</span>
+              <a href="#" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== SISTEMAS E APLICATIVOS ==================== -->
+    <section class="card" id="sistemas">
+      <span class="section__label">Desenvolvimento</span>
+      <h2>Sistemas e Aplicativos</h2>
+
+      <div class="apps">
+
+        <article class="app">
+          <div class="app__icon" aria-hidden="true">📈</div>
+          <h3>DataViz Toolkit</h3>
+          <p>Biblioteca em Python para geração automatizada de gráficos e relatórios analíticos.</p>
+          <div class="tags">
+            <span>Python</span><span>Matplotlib</span><span>Pandas</span>
+          </div>
+          <div class="app__links">
+            <a href="#" target="_blank" rel="noopener">Repositório →</a>
+            <a href="#" target="_blank" rel="noopener">Documentação →</a>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app__icon" aria-hidden="true">🧪</div>
+          <h3>LabManager</h3>
+          <p>Sistema web para gestão de experimentos, amostras e registros de laboratório.</p>
+          <div class="tags">
+            <span>Node.js</span><span>PostgreSQL</span><span>React</span>
+          </div>
+          <div class="app__links">
+            <a href="#" target="_blank" rel="noopener">Repositório →</a>
+            <a href="#" target="_blank" rel="noopener">Demo →</a>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app__icon" aria-hidden="true">🔍</div>
+          <h3>SciSearch</h3>
+          <p>Ferramenta de busca e mineração de artigos científicos com indexação semântica.</p>
+          <div class="tags">
+            <span>Python</span><span>Elasticsearch</span><span>NLP</span>
+          </div>
+          <div class="app__links">
+            <a href="#" target="_blank" rel="noopener">Repositório →</a>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app__icon" aria-hidden="true">📊</div>
+          <h3>Dashboard Analítico</h3>
+          <p>Painel interativo para acompanhamento de indicadores em tempo real.</p>
+          <div class="tags">
+            <span>Dash</span><span>Plotly</span><span>Docker</span>
+          </div>
+          <div class="app__links">
+            <a href="#" target="_blank" rel="noopener">Demo →</a>
+            <a href="#" target="_blank" rel="noopener">Repositório →</a>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app__icon" aria-hidden="true">⚙️</div>
+          <h3>AutoPipe</h3>
+          <p>Framework para orquestração de pipelines de processamento de dados científicos.</p>
+          <div class="tags">
+            <span>Python</span><span>Airflow</span><span>CLI</span>
+          </div>
+          <div class="app__links">
+            <a href="#" target="_blank" rel="noopener">Repositório →</a>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app__icon" aria-hidden="true">📱</div>
+          <h3>App de Coleta de Campo</h3>
+          <p>Aplicativo móvel para registro offline de dados em pesquisas de campo.</p>
+          <div class="tags">
+            <span>Flutter</span><span>SQLite</span><span>REST API</span>
+          </div>
+          <div class="app__links">
+            <a href="#" target="_blank" rel="noopener">Repositório →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== CONTATO ==================== -->
+    <section class="card" id="contato">
+      <span class="section__label">Vamos conversar</span>
+      <h2>Contato</h2>
+
+      <div class="contact-grid">
+
+        <a class="contact-item" href="mailto:seu.email@exemplo.com">
+          <span class="contact-item__icon" aria-hidden="true">✉</span>
+          <span class="contact-item__text">
+            <small>E-mail</small>
+            <strong>seu.email@exemplo.com</strong>
+          </span>
+        </a>
+
+        <a class="contact-item" href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noopener">
+          <span class="contact-item__icon" aria-hidden="true">in</span>
+          <span class="contact-item__text">
+            <small>LinkedIn</small>
+            <strong>/in/seu-perfil</strong>
+          </span>
+        </a>
+
+        <a class="contact-item" href="https://github.com/seu-usuario" target="_blank" rel="noopener">
+          <span class="contact-item__icon" aria-hidden="true">⌥</span>
+          <span class="contact-item__text">
+            <small>GitHub</small>
+            <strong>@seu-usuario</strong>
+          </span>
+        </a>
+
+        <a class="contact-item" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">
+          <span class="contact-item__icon" aria-hidden="true">iD</span>
+          <span class="contact-item__text">
+            <small>ORCID</small>
+            <strong>0000-0000-0000-0000</strong>
+          </span>
+        </a>
+
+        <a class="contact-item" href="http://lattes.cnpq.br/" target="_blank" rel="noopener">
+          <span class="contact-item__icon" aria-hidden="true">📄</span>
+          <span class="contact-item__text">
+            <small>Currículo Lattes</small>
+            <strong>Ver currículo</strong>
+          </span>
+        </a>
+
+        <a class="contact-item" href="#" target="_blank" rel="noopener">
+          <span class="contact-item__icon" aria-hidden="true">📚</span>
+          <span class="contact-item__text">
+            <small>Google Scholar</small>
+            <strong>Perfil acadêmico</strong>
+          </span>
+        </a>
+
+      </div>
+
+      <div class="contact-cta">
+        <p>
+          Estou aberto a colaborações em pesquisa, projetos de consultoria e
+          desenvolvimento de soluções computacionais.
+        </p>
+        <button class="btn btn--primary" id="copyEmail" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+          <span id="copyEmailLabel">Copiar e-mail</span>
+        </button>
+      </div>
+    </section>
+
   </main>
 
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>© <span id="anoAtual"></span> Seu Nome. Todos os direitos reservados.</span>
+      <span>Feito com HTML, CSS e JavaScript · <a href="#topo">Voltar ao topo</a></span>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ==========================================================
+         1. MENU MOBILE
+         ========================================================== */
+      const navToggle = document.getElementById('navToggle');
+      const navLinks  = document.getElementById('navLinks');
+
+      function closeMenu() {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menu');
+      }
+
+      navToggle.addEventListener('click', function () {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      });
+
+      navLinks.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') closeMenu();
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!navLinks.classList.contains('open')) return;
+        if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) closeMenu();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      /* ==========================================================
+         2. SCROLLSPY — destaca o link da seção visível
+         ========================================================== */
+      const links = Array.prototype.slice.call(
+        document.querySelectorAll('.nav__links a[href^="#"]')
+      );
+
+      const linkMap = new Map(
+        links.map(function (a) { return [a.getAttribute('href').slice(1), a]; })
+      );
+
+      const sections = Array.prototype.slice.call(
+        document.querySelectorAll('main section[id]')
+      );
+
+      if ('IntersectionObserver' in window && sections.length) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            links.forEach(function (a) { a.classList.remove('active'); });
+            const active = linkMap.get(entry.target.id);
+            if (active) active.classList.add('active');
+          });
+        }, {
+          rootMargin: '-45% 0px -50% 0px',
+          threshold: 0
+        });
+
+        sections.forEach(function (s) { observer.observe(s); });
+      }
+
+      /* ==========================================================
+         3. FILTRO DE PUBLICAÇÕES
+         ========================================================== */
+      const chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+      const pubs  = Array.prototype.slice.call(document.querySelectorAll('.pub'));
+
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          chips.forEach(function (c) { c.classList.remove('active'); });
+          chip.classList.add('active');
+
+          const filter = chip.dataset.filter;
+
+          pubs.forEach(function (pub) {
+            const match = filter === 'all' || pub.dataset.type === filter;
+            pub.hidden = !match;
+          });
+        });
+      });
+
+      /* ==========================================================
+         4. COPIAR E-MAIL
+         ========================================================== */
+      const EMAIL = 'seu.email@exemplo.com';
+      const copyBtn = document.getElementById('copyEmail');
+      const copyLabel = document.getElementById('copyEmailLabel');
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          const done = function () {
+            const original = copyLabel.textContent;
+            copyLabel.textContent = 'Copiado!';
+            copyBtn.disabled = true;
+            setTimeout(function () {
+              copyLabel.textContent = original;
+              copyBtn.disabled = false;
+            }, 1800);
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(EMAIL).then(done).catch(fallback);
+          } else {
+            fallback();
+          }
+
+          function fallback() {
+            const input = document.createElement('textarea');
+            input.value = EMAIL;
+            input.setAttribute('readonly', '');
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            document.body.appendChild(input);
+            input.select();
+            try { document.execCommand('copy'); done(); } catch (err) { /* silencioso */ }
+            document.body.removeChild(input);
+          }
+        });
+      }
+
+      /* ==========================================================
+         5. BOTÃO VOLTAR AO TOPO
+         ========================================================== */
+      const toTop = document.getElementById('toTop');
+
+      function handleScroll() {
+        toTop.classList.toggle('show', window.scrollY > 480);
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      toTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* ==========================================================
+         6. ANO NO RODAPÉ
+         ========================================================== */
+      document.getElementById('anoAtual').textContent = new Date().getFullYear();
+
+    })();
+  </script>
 </body>
 </html>
