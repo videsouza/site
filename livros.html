@@ -1,57 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Livros — Seu Nome</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Livros — Nome Sobrenome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="page-livros">
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <span class="brand-name">Seu Nome</span>
-        <span class="brand-tag">Escritor &amp; Pesquisador</span>
-      </a>
-      <nav class="main-nav">
-        <a href="livros.html" class="nav-current">Livros</a>
-        <a href="artigos.html">Artigos</a>
-        <a href="poemas.html">Poemas</a>
-        <a href="sobre.html">Sobre</a>
+    <div class="header-inner">
+      <a class="brand" href="index.html">Nome Sobrenome</a>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
+        <span></span>
+      </button>
+      <nav class="nav" id="menu-principal" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="livros.html" class="active">Livros</a></li>
+          <li><a href="apps.html">Apps &amp; Sistemas</a></li>
+          <li><a href="guias.html">Guias &amp; Manuais</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="page-intro">
-      <div class="container">
-        <p class="eyebrow">Biblioteca</p>
-        <h1 class="page-title">Livros</h1>
-        <p class="page-lead">Publicações em formato longo — ensaios, monografias e obras de criação.</p>
+  <main id="conteudo">
+    <section class="hero">
+      <div class="container reveal">
+        <p class="eyebrow">Publicações</p>
+        <h1>Livros e capítulos publicados.</h1>
+        <p class="lead">
+          Obras autorais, coletâneas organizadas e capítulos em volumes temáticos.
+        </p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <div id="books-grid" class="books-grid"></div>
+      <div class="container content-list reveal">
+
+        <article class="content-item">
+          <p class="meta">Livro autoral · 2024</p>
+          <h3>Título do Livro Principal</h3>
+          <p>Resumo breve da obra, com a temática central, abordagem metodológica e público-alvo. Editora Exemplo, 320 p.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Ver na editora</a>
+          </div>
+        </article>
+
+        <article class="content-item">
+          <p class="meta">Coletânea organizada · 2023</p>
+          <h3>Temas Contemporâneos em [Área]</h3>
+          <p>Volume organizado com capítulos de diversos autores, cobrindo perspectivas teóricas e estudos de caso. Editora Exemplo.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="content-item">
+          <p class="meta">Capítulo · 2022</p>
+          <h3>Métodos aplicados em contextos reais</h3>
+          <p>Capítulo no livro "Coletânea de Estudos Aplicados", discutindo a integração entre teoria e prática em projetos de pesquisa.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Baixar pré-print</a>
+          </div>
+        </article>
+
+        <article class="content-item">
+          <p class="meta">Livro técnico · 2021</p>
+          <h3>Fundamentos de [Tema Técnico]</h3>
+          <p>Introdução acessível ao tema, com exemplos práticos, exercícios e material complementar online.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Ver na Amazon</a>
+          </div>
+        </article>
+
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-copy">&copy; <span id="year"></span> Seu Nome</p>
-      <nav class="footer-nav">
-        <a href="index.html">Início</a>
-        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a>
-      </nav>
+      <p>© <span data-year>2025</span> Nome Sobrenome. Todos os direitos reservados.</p>
+      <ul class="footer-links">
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="livros.html">Livros</a></li>
+        <li><a href="apps.html">Apps</a></li>
+        <li><a href="guias.html">Guias</a></li>
+      </ul>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
