@@ -3,177 +3,212 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vinicius A. de Souza</title>
-  <meta name="description" content="Portfólio acadêmico e profissional: serviços, livros publicados, aplicativos e sistemas, guias de estudo e manuais.">
-
+  <title>Nome Sobrenome — Pesquisa, ensino e software</title>
+  <meta name="description" content="Portfólio de Nome Sobrenome: serviços, livros, aplicativos, guias e manuais.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index.html">VINICIVS</a>
+  <!-- Faixa vertical dourada fixa -->
+  <div class="rail" aria-hidden="true"></div>
 
-      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
-        <span></span>
-      </button>
+  <!-- Navegação lateral fixa (desktop) -->
+  <nav class="side-nav" aria-label="Seções">
+    <a href="#inicio" class="dot" data-label="Início"></a>
+    <a href="#servicos" class="dot" data-label="Serviços"></a>
+    <a href="#livros" class="dot" data-label="Livros"></a>
+    <a href="#apps" class="dot" data-label="Apps"></a>
+    <a href="#guias" class="dot" data-label="Guias"></a>
+    <a href="#contato" class="dot" data-label="Contato"></a>
+  </nav>
 
-      <nav class="nav" id="menu-principal" aria-label="Navegação principal">
-        <ul>
-          <li><a href="index.html" class="active">Início</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="livros.html">Livros</a></li>
-          <li><a href="apps.html">Apps &amp; Sistemas</a></li>
-          <li><a href="guias.html">Guias &amp; Manuais</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <main id="inicio">
 
-  <main id="conteudo">
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <p class="mark">Portfólio — <span data-year>2025</span></p>
 
-    <!-- ===================== HERO ===================== -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">Portfólio acadêmico e profissional</p>
-          <h1>Pesquisa, ensino e desenvolvimento de soluções.</h1>
-          <p class="lead">
-            Sou <strong>Vinicius A. de Souza</strong>. Reúno neste espaço
-            meus serviços de consultoria, livros publicados, aplicativos e sistemas que
-            desenvolvi, além de guias de estudo e manuais disponíveis para download.
-          </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#areas">Explorar conteúdos <span class="arrow">→</span></a>
-            <a class="btn btn-ghost" href="guias.html">Baixar materiais</a>
-          </div>
-        </div>
+      <h1>
+        Nome<br>
+        Sobrenome<span class="ponto">.</span>
+      </h1>
 
-        <aside class="hero-aside reveal">
-          <div class="stat">
-            <div class="stat-num">12+</div>
-            <div class="stat-label">Anos de experiência acadêmica</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">08</div>
-            <div class="stat-label">Livros e capítulos publicados</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">20+</div>
-            <div class="stat-label">Sistemas e aplicações entregues</div>
-          </div>
-        </aside>
-      </div>
+      <p class="sub">
+        Pesquisa aplicada, ensino e software. <br>
+        Uma seleção enxuta do que faço.
+      </p>
+
+      <a class="scroll" href="#servicos">
+        <span class="scroll-line"></span>
+        <span class="scroll-label">Desça</span>
+      </a>
+    </header>
+
+    <!-- ============ SERVIÇOS ============ -->
+    <section class="block" id="servicos">
+      <span class="num" aria-hidden="true">01</span>
+      <h2>Serviços</h2>
+      <p class="intro">
+        Consultoria, mentoria e desenvolvimento — em projetos que unem rigor
+        metodológico e solução técnica.
+      </p>
+
+      <ul class="lines">
+        <li>
+          <span class="lbl">Pesquisa</span>
+          <span class="val">Desenho de pesquisa, métodos e revisão de propostas.</span>
+        </li>
+        <li>
+          <span class="lbl">Dados</span>
+          <span class="val">Análise estatística, visualização e relatórios.</span>
+        </li>
+        <li>
+          <span class="lbl">Ensino</span>
+          <span class="val">Mentoria acadêmica e preparação para defesa.</span>
+        </li>
+        <li>
+          <span class="lbl">Software</span>
+          <span class="val">Sistemas web sob demanda e automação de rotinas.</span>
+        </li>
+        <li>
+          <span class="lbl">Formação</span>
+          <span class="val">Oficinas e cursos sobre métodos e ferramentas.</span>
+        </li>
+      </ul>
     </section>
 
-    <!-- ===================== ÁREAS ===================== -->
-    <section class="section" id="areas">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Navegue por área</p>
-          <h2>Quatro frentes de trabalho</h2>
-          <p>Cada seção reúne conteúdos específicos, com detalhes, publicações e arquivos para download.</p>
-        </div>
+    <!-- ============ LIVROS ============ -->
+    <section class="block" id="livros">
+      <span class="num" aria-hidden="true">02</span>
+      <h2>Livros<br>publicados</h2>
+      <p class="intro">
+        Obras autorais, coletâneas organizadas e capítulos em volumes temáticos.
+      </p>
 
-        <div class="cards reveal">
-
-          <a class="card" href="servicos.html">
-            <span class="card-index">01</span>
-            <h3>Serviços oferecidos</h3>
-            <p>Consultoria em pesquisa, análise de dados, mentoria acadêmica, desenvolvimento sob demanda e formação de equipes.</p>
-            <span class="card-more">Ver serviços <span class="arrow">→</span></span>
-          </a>
-
-          <a class="card" href="livros.html">
-            <span class="card-index">02</span>
-            <h3>Livros publicados</h3>
-            <p>Obras autorais e capítulos em coletâneas, com resumos, referências e links para aquisição.</p>
-            <span class="card-more">Ver publicações <span class="arrow">→</span></span>
-          </a>
-
-          <a class="card" href="apps.html">
-            <span class="card-index">03</span>
-            <h3>Aplicativos e sistemas</h3>
-            <p>Ferramentas web, aplicativos e sistemas desenvolvidos para pesquisa, ensino e gestão.</p>
-            <span class="card-more">Ver projetos <span class="arrow">→</span></span>
-          </a>
-
-          <a class="card" href="guias.html">
-            <span class="card-index">04</span>
-            <h3>Guias e manuais</h3>
-            <p>Materiais didáticos, roteiros metodológicos e manuais técnicos disponíveis para download gratuito.</p>
-            <span class="card-more">Baixar materiais <span class="arrow">→</span></span>
-          </a>
-
-        </div>
-      </div>
+      <ul class="works">
+        <li>
+          <span class="year">2024</span>
+          <span class="title">Título do Livro Principal</span>
+          <span class="kind">autoral · Editora Exemplo</span>
+        </li>
+        <li>
+          <span class="year">2023</span>
+          <span class="title">Temas Contemporâneos em [Área]</span>
+          <span class="kind">organização · Editora Exemplo</span>
+        </li>
+        <li>
+          <span class="year">2022</span>
+          <span class="title">Métodos aplicados em contextos reais</span>
+          <span class="kind">capítulo · Coletânea de Estudos Aplicados</span>
+        </li>
+        <li>
+          <span class="year">2021</span>
+          <span class="title">Fundamentos de [Tema Técnico]</span>
+          <span class="kind">livro técnico · Editora Exemplo</span>
+        </li>
+      </ul>
     </section>
 
-    <!-- ===================== SOBRE ===================== -->
-    <section class="section" id="sobre">
-      <div class="container">
-        <div class="about-grid">
-          <div class="reveal">
-            <p class="eyebrow">Sobre</p>
-            <h2>Trajetória</h2>
-          </div>
-          <div class="reveal">
-            <p>
-              Atuo na interseção entre pesquisa acadêmica e desenvolvimento de tecnologia.
-              Minha produção inclui [descreva sua linha de pesquisa], orientação de estudantes
-              e criação de ferramentas que apoiam o trabalho científico e a prática profissional.
-            </p>
-            <p>
-              Acredito em conhecimento aberto: por isso, parte dos meus materiais didáticos e
-              manuais técnicos está disponível gratuitamente para download nesta página.
-            </p>
-            <div class="tags">
-              <span class="tag">Pesquisa aplicada</span>
-              <span class="tag">Análise de dados</span>
-              <span class="tag">Desenvolvimento web</span>
-              <span class="tag">Ensino superior</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- ============ APPS ============ -->
+    <section class="block" id="apps">
+      <span class="num" aria-hidden="true">03</span>
+      <h2>Apps &amp;<br>sistemas</h2>
+      <p class="intro">
+        Ferramentas web e aplicações criadas para pesquisa, ensino e gestão.
+      </p>
+
+      <ul class="works">
+        <li>
+          <span class="year">Web</span>
+          <span class="title">Sistema de Coleta de Dados Acadêmicos</span>
+          <span class="kind">React + Node · código aberto</span>
+        </li>
+        <li>
+          <span class="year">Dash</span>
+          <span class="title">Painel de Indicadores Educacionais</span>
+          <span class="kind">Python + Plotly</span>
+        </li>
+        <li>
+          <span class="year">Mobile</span>
+          <span class="title">Leitor de Artigos Científicos</span>
+          <span class="kind">Flutter · iOS &amp; Android</span>
+        </li>
+        <li>
+          <span class="year">Bot</span>
+          <span class="title">Robô de Triagem de Artigos</span>
+          <span class="kind">Python · automação de revisão</span>
+        </li>
+      </ul>
     </section>
 
-    <!-- ===================== CONTATO ===================== -->
-    <section class="section" id="contato">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Contato</p>
-          <h2>Vamos conversar</h2>
-          <p>Aberto a colaborações em pesquisa, projetos de desenvolvimento e convites para palestras e cursos.</p>
-        </div>
-        <div class="contact-links reveal">
-          <a class="btn btn-primary" href="mailto:seu.email@exemplo.com">seu.email@exemplo.com</a>
-          <a class="btn btn-ghost" href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="https://lattes.cnpq.br/" target="_blank" rel="noopener">Currículo Lattes</a>
-          <a class="btn btn-ghost" href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
+    <!-- ============ GUIAS ============ -->
+    <section class="block" id="guias">
+      <span class="num" aria-hidden="true">04</span>
+      <h2>Guias &amp;<br>manuais</h2>
+      <p class="intro">
+        Materiais didáticos e técnicos. Download direto, sem cadastro.
+      </p>
+
+      <ul class="downloads">
+        <li>
+          <a href="assets/downloads/guia-escrita-academica.pdf" download>
+            <span class="dl-title">Guia de Escrita Acadêmica</span>
+            <span class="dl-meta">PDF · 42 páginas</span>
+            <span class="dl-arrow">↓</span>
+          </a>
+        </li>
+        <li>
+          <a href="assets/downloads/guia-analise-dados.pdf" download>
+            <span class="dl-title">Introdução à Análise de Dados</span>
+            <span class="dl-meta">PDF · 68 páginas</span>
+            <span class="dl-arrow">↓</span>
+          </a>
+        </li>
+        <li>
+          <a href="assets/downloads/manual-sistema-coleta.pdf" download>
+            <span class="dl-title">Manual do Sistema de Coleta</span>
+            <span class="dl-meta">PDF · 24 páginas</span>
+            <span class="dl-arrow">↓</span>
+          </a>
+        </li>
+        <li>
+          <a href="assets/downloads/guia-revisao-sistematica.pdf" download>
+            <span class="dl-title">Revisão Sistemática de Literatura</span>
+            <span class="dl-meta">PDF · 30 páginas</span>
+            <span class="dl-arrow">↓</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="block contato" id="contato">
+      <span class="num" aria-hidden="true">05</span>
+      <h2>Vamos<br>conversar<span class="ponto">.</span></h2>
+
+      <p class="intro">
+        Aberto a colaborações em pesquisa, projetos de software e convites
+        para palestras e cursos.
+      </p>
+
+      <ul class="contact-list">
+        <li><a href="mailto:seu.email@exemplo.com">seu.email@exemplo.com</a></li>
+        <li><a href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://lattes.cnpq.br/" target="_blank" rel="noopener">Currículo Lattes</a></li>
+        <li><a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span data-year>2025</span> Nome Sobrenome. Todos os direitos reservados.</p>
-      <ul class="footer-links">
-        <li><a href="servicos.html">Serviços</a></li>
-        <li><a href="livros.html">Livros</a></li>
-        <li><a href="apps.html">Apps</a></li>
-        <li><a href="guias.html">Guias</a></li>
-      </ul>
-    </div>
+  <footer class="foot">
+    <p>© <span data-year>2025</span> Nome Sobrenome</p>
+    <p class="foot-mark">Feito à mão, sem pressa.</p>
   </footer>
 
   <script src="assets/js/main.js"></script>
