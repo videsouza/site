@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Índice — Seu nome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body><div class="page">
+<header><a class="name" href="index.html">Seu nome</a><span id="clock">—</span></header>
+
+<main id="topo">
+<p class="intro">Desenvolvo projetos, escrevo livros e publico textos sobre aquilo que estudo e construo. Este espaço reúne uma seleção do meu trabalho — <em>em andamento, sempre.</em></p>
+<section><div class="section-head">Projetos</div><ul class="entries">
+<li class="entry"><span class="num">01</span><a href="projeto.html"><span class="title">Nome do projeto <em>— descrição breve</em></span></a><span class="meta">2026</span></li>
+<li class="entry"><span class="num">02</span><a href="projeto.html"><span class="title">Outro projeto <em>— descrição breve</em></span></a><span class="meta">em curso</span></li>
+</ul></section>
+<section><div class="section-head">Livros</div><ul class="entries">
+<li class="entry"><span class="num">01</span><a href="livro.html"><span class="title">Título do livro</span></a><span class="meta">2026</span></li>
+<li class="entry"><span class="num">02</span><a href="livro.html"><span class="title">Outro título</span></a><span class="meta">em preparação</span></li>
+</ul></section>
+<section><div class="section-head">Escritos</div><ul class="entries">
+<li class="entry"><span class="num">30.out</span><a href="escrito.html"><span class="title">Título do escrito particular</span></a><span class="meta">ensaio</span></li>
+<li class="entry"><span class="num">12.out</span><a href="escrito.html"><span class="title">Outro texto ou reflexão</span></a><span class="meta">notas</span></li>
+</ul></section>
+</main>
+<footer><span>seuemail@exemplo.com</span><div class="links"><a href="index.html">início</a><a href="#topo">↑ topo</a></div></footer>
+</div><script>function updateClock(){const d=new Date();document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' sp'}updateClock();setInterval(updateClock,30000);</script></body></html>
