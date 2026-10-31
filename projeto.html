@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto — Seu nome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body><div class="page">
+<header><a class="name" href="index.html">Seu nome</a><span id="clock">—</span></header>
+
+<main id="topo"><a class="back" href="index.html">← Voltar ao índice</a>
+<p class="section-head">Projeto · 2026</p><h1>Nome do <em>projeto</em></h1>
+<p class="subtitle">Uma frase que explica o propósito do projeto e para quem ele foi desenvolvido.</p>
+<section class="body-copy"><h2>Sobre o projeto</h2><p>Descreva aqui o problema que o projeto procura resolver, a ideia central e o contexto em que foi desenvolvido. Este texto é um modelo editável: substitua-o pelas informações reais do seu projeto.</p><p>Você pode explicar as funcionalidades principais, as decisões de desenvolvimento, as tecnologias utilizadas e os resultados obtidos.</p></section>
+<section><div class="section-head">Demonstração</div><div class="media"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/SEU_ID_DO_VIDEO" title="Demonstração do projeto no YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="media-note">Substitua SEU_ID_DO_VIDEO pelo ID do vídeo no YouTube. Ex.: youtube.com/watch?v=AbCd123 → AbCd123.</p></div></section>
+<section><div class="section-head">Ficha técnica</div><div class="body-copy"><p><strong>Tecnologias:</strong> informe as linguagens, bibliotecas e serviços utilizados.</p><p><strong>Estado:</strong> em desenvolvimento / concluído.</p><p><strong>Repositório ou acesso:</strong> <a href="#">adicione aqui o link</a>.</p></div></section>
+</main>
+<footer><span>seuemail@exemplo.com</span><div class="links"><a href="index.html">início</a><a href="#topo">↑ topo</a></div></footer>
+</div><script>function updateClock(){const d=new Date();document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' sp'}updateClock();setInterval(updateClock,30000);</script></body></html>

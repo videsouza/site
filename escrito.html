@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escrito — Seu nome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body><div class="page">
+<header><a class="name" href="index.html">Seu nome</a><span id="clock">—</span></header>
+
+<main id="topo"><a class="back" href="index.html">← Voltar ao índice</a>
+<p class="section-head">Escrito · ensaio</p><h1>Título do <em>escrito</em></h1><p class="subtitle">Uma linha fina que introduz o tema do texto. · 30 de outubro de 2026</p>
+<article class="body-copy"><p>Comece o escrito com um parágrafo de abertura que apresente a questão central, a imagem ou a ideia que orienta o texto.</p><p>Desenvolva aqui o argumento, a reflexão ou a narrativa. A página foi pensada para leitura contínua, com largura confortável e tipografia serifada, mantendo a linguagem visual do índice.</p><h2>Um subtítulo, se necessário</h2><p>Continue o texto em novos parágrafos. Você pode incluir quantas seções forem necessárias, além de citações, referências e links.</p><p>Encerre o escrito com uma conclusão ou uma imagem final que dialogue com a abertura.</p></article>
+<section><div class="section-head">Referências</div><p>Inclua fontes, leituras relacionadas ou links complementares, se aplicável.</p></section>
+</main>
+<footer><span>seuemail@exemplo.com</span><div class="links"><a href="index.html">início</a><a href="#topo">↑ topo</a></div></footer>
+</div><script>function updateClock(){const d=new Date();document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' sp'}updateClock();setInterval(updateClock,30000);</script></body></html>

@@ -1,0 +1,19 @@
+SITE PESSOAL — COMO PERSONALIZAR
+
+Arquivos:
+- index.html: página inicial/índice com links para projetos, livros e escritos.
+- projeto.html: página individual de projeto com vídeo incorporado do YouTube.
+- livro.html: página individual de livro com espaço para imagem da capa.
+- escrito.html: página individual para texto longo.
+- style.css: estilos compartilhados pelas páginas.
+- assets/: imagens e outros recursos.
+
+PERSONALIZAÇÃO:
+1. Substitua “Seu nome”, o e-mail e os textos de exemplo.
+2. No index.html, altere títulos, descrições, datas e links conforme seu conteúdo.
+3. Para vídeo: em projeto.html, substitua SEU_ID_DO_VIDEO pelo ID do vídeo do YouTube.
+4. Para capa: salve a imagem como assets/capa-livro.jpg (ou mude o src em livro.html).
+5. Duplique projeto.html, livro.html ou escrito.html para criar outras páginas individuais. Dê nomes de arquivo próprios e atualize os hrefs no index.html.
+6. Mantenha style.css junto dos arquivos HTML para preservar o visual integrado.
+
+Os textos e títulos fornecidos são apenas placeholders para facilitar a edição.
