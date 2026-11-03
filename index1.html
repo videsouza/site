@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Página pessoal de Vinícius de Souza.">
+<title>Vinícius de Souza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="landing-body">
+<div class="landing-page">
+  <main class="landing-main">
+    <p class="eyebrow">PÁGINA PESSOAL</p>
+    <h1 class="landing-name">Vinícius <em>de Souza</em></h1>
+    <p class="landing-intro">Desenvolvimento, pesquisa e produção intelectual.</p>
+    <nav class="landing-nav" aria-label="Navegação principal">
+      <a class="landing-link" href="servicos.html"><span>01</span><strong>Serviços profissionais</strong><span class="arrow">↗</span></a>
+      <a class="landing-link" href="producao.html"><span>02</span><strong>Produção técnica e acadêmica</strong><span class="arrow">↗</span></a>
+    </nav>
+    <footer class="landing-footer"><span>© <span id="year"></span> Vinícius de Souza</span><span>São Paulo · Brasil</span></footer>
+  </main>
+</div>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
